@@ -65,7 +65,7 @@ com.badlogic.gdx.graphics.Color: {
 }
 com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle: {
 	default: {
-		imageUp: Monika_Selected
+		imageUp: Monika_Modified
 		imageDown: Monika_Selected
 		imageOver: Monika_Selected
 		imageDisabled: Monika_Modified
