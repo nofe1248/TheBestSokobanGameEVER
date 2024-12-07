@@ -5,9 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.ray3k.stripe.scenecomposer.SceneComposerStageBuilder;
 
@@ -18,17 +16,17 @@ public class BaseGUI extends ApplicationAdapter {
     protected Stage stage;
     protected Skin skin;
 
-    public BaseGUI(String skinAssetPath, String layoutAssetPath, Viewport viewport, Stage stage) {
+    public BaseGUI(String skinAssetPath, String layoutAssetPath) {
         this.skinAssetPath = skinAssetPath;
         this.layoutAssetPath = layoutAssetPath;
-        this.viewport = viewport;
-        this.stage = stage;
     }
 
     @Override
     public void create() {
         assert this.skinAssetPath != null && !this.skinAssetPath.isEmpty();
         assert this.layoutAssetPath != null && !this.layoutAssetPath.isEmpty();
+        this.viewport = new FitViewport(1024, 576);
+        this.stage = new Stage(this.viewport);
         Gdx.input.setInputProcessor(this.stage);
         Gdx.app.getGraphics().setTitle("TheBestSokobanGameEVER");
         Gdx.app.getGraphics().setForegroundFPS(Gdx.graphics.getDisplayMode().refreshRate + 1);
@@ -49,8 +47,9 @@ public class BaseGUI extends ApplicationAdapter {
     public void render() {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.input.setInputProcessor(this.stage);
 
-        stage.act();
+        stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();
     }
 

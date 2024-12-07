@@ -9,20 +9,20 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class Multiplayer extends BaseGUI {
-    public Multiplayer(Viewport viewport, Stage stage) {
-        super("gui/Multiplayer/Multiplayer.json", "gui/Multiplayer/MultiplayerLayout.json", viewport, stage);
+    public Multiplayer() {
+        super("gui/Multiplayer/Multiplayer.json", "gui/Multiplayer/MultiplayerLayout.json");
     }
 
     @Override
     public void create() {
         super.create();
-        TextButton quitButton = this.stage.getRoot().findActor("quit");
+        /*TextButton quitButton = this.stage.getRoot().findActor("quit");
         assert quitButton != null;
         quitButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Gdx.app.exit();
             }
-        });
+        });*/
     }
 }
