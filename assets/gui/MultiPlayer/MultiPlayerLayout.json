@@ -156,7 +156,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "save_game",
 					"text": "Save Game",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -202,7 +202,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "load_game",
 					"text": "Load Game",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -248,7 +248,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "main_menu",
 					"text": "Main Menu",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -294,7 +294,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "settings",
 					"text": "Settings    ",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -340,7 +340,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "quit",
 					"text": "Quit            ",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -386,7 +386,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "return",
 					"text": "Return       ",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -501,75 +501,13 @@
 		"cells": [
 			{
 				"child": {
-					"class": "ImageButton",
-					"name": null,
-					"style": {
-						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.ImageButton",
-						"name": "flash"
-					},
-					"checked": false,
-					"disabled": false,
-					"color": null,
-					"padLeft": 0,
-					"padRight": 0,
-					"padTop": 0,
-					"padBottom": 0,
-					"touchable": "enabled",
-					"visible": true
-				},
-				"row": 0,
-				"column": 0,
-				"padLeft": 810,
-				"padRight": 0,
-				"padTop": 450,
-				"padBottom": 0,
-				"spaceLeft": 0,
-				"spaceRight": 0,
-				"spaceTop": 0,
-				"spaceBottom": 0,
-				"expandX": false,
-				"expandY": false,
-				"fillX": false,
-				"fillY": false,
-				"growX": false,
-				"growY": false,
-				"alignment": 1,
-				"minWidth": -1,
-				"minHeight": -1,
-				"maxWidth": -1,
-				"maxHeight": -1,
-				"preferredWidth": -1,
-				"preferredHeight": -1,
-				"uniformX": false,
-				"uniformY": false,
-				"colSpan": 1
-			}
-		],
-		"name": "Buttom",
-		"background": null,
-		"color": null,
-		"padLeft": 0,
-		"padRight": 0,
-		"padTop": 0,
-		"padBottom": 0,
-		"paddingEnabled": false,
-		"alignment": 1,
-		"fillParent": true,
-		"touchable": "childrenOnly",
-		"visible": true
-	},
-	{
-		"class": "Table",
-		"cells": [
-			{
-				"child": {
 					"class": "Label",
 					"name": null,
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.Label",
-						"name": "middle"
+						"name": "default"
 					},
-					"text": "Server List",
+					"text": "Host IP",
 					"textAlignment": 8,
 					"ellipsis": false,
 					"ellipsisString": "...",
@@ -607,25 +545,141 @@
 			},
 			{
 				"child": {
-					"class": "List",
-					"name": null,
+					"class": "TextField",
+					"name": "host_ip",
 					"style": {
-						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.List",
+						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextField",
 						"name": "default"
 					},
-					"list": [
-						"Player 1",
-						"Player 2",
-						"Player 3"
-					],
+					"text": null,
+					"passwordCharacter": "•",
+					"passwordMode": false,
+					"alignment": 8,
+					"disabled": false,
+					"cursorPosition": 0,
+					"selectionStart": 0,
+					"selectionEnd": 0,
+					"selectAll": false,
+					"focusTraversal": true,
+					"maxLength": 0,
+					"messageText": " XXX.XXX.XXX.XXX",
 					"touchable": "enabled",
 					"visible": true
 				},
 				"row": 1,
 				"column": 0,
+				"padLeft": 384,
+				"padRight": 128,
+				"padTop": 32,
+				"padBottom": 128,
+				"spaceLeft": 0,
+				"spaceRight": 0,
+				"spaceTop": 0,
+				"spaceBottom": 0,
+				"expandX": true,
+				"expandY": false,
+				"fillX": true,
+				"fillY": false,
+				"growX": true,
+				"growY": false,
+				"alignment": 1,
+				"minWidth": -1,
+				"minHeight": -1,
+				"maxWidth": -1,
+				"maxHeight": -1,
+				"preferredWidth": -1,
+				"preferredHeight": -1,
+				"uniformX": false,
+				"uniformY": false,
+				"colSpan": 1
+			}
+		],
+		"name": "Title",
+		"background": null,
+		"color": null,
+		"padLeft": 0,
+		"padRight": 0,
+		"padTop": 0,
+		"padBottom": 0,
+		"paddingEnabled": false,
+		"alignment": 1,
+		"fillParent": true,
+		"touchable": "childrenOnly",
+		"visible": true
+	},
+	{
+		"class": "Table",
+		"cells": [
+			{
+				"child": {
+					"class": "TextButton",
+					"name": "host_game",
+					"text": "Host Game",
+					"style": {
+						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
+						"name": "default"
+					},
+					"checked": false,
+					"disabled": false,
+					"color": null,
+					"padLeft": 0,
+					"padRight": 0,
+					"padTop": 0,
+					"padBottom": 0,
+					"touchable": "enabled",
+					"visible": true
+				},
+				"row": 0,
+				"column": 0,
 				"padLeft": 256,
 				"padRight": 0,
-				"padTop": 64,
+				"padTop": 196,
+				"padBottom": 0,
+				"spaceLeft": 0,
+				"spaceRight": 0,
+				"spaceTop": 0,
+				"spaceBottom": 0,
+				"expandX": false,
+				"expandY": false,
+				"fillX": false,
+				"fillY": false,
+				"growX": false,
+				"growY": false,
+				"alignment": 1,
+				"minWidth": -1,
+				"minHeight": -1,
+				"maxWidth": -1,
+				"maxHeight": -1,
+				"preferredWidth": -1,
+				"preferredHeight": -1,
+				"uniformX": false,
+				"uniformY": false,
+				"colSpan": 1
+			},
+			{
+				"child": {
+					"class": "TextButton",
+					"name": "join_game",
+					"text": "Join Game",
+					"style": {
+						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
+						"name": "default"
+					},
+					"checked": false,
+					"disabled": false,
+					"color": null,
+					"padLeft": 0,
+					"padRight": 0,
+					"padTop": 0,
+					"padBottom": 0,
+					"touchable": "enabled",
+					"visible": true
+				},
+				"row": 0,
+				"column": 1,
+				"padLeft": 64,
+				"padRight": 0,
+				"padTop": 196,
 				"padBottom": 0,
 				"spaceLeft": 0,
 				"spaceRight": 0,
@@ -649,7 +703,7 @@
 				"colSpan": 1
 			}
 		],
-		"name": "Title",
+		"name": "Buttom",
 		"background": null,
 		"color": null,
 		"padLeft": 0,
