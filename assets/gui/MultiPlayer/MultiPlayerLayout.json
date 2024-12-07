@@ -340,7 +340,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": "quit",
+					"name": null,
 					"text": "Quit            ",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
