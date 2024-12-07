@@ -6,31 +6,48 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.HashMap;
+import java.util.Stack;
 
 public class GUIManager extends ApplicationAdapter {
     HashMap<GUISelection, BaseGUI> guiMap;
-    GUISelection currentGui = GUISelection.LOGIN_PANEL;
+    Stack<GUISelection> guiSelectionStack;
 
     public BaseGUI getCurrentGUI() {
-        return this.guiMap.get(this.currentGui);
+        return this.guiMap.get(this.guiSelectionStack.getLast());
     }
 
     public GUISelection getCurrentGUISelection() {
-        return this.currentGui;
+        return this.guiSelectionStack.getLast();
+    }
+
+    public void setCurrentGUI(GUISelection gui) {
+        this.guiSelectionStack.push(gui);
+        if (this.guiSelectionStack.size() > 256) {
+            this.guiSelectionStack.removeFirst();
+        }
+    }
+
+    public void backToPreviousGUI() {
+        if (this.guiSelectionStack.size() > 1) {
+            this.guiSelectionStack.removeLast();
+        }
     }
 
     @Override
     public void create() {
-        guiMap = new HashMap<>();
-        guiMap.put(GUISelection.LOAD_GAME, new LoadGame());
-        guiMap.put(GUISelection.LOGIN_PANEL, new LoginPanel());
-        guiMap.put(GUISelection.MAIN_MENU, new MainMenu());
-        guiMap.put(GUISelection.MULTIPLAYER, new Multiplayer());
-        guiMap.put(GUISelection.SAVE_GAME, new SaveGame());
-        guiMap.put(GUISelection.SETTINGS, new Settings());
-        guiMap.put(GUISelection.START_GAME, new StartGame());
+        this.guiSelectionStack = new Stack<>();
+        this.guiSelectionStack.push(GUISelection.LOGIN_PANEL);
 
-        for (BaseGUI gui : guiMap.values()) {
+        this.guiMap = new HashMap<>();
+        this.guiMap.put(GUISelection.LOAD_GAME, new LoadGame());
+        this.guiMap.put(GUISelection.LOGIN_PANEL, new LoginPanel());
+        this.guiMap.put(GUISelection.MAIN_MENU, new MainMenu());
+        this.guiMap.put(GUISelection.MULTIPLAYER, new Multiplayer());
+        this.guiMap.put(GUISelection.SAVE_GAME, new SaveGame());
+        this.guiMap.put(GUISelection.SETTINGS, new Settings());
+        this.guiMap.put(GUISelection.START_GAME, new StartGame());
+
+        for (BaseGUI gui : this.guiMap.values()) {
             gui.create();
         }
     }

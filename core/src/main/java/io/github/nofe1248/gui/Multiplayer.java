@@ -16,13 +16,34 @@ public class Multiplayer extends BaseGUI {
     @Override
     public void create() {
         super.create();
-        /*TextButton quitButton = this.stage.getRoot().findActor("quit");
+
+        TextButton quitButton = this.stage.getRoot().findActor("quit");
         assert quitButton != null;
         quitButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Gdx.app.exit();
             }
-        });*/
+        });
+
+        TextButton settingsButton = this.stage.getRoot().findActor("settings");
+        assert settingsButton != null;
+        settingsButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                manager.setCurrentGUI(GUISelection.SETTINGS);
+            }
+        });
+
+        TextButton returnButton = this.stage.getRoot().findActor("return");
+        assert returnButton != null;
+        returnButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                manager.backToPreviousGUI();
+            }
+        });
     }
 }

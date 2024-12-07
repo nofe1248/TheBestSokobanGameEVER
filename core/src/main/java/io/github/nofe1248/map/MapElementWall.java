@@ -1,4 +1,4 @@
-package io.github.nofe1248.Map;
+package io.github.nofe1248.map;
 
 public class MapElementWall extends AbstractMapElement {
     public MapElementWall(int x, int y) {

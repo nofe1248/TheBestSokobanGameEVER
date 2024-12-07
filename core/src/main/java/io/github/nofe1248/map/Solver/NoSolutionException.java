@@ -1,4 +1,4 @@
-package io.github.nofe1248.Map.Solver;
+package io.github.nofe1248.map.Solver;
 
 public class NoSolutionException extends Exception {
     public NoSolutionException() {

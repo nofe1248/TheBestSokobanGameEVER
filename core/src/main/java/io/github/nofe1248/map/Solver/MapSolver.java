@@ -1,7 +1,6 @@
-package io.github.nofe1248.Map.Solver;
+package io.github.nofe1248.map.Solver;
 
-import io.github.nofe1248.Map.InFlightMap;
-import io.github.nofe1248.Map.SokobanMap;
+import io.github.nofe1248.map.InFlightMap;
 
 import java.awt.Point;
 import java.util.*;

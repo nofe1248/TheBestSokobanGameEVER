@@ -1,4 +1,4 @@
-package io.github.nofe1248.Map;
+package io.github.nofe1248.map;
 
 public abstract class AbstractMapElement {
     private int x;

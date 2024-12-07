@@ -1,6 +1,6 @@
-package io.github.nofe1248.Map.Generator;
+package io.github.nofe1248.map.Generator;
 
-import io.github.nofe1248.Map.*;
+import io.github.nofe1248.map.*;
 
 import java.awt.*;
 import java.util.ArrayList;

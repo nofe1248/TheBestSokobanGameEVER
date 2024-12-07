@@ -1,4 +1,4 @@
-package io.github.nofe1248.Map.Solver;
+package io.github.nofe1248.map.Solver;
 
 import java.awt.Point;
 

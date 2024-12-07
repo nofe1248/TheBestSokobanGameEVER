@@ -1,4 +1,4 @@
-package io.github.nofe1248.Map;
+package io.github.nofe1248.map;
 
 import java.util.List;
 

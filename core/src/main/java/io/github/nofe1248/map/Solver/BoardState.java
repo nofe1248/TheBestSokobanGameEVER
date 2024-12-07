@@ -1,6 +1,6 @@
-package io.github.nofe1248.Map.Solver;
+package io.github.nofe1248.map.Solver;
 
-import io.github.nofe1248.Map.*;
+import io.github.nofe1248.map.*;
 
 import java.awt.*;
 import java.util.*;

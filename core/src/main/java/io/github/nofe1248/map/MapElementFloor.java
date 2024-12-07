@@ -1,4 +1,4 @@
-package io.github.nofe1248.Map;
+package io.github.nofe1248.map;
 
 public class MapElementFloor extends AbstractMapElement {
     public MapElementFloor(int x, int y) {
