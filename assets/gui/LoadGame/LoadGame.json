@@ -1,5 +1,5 @@
 {
-BitmapFont: {
+com.badlogic.gdx.graphics.g2d.BitmapFont: {
 	Halogen: {
 		file: Halogen.fnt
 		scaledSize: -1
@@ -14,24 +14,6 @@ BitmapFont: {
 	}
 	Halogen_Middle: {
 		file: Halogen_Middle.fnt
-		scaledSize: -1
-		markupEnabled: false
-		flip: false
-	}
-	Monika: {
-		file: Monika.fnt
-		scaledSize: -1
-		markupEnabled: false
-		flip: false
-	}
-	Natsuki: {
-		file: Natsuki.fnt
-		scaledSize: -1
-		markupEnabled: false
-		flip: false
-	}
-	PerfectDOSVGA437: {
-		file: PerfectDOSVGA437.fnt
 		scaledSize: -1
 		markupEnabled: false
 		flip: false
@@ -60,49 +42,40 @@ BitmapFont: {
 		markupEnabled: false
 		flip: false
 	}
-	Sayori: {
-		file: Sayori.fnt
-		scaledSize: -1
-		markupEnabled: false
-		flip: false
-	}
-	Yuri_1: {
-		file: Yuri_1.fnt
-		scaledSize: -1
-		markupEnabled: false
-		flip: false
-	}
-	Yuri_2: {
-		file: Yuri_2.fnt
-		scaledSize: -1
-		markupEnabled: false
-		flip: false
-	}
-	zpix: {
-		file: zpix.fnt
-		scaledSize: -1
-		markupEnabled: false
-		flip: false
-	}
 }
-Color: {
+com.badlogic.gdx.graphics.Color: {
 	RGBA_0_0_0_127: {
-		hex: 0000007f
+		r: 0
+		g: 0
+		b: 0
+		a: 0.49803922
 	}
 	RGBA_0_0_0_255: {
-		hex: 000000ff
+		r: 0
+		g: 0
+		b: 0
+		a: 1
 	}
 	RGBA_187_85_153_255: {
-		hex: bb5599ff
+		r: 0.73333335
+		g: 0.33333334
+		b: 0.6
+		a: 1
 	}
 	RGBA_255_204_238_255: {
-		hex: ffcceeff
+		r: 1
+		g: 0.8
+		b: 0.93333334
+		a: 1
 	}
 	RGBA_255_255_255_255: {
-		hex: ffffffff
+		r: 1
+		g: 1
+		b: 1
+		a: 1
 	}
 }
-ImageButtonStyle: {
+com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle: {
 	default: {
 		imageUp: frame_Modified
 		imageDown: frame_Modified
@@ -133,20 +106,8 @@ ImageButtonStyle: {
 		imageOver: Yuri_Selected
 		imageDisabled: Yuri_Modified
 	}
-	Left: {
-		imageUp: Chest
-		imageDown: Chest
-		imageOver: Chest
-		imageDisabled: Chest
-	}
-	Right: {
-		imageUp: End
-		imageDown: End
-		imageOver: End
-		imageDisabled: End
-	}
 }
-LabelStyle: {
+com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 	default: {
 		font: RifficFree-Bold_Big
 		fontColor: RGBA_255_255_255_255
@@ -160,7 +121,7 @@ LabelStyle: {
 		fontColor: RGBA_255_255_255_255
 	}
 }
-TextButtonStyle: {
+com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
 	default: {
 		font: RifficFree-Bold_Big
 		fontColor: RGBA_255_255_255_255
@@ -198,7 +159,7 @@ TextButtonStyle: {
 		checkedOffsetY: 1
 	}
 }
-TextTooltipStyle: {
+com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle: {
 	default: {
 		label: default
 	}

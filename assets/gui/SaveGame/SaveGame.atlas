@@ -24,367 +24,276 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-Monika
-  rotate: false
-  xy: 1027, 1733
-  size: 506, 51
-  orig: 506, 51
-  offset: 0, 0
-  index: -1
-Natsuki
-  rotate: false
-  xy: 1, 311
-  size: 506, 37
-  orig: 506, 37
-  offset: 0, 0
-  index: -1
-Sayori
-  rotate: false
-  xy: 1027, 1695
-  size: 506, 36
-  orig: 506, 36
-  offset: 0, 0
-  index: -1
-Yuri_1
-  rotate: false
-  xy: 1, 259
-  size: 506, 50
-  orig: 506, 50
-  offset: 0, 0
-  index: -1
-Yuri_2
-  rotate: false
-  xy: 1, 101
-  size: 490, 15
-  orig: 490, 15
-  offset: 0, 0
-  index: -1
 Halogen
   rotate: false
-  xy: 1027, 1614
+  xy: 1541, 1966
   size: 506, 79
   orig: 506, 79
   offset: 0, 0
   index: -1
 Halogen_Big
   rotate: false
-  xy: 515, 602
+  xy: 1, 507
   size: 506, 260
   orig: 506, 260
   offset: 0, 0
   index: -1
 Halogen_Middle
   rotate: false
-  xy: 515, 269
+  xy: 1, 354
   size: 505, 151
   orig: 505, 151
   offset: 0, 0
   index: -1
-PerfectDOSVGA437
-  rotate: false
-  xy: 1, 208
-  size: 506, 49
-  orig: 506, 49
-  offset: 0, 0
-  index: -1
 RifficFree-Bold
   rotate: false
-  xy: 1, 118
+  xy: 1541, 1876
   size: 506, 88
   orig: 506, 88
   offset: 0, 0
   index: -1
 RifficFree-Bold_Big
   rotate: false
-  xy: 1027, 1238
+  xy: 1541, 1560
   size: 506, 314
   orig: 506, 314
   offset: 0, 0
   index: -1
 RifficFree-Bold_Middle
   rotate: false
-  xy: 1027, 1058
+  xy: 1541, 1380
   size: 506, 178
   orig: 506, 178
   offset: 0, 0
   index: -1
 RifficFree-Bold_Middle_Select
   rotate: false
-  xy: 515, 422
+  xy: 1027, 1353
   size: 506, 178
   orig: 506, 178
   offset: 0, 0
   index: -1
-zpix
-  rotate: false
-  xy: 1027, 1554
-  size: 506, 58
-  orig: 506, 58
-  offset: 0, 0
-  index: -1
-Chest
-  rotate: false
-  xy: 1369, 992
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-End
-  rotate: false
-  xy: 1535, 1720
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-Ground
-  rotate: false
-  xy: 1951, 1972
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-Wall
-  rotate: false
-  xy: 949, 946
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
 Monika_256
   rotate: false
-  xy: 1783, 1030
+  xy: 1418, 857
   size: 119, 168
   orig: 119, 168
   offset: 0, 0
   index: -1
 Natsuki_256
   rotate: false
-  xy: 1793, 1392
+  xy: 1349, 1027
   size: 141, 161
   orig: 141, 161
   offset: 0, 0
   index: -1
 Sayori_256
   rotate: false
-  xy: 1659, 1025
+  xy: 1173, 856
   size: 122, 173
   orig: 122, 173
   offset: 0, 0
   index: -1
 Monika_Modified
   rotate: false
-  xy: 974, 99
+  xy: 509, 599
   size: 119, 168
   orig: 119, 168
   offset: 0, 0
   index: -1
 Monika_Modified_256
   rotate: false
-  xy: 974, 99
+  xy: 509, 599
   size: 119, 168
   orig: 119, 168
   offset: 0, 0
   index: -1
 Monika_Selected
   rotate: false
-  xy: 1917, 1222
+  xy: 1297, 857
   size: 119, 168
   orig: 119, 168
   offset: 0, 0
   index: -1
 Monika_Selected_256
   rotate: false
-  xy: 1917, 1222
+  xy: 1297, 857
   size: 119, 168
   orig: 119, 168
   offset: 0, 0
   index: -1
 Natsuki_Modified
   rotate: false
-  xy: 831, 106
+  xy: 1349, 1190
   size: 141, 161
   orig: 141, 161
   offset: 0, 0
   index: -1
 Natsuki_Modified_256
   rotate: false
-  xy: 831, 106
+  xy: 1349, 1190
   size: 141, 161
   orig: 141, 161
   offset: 0, 0
   index: -1
 Natsuki_Selected
   rotate: false
-  xy: 1793, 1555
+  xy: 259, 193
   size: 141, 159
   orig: 141, 159
   offset: 0, 0
   index: -1
 Natsuki_Selected_256
   rotate: false
-  xy: 1793, 1555
+  xy: 259, 193
   size: 141, 159
   orig: 141, 159
   offset: 0, 0
   index: -1
 Sayori_Modified
   rotate: false
-  xy: 1793, 1217
+  xy: 925, 846
   size: 122, 173
   orig: 122, 173
   offset: 0, 0
   index: -1
 Sayori_Modified_256
   rotate: false
-  xy: 1793, 1217
+  xy: 925, 846
   size: 122, 173
   orig: 122, 173
   offset: 0, 0
   index: -1
 Sayori_Selected
   rotate: false
-  xy: 1535, 1025
+  xy: 1049, 856
   size: 122, 173
   orig: 122, 173
   offset: 0, 0
   index: -1
 Sayori_Selected_256
   rotate: false
-  xy: 1535, 1025
+  xy: 1049, 856
   size: 122, 173
   orig: 122, 173
   offset: 0, 0
   index: -1
 Yuri
   rotate: false
-  xy: 1141, 895
+  xy: 630, 676
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
   index: -1
 Yuri_256
   rotate: false
-  xy: 1141, 895
+  xy: 630, 676
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
   index: -1
 Yuri_Modified
   rotate: false
-  xy: 1027, 895
+  xy: 259, 30
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
   index: -1
 Yuri_Modified_256
   rotate: false
-  xy: 1027, 895
+  xy: 259, 30
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
   index: -1
 Yuri_Selected
   rotate: false
-  xy: 1255, 895
+  xy: 744, 676
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
   index: -1
 Yuri_Selected_256
   rotate: false
-  xy: 1255, 895
+  xy: 744, 676
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
   index: -1
 Logo1024
   rotate: false
-  xy: 1, 1012
+  xy: 1, 1021
   size: 1024, 1024
   orig: 1024, 1024
   offset: 0, 0
   index: -1
 Logo
   rotate: false
-  xy: 1, 1012
+  xy: 1, 1021
   size: 1024, 1024
   orig: 1024, 1024
   offset: 0, 0
   index: -1
 Logo128
   rotate: false
-  xy: 819, 882
+  xy: 402, 224
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 Logo16
   rotate: false
-  xy: 819, 864
+  xy: 402, 206
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 Logo256
   rotate: false
-  xy: 1535, 1200
+  xy: 1, 96
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 Logo32
   rotate: false
-  xy: 1, 1
+  xy: 1492, 1319
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Logo512
   rotate: false
-  xy: 1, 350
+  xy: 1027, 1533
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Logo64
   rotate: false
-  xy: 1, 35
+  xy: 509, 533
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 Abstract
   rotate: false
-  xy: 1629, 1716
+  xy: 1027, 1031
   size: 320, 320
   orig: 320, 320
   offset: 0, 0
   index: -1
 frame
   rotate: false
-  xy: 1027, 1786
+  xy: 1, 769
   size: 600, 250
   orig: 600, 250
   offset: 0, 0
   index: -1
 frame_Modified
   rotate: false
-  xy: 509, 87
+  xy: 603, 839
   size: 320, 180
   orig: 320, 180
-  offset: 0, 0
-  index: -1
-map_background
-  rotate: false
-  xy: 1535, 1458
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-textbox
-  rotate: false
-  xy: 1, 864
-  size: 816, 146
-  orig: 816, 146
   offset: 0, 0
   index: -1
