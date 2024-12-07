@@ -1,3 +1,5 @@
+package io.github.alkalimc;
+
 import java.time.LocalDateTime;
 
 //日志
