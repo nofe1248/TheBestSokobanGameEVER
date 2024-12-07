@@ -24,7 +24,7 @@ public class Multiplayer extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
                 manager.setCurrentGUI(GUISelection.SETTINGS);
-                manager.playClick();
+                manager.getSoundEffectManager().playClick();
                 Gdx.app.exit();
             }
         });
@@ -35,7 +35,7 @@ public class Multiplayer extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
-                manager.playClick();
+                manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.SETTINGS);
             }
         });
@@ -46,7 +46,7 @@ public class Multiplayer extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
-                manager.playClick();
+                manager.getSoundEffectManager().playClick();
                 manager.backToPreviousGUI();
             }
         });
@@ -57,7 +57,7 @@ public class Multiplayer extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
-                manager.playClick();
+                manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.LOAD_GAME);
             }
         });
@@ -68,7 +68,7 @@ public class Multiplayer extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
-                manager.playClick();
+                manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.MAIN_MENU);
             }
         });
@@ -79,7 +79,7 @@ public class Multiplayer extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
-                manager.playClick();
+                manager.getSoundEffectManager().playClick();
             }
         });
 
@@ -89,7 +89,7 @@ public class Multiplayer extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
-                manager.playClick();
+                manager.getSoundEffectManager().playClick();
             }
         });
     }

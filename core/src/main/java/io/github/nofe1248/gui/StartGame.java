@@ -22,7 +22,7 @@ public class StartGame extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
-                manager.playClick();
+                manager.getSoundEffectManager().playClick();
                 Gdx.app.exit();
             }
         });
@@ -33,7 +33,7 @@ public class StartGame extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
-                manager.playClick();
+                manager.getSoundEffectManager().playClick();
                 manager.backToPreviousGUI();
             }
         });
@@ -44,7 +44,7 @@ public class StartGame extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
-                manager.playClick();
+                manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.LOAD_GAME);
             }
         });
@@ -55,7 +55,7 @@ public class StartGame extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
-                manager.playClick();
+                manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.SETTINGS);
             }
         });
@@ -66,7 +66,7 @@ public class StartGame extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
-                manager.playClick();
+                manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.MAIN_MENU);
             }
         });

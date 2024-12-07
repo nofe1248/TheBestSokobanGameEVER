@@ -1,4 +1,4 @@
-package io.github.nofe1248.gui;
+package io.github.nofe1248.sound;
 
 public enum SoundEffectSelection {
     BUTTON_CLICK,

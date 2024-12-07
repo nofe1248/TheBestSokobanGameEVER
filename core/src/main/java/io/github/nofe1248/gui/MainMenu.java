@@ -22,7 +22,7 @@ public class MainMenu extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
-                manager.playClick();
+                manager.getSoundEffectManager().playClick();
                 Gdx.app.exit();
             }
         });
@@ -33,7 +33,7 @@ public class MainMenu extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
-                manager.playClick();
+                manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.SETTINGS);
             }
         });
@@ -44,7 +44,7 @@ public class MainMenu extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
-                manager.playClick();
+                manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.MULTIPLAYER);
             }
         });
@@ -55,7 +55,7 @@ public class MainMenu extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
-                manager.playClick();
+                manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.LOAD_GAME);
             }
         });
@@ -66,7 +66,7 @@ public class MainMenu extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
-                manager.playClick();
+                manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.START_GAME);
             }
         });
