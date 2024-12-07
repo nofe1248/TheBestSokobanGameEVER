@@ -19,6 +19,8 @@ public class Settings extends BaseGUI {
         quitButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+                GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                manager.playClick();
                 Gdx.app.exit();
             }
         });
@@ -29,6 +31,7 @@ public class Settings extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                manager.playClick();
                 manager.backToPreviousGUI();
             }
         });
@@ -39,6 +42,7 @@ public class Settings extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                manager.playClick();
                 manager.setCurrentGUI(GUISelection.LOGIN_PANEL);
             }
         });
@@ -49,6 +53,7 @@ public class Settings extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                manager.playClick();
                 manager.setCurrentGUI(GUISelection.MAIN_MENU);
             }
         });
@@ -59,6 +64,7 @@ public class Settings extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                manager.playClick();
                 manager.setCurrentGUI(GUISelection.LOAD_GAME);
             }
         });
@@ -69,6 +75,7 @@ public class Settings extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                manager.playClick();
                 manager.setCurrentGUI(GUISelection.SAVE_GAME);
             }
         });

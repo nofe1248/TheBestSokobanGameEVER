@@ -21,6 +21,8 @@ public class LoginPanel extends BaseGUI {
         quitButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+                GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                manager.playClick();
                 Gdx.app.exit();
             }
         });
@@ -31,6 +33,7 @@ public class LoginPanel extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                manager.playClick();
                 manager.setCurrentGUI(GUISelection.MAIN_MENU);
             }
         });
@@ -41,6 +44,7 @@ public class LoginPanel extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                manager.playClick();
                 manager.setCurrentGUI(GUISelection.MAIN_MENU);
             }
         });

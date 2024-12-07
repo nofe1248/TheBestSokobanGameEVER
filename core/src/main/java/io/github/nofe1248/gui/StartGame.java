@@ -22,6 +22,7 @@ public class StartGame extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                manager.playClick();
                 manager.backToPreviousGUI();
             }
         });

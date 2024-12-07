@@ -22,6 +22,9 @@ public class Multiplayer extends BaseGUI {
         quitButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+                GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                manager.setCurrentGUI(GUISelection.SETTINGS);
+                manager.playClick();
                 Gdx.app.exit();
             }
         });
@@ -32,6 +35,7 @@ public class Multiplayer extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                manager.playClick();
                 manager.setCurrentGUI(GUISelection.SETTINGS);
             }
         });
@@ -42,6 +46,7 @@ public class Multiplayer extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                manager.playClick();
                 manager.backToPreviousGUI();
             }
         });

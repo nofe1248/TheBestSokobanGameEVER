@@ -1,6 +1,8 @@
 package io.github.nofe1248.gui;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -11,6 +13,7 @@ import java.util.Stack;
 public class GUIManager extends ApplicationAdapter {
     HashMap<GUISelection, BaseGUI> guiMap;
     Stack<GUISelection> guiSelectionStack;
+    HashMap<SoundEffectSelection, Sound> soundEffectMap;
 
     public BaseGUI getCurrentGUI() {
         return this.guiMap.get(this.guiSelectionStack.getLast());
@@ -47,9 +50,20 @@ public class GUIManager extends ApplicationAdapter {
         this.guiMap.put(GUISelection.SETTINGS, new Settings());
         this.guiMap.put(GUISelection.START_GAME, new StartGame());
 
+        this.soundEffectMap = new HashMap<>();
+        this.soundEffectMap.put(SoundEffectSelection.BUTTON_CLICK, Gdx.audio.newSound(Gdx.files.internal("audio/Action/Keyboard/click.ogg")));
+
         for (BaseGUI gui : this.guiMap.values()) {
             gui.create();
         }
+    }
+
+    public void playSoundEffect(SoundEffectSelection soundEffectSelection) {
+        this.soundEffectMap.get(soundEffectSelection).play(1.0f);
+    }
+
+    public void playClick(){
+        this.playSoundEffect(SoundEffectSelection.BUTTON_CLICK);
     }
 
     @Override
@@ -66,6 +80,10 @@ public class GUIManager extends ApplicationAdapter {
     public void dispose() {
         for (BaseGUI gui : guiMap.values()) {
             gui.dispose();
+        }
+
+        for (Sound sound : soundEffectMap.values()) {
+            sound.dispose();
         }
     }
 }
