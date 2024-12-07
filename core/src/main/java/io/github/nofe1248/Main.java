@@ -69,8 +69,8 @@ public class Main extends ApplicationAdapter {
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
 
-        batch.draw(image, 0, 0, viewport.getWorldWidth(), viewport.getWorldHeight());
         console.draw();
+        batch.draw(image, 0, 0, viewport.getWorldWidth(), viewport.getWorldHeight());
 
         batch.end();
     }

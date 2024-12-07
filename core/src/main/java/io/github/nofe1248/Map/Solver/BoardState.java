@@ -3,7 +3,6 @@ package io.github.nofe1248.Map.Solver;
 import io.github.nofe1248.Map.*;
 
 import java.awt.*;
-import java.security.KeyStore;
 import java.util.*;
 
 public class BoardState implements Comparable<BoardState> {
@@ -55,7 +54,7 @@ public class BoardState implements Comparable<BoardState> {
             else if (element instanceof MapElementFloor) {
                 this.board[x][y] = 0;
             }
-            else if (element instanceof MapElementCrateDestination) {
+            else if (element instanceof MapElementGoal) {
                 this.board[x][y] = GOAL;
                 this.goals.add(new Point(x, y));
             }

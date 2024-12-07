@@ -7,12 +7,14 @@ import java.util.Map;
 import java.util.List;
 
 public final class SokobanMap {
-    private final Map<Point, AbstractMapElement> underlyingMap;
+    private Map<Point, AbstractMapElement> underlyingMap;
     private int width;
     private int height;
 
     public SokobanMap() {
         this.underlyingMap = new HashMap<>();
+        this.width = 0;
+        this.height = 0;
     }
 
     public SokobanMap(int width, int height, List<AbstractMapElement> elementList) {
@@ -43,6 +45,18 @@ public final class SokobanMap {
 
     public AbstractMapElement getMapElement(int x, int y) {
         return underlyingMap.get(new Point(x, y));
+    }
+
+    public AbstractMapElement getMapElement(Point point) {
+        return underlyingMap.get(point);
+    }
+
+    public void setMapElement(int x, int y, AbstractMapElement element) {
+        underlyingMap.put(new Point(x, y), element);
+    }
+
+    public void setMapElement(Point point, AbstractMapElement element) {
+        underlyingMap.put(point, element);
     }
 
     public ArrayList<AbstractMapElement> toArrayList() {
