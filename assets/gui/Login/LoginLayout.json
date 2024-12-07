@@ -207,7 +207,7 @@
 				"child": {
 					"class": "Image",
 					"name": null,
-					"drawable": "Abstract",
+					"drawable": null,
 					"scaling": "fill",
 					"touchable": "enabled",
 					"visible": false
@@ -259,7 +259,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "login",
 					"text": "Login     ",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -305,7 +305,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "register",
 					"text": "Register",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -351,7 +351,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "quit",
 					"text": "Quit       ",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -511,7 +511,7 @@
 			{
 				"child": {
 					"class": "TextField",
-					"name": null,
+					"name": "username",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextField",
 						"name": "default"
@@ -605,7 +605,7 @@
 			{
 				"child": {
 					"class": "TextField",
-					"name": null,
+					"name": "password",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextField",
 						"name": "default"
