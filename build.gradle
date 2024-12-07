@@ -9,7 +9,6 @@ buildscript {
     maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
   }
   dependencies {
-
   }
 }
 
@@ -56,6 +55,7 @@ configure(subprojects) {
 }
 
 subprojects {
+  apply plugin: "java-library"
   version = '$projectVersion'
   ext.appName = 'TheBestSokobanGameEVER'
   repositories {
@@ -69,7 +69,9 @@ subprojects {
   }
 
   dependencies {
+    api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
     implementation 'com.github.raeleus.stripe:stripe:2.0.0'
+    implementation 'com.github.raeleus.stripe:freetype:2.0.0'
   }
 }
 

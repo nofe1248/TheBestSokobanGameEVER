@@ -4,6 +4,8 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import io.github.nofe1248.Main;
 import io.github.nofe1248.gui.LoginPanel;
+import io.github.nofe1248.gui.MainMenu;
+import io.github.nofe1248.gui.Settings;
 
 /** Launches the desktop (LWJGL3) application. */
 public class Lwjgl3Launcher {
@@ -13,7 +15,7 @@ public class Lwjgl3Launcher {
     }
 
     private static Lwjgl3Application createApplication() {
-        return new Lwjgl3Application(new LoginPanel(), getDefaultConfiguration());
+        return new Lwjgl3Application(new MainMenu(), getDefaultConfiguration());
     }
 
     private static Lwjgl3ApplicationConfiguration getDefaultConfiguration() {
