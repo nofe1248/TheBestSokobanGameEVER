@@ -23,26 +23,6 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Menu/frame.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: frame
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: TEXTURE
-			hidden: false
-		}
-		{
 			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Menu/main_menu.png
 			bgColor: {
 				r: 1
@@ -63,26 +43,6 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Menu/map_background.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: map_background
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: TEXTURE
-			hidden: false
-		}
-		{
 			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Menu/menu_bg.png
 			bgColor: {
 				r: 1
@@ -93,26 +53,6 @@ atlasData: {
 			tint: null
 			tintName: null
 			name: menu_bg
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: TEXTURE
-			hidden: false
-		}
-		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Menu/textbox.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: textbox
 			tiled: false
 			minWidth: -1
 			minHeight: -1
@@ -693,86 +633,6 @@ atlasData: {
 			tint: null
 			tintName: null
 			name: Yuri_Selected_256
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: TEXTURE
-			hidden: false
-		}
-		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Block/Chest.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: Chest
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: TEXTURE
-			hidden: false
-		}
-		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Block/End.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: End
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: TEXTURE
-			hidden: false
-		}
-		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Block/Ground.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: Ground
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: TEXTURE
-			hidden: false
-		}
-		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Block/Wall.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: Wall
 			tiled: false
 			minWidth: -1
 			minHeight: -1
@@ -1893,7 +1753,7 @@ jsonData: {
 						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
 						name: background
 						optional: true
-						value: menu_bg
+						value: null
 					}
 					titleFont: {
 						type: com.badlogic.gdx.graphics.g2d.BitmapFont
@@ -1905,13 +1765,13 @@ jsonData: {
 						type: com.badlogic.gdx.graphics.Color
 						name: titleFontColor
 						optional: true
-						value: RGBA_0_0_0_255
+						value: null
 					}
 					stageBackground: {
 						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
 						name: stageBackground
 						optional: true
-						value: menu_bg
+						value: null
 					}
 				}
 				deletable: false
@@ -3632,6 +3492,10 @@ preferences: {
 		class: java.lang.Integer
 		value: 156089106
 	}
+	last-import-export-path: {
+		class: java.lang.String
+		value: C:/Users/qigao/Documents/GitHub/TheBestSokobanGameEVER/assets/gui/Settings/Settings.json
+	}
 	resources-relative: {
 		class: java.lang.Boolean
 		value: false
@@ -3640,8 +3504,12 @@ preferences: {
 		class: java.lang.Integer
 		value: 30
 	}
+	last-scene-composer-json: {
+		class: java.lang.String
+		value: C:/Users/qigao/Documents/GitHub/TheBestSokobanGameEVER/assets/gui/Settings/SettingsLayout.json
+	}
 }
-saveFile: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/gui/Settings.scmp
+saveFile: C:/Users/qigao/Documents/GitHub/TheBestSokobanGameEVER/assets/gui/Settings.scmp
 version: 58
 sceneComposer: {
 	children: [
@@ -3861,7 +3729,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextButton
-						name: null
+						name: save_game
 						text: Save Game
 						style: {
 							name: middle
@@ -4061,7 +3929,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextButton
-						name: null
+						name: load_game
 						text: Load Game
 						style: {
 							name: middle
@@ -4261,7 +4129,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextButton
-						name: null
+						name: main_menu
 						text: Main Menu
 						style: {
 							name: middle
@@ -4461,7 +4329,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextButton
-						name: null
+						name: settings
 						text: "Settings    "
 						style: {
 							name: middle_selected
@@ -4622,7 +4490,7 @@ sceneComposer: {
 							parent: null
 						}
 						checked: false
-						disabled: false
+						disabled: true
 						color: null
 						padLeft: 0
 						padRight: 0
@@ -4661,7 +4529,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextButton
-						name: null
+						name: quit
 						text: "Quit            "
 						style: {
 							name: middle
@@ -4861,7 +4729,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextButton
-						name: null
+						name: return
 						text: "Return       "
 						style: {
 							name: middle
@@ -5342,7 +5210,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimImageButton
-						name: null
+						name: monika
 						style: {
 							name: Monika
 							clazz: com.badlogic.gdx.scenes.scene2d.ui.ImageButton
@@ -5523,7 +5391,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimImageButton
-						name: null
+						name: sayori
 						style: {
 							name: Sayori
 							clazz: com.badlogic.gdx.scenes.scene2d.ui.ImageButton
@@ -5704,7 +5572,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimImageButton
-						name: null
+						name: yuri
 						style: {
 							name: Yuri
 							clazz: com.badlogic.gdx.scenes.scene2d.ui.ImageButton
@@ -5885,7 +5753,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimImageButton
-						name: null
+						name: natsuki
 						style: {
 							name: Natsuki
 							clazz: com.badlogic.gdx.scenes.scene2d.ui.ImageButton
@@ -6066,7 +5934,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextButton
-						name: null
+						name: log_out
 						text: "Log Out          "
 						style: {
 							name: middle
@@ -6265,6 +6133,287 @@ sceneComposer: {
 				}
 			]
 			name: Settings
+			background: null
+			color: null
+			padLeft: 0
+			padRight: 0
+			padTop: 0
+			padBottom: 0
+			paddingEnabled: false
+			alignment: 1
+			fillParent: true
+			touchable: childrenOnly
+			visible: true
+		}
+		{
+			class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTable
+			cells: [
+				{
+					child: {
+						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimLabel
+						name: username
+						style: {
+							name: info
+							clazz: com.badlogic.gdx.scenes.scene2d.ui.Label
+							properties: {
+								font: {
+									type: com.badlogic.gdx.graphics.g2d.BitmapFont
+									name: font
+									optional: false
+									value: Halogen_Middle
+								}
+								fontColor: {
+									type: com.badlogic.gdx.graphics.Color
+									name: fontColor
+									optional: true
+									value: RGBA_255_255_255_255
+								}
+								background: {
+									type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
+									name: background
+									optional: true
+									value: null
+								}
+							}
+							deletable: true
+							parent: null
+						}
+						text: alkali
+						textAlignment: 8
+						ellipsis: false
+						ellipsisString: ...
+						wrap: false
+						color: null
+						touchable: enabled
+						visible: true
+					}
+					row: 0
+					column: 0
+					padLeft: 256
+					padRight: 0
+					padTop: 0
+					padBottom: 0
+					spaceLeft: 0
+					spaceRight: 0
+					spaceTop: 0
+					spaceBottom: 0
+					expandX: false
+					expandY: false
+					fillX: false
+					fillY: false
+					growX: false
+					growY: false
+					alignment: 1
+					minWidth: -1
+					minHeight: -1
+					maxWidth: -1
+					maxHeight: -1
+					preferredWidth: -1
+					preferredHeight: -1
+					uniformX: false
+					uniformY: false
+					colSpan: 1
+				}
+				{
+					child: {
+						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimLabel
+						name: register_time
+						style: {
+							name: info
+							clazz: com.badlogic.gdx.scenes.scene2d.ui.Label
+							properties: {
+								font: {
+									type: com.badlogic.gdx.graphics.g2d.BitmapFont
+									name: font
+									optional: false
+									value: Halogen_Middle
+								}
+								fontColor: {
+									type: com.badlogic.gdx.graphics.Color
+									name: fontColor
+									optional: true
+									value: RGBA_255_255_255_255
+								}
+								background: {
+									type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
+									name: background
+									optional: true
+									value: null
+								}
+							}
+							deletable: true
+							parent: null
+						}
+						text: 2024/12/7/18:00
+						textAlignment: 8
+						ellipsis: false
+						ellipsisString: ...
+						wrap: false
+						color: null
+						touchable: enabled
+						visible: true
+					}
+					row: 1
+					column: 0
+					padLeft: 256
+					padRight: 0
+					padTop: 0
+					padBottom: 0
+					spaceLeft: 0
+					spaceRight: 0
+					spaceTop: 0
+					spaceBottom: 0
+					expandX: false
+					expandY: false
+					fillX: false
+					fillY: false
+					growX: false
+					growY: false
+					alignment: 1
+					minWidth: -1
+					minHeight: -1
+					maxWidth: -1
+					maxHeight: -1
+					preferredWidth: -1
+					preferredHeight: -1
+					uniformX: false
+					uniformY: false
+					colSpan: 1
+				}
+				{
+					child: {
+						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimLabel
+						name: attempt_times
+						style: {
+							name: info
+							clazz: com.badlogic.gdx.scenes.scene2d.ui.Label
+							properties: {
+								font: {
+									type: com.badlogic.gdx.graphics.g2d.BitmapFont
+									name: font
+									optional: false
+									value: Halogen_Middle
+								}
+								fontColor: {
+									type: com.badlogic.gdx.graphics.Color
+									name: fontColor
+									optional: true
+									value: RGBA_255_255_255_255
+								}
+								background: {
+									type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
+									name: background
+									optional: true
+									value: null
+								}
+							}
+							deletable: true
+							parent: null
+						}
+						text: 114514
+						textAlignment: 8
+						ellipsis: false
+						ellipsisString: ...
+						wrap: false
+						color: null
+						touchable: enabled
+						visible: true
+					}
+					row: 2
+					column: 0
+					padLeft: 256
+					padRight: 0
+					padTop: 0
+					padBottom: 0
+					spaceLeft: 0
+					spaceRight: 0
+					spaceTop: 0
+					spaceBottom: 0
+					expandX: false
+					expandY: false
+					fillX: false
+					fillY: false
+					growX: false
+					growY: false
+					alignment: 1
+					minWidth: -1
+					minHeight: -1
+					maxWidth: -1
+					maxHeight: -1
+					preferredWidth: -1
+					preferredHeight: -1
+					uniformX: false
+					uniformY: false
+					colSpan: 1
+				}
+				{
+					child: {
+						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimLabel
+						name: highest_score
+						style: {
+							name: info
+							clazz: com.badlogic.gdx.scenes.scene2d.ui.Label
+							properties: {
+								font: {
+									type: com.badlogic.gdx.graphics.g2d.BitmapFont
+									name: font
+									optional: false
+									value: Halogen_Middle
+								}
+								fontColor: {
+									type: com.badlogic.gdx.graphics.Color
+									name: fontColor
+									optional: true
+									value: RGBA_255_255_255_255
+								}
+								background: {
+									type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
+									name: background
+									optional: true
+									value: null
+								}
+							}
+							deletable: true
+							parent: null
+						}
+						text: 1919810
+						textAlignment: 8
+						ellipsis: false
+						ellipsisString: ...
+						wrap: false
+						color: null
+						touchable: enabled
+						visible: true
+					}
+					row: 3
+					column: 0
+					padLeft: 256
+					padRight: 0
+					padTop: 0
+					padBottom: 273
+					spaceLeft: 0
+					spaceRight: 0
+					spaceTop: 0
+					spaceBottom: 0
+					expandX: false
+					expandY: false
+					fillX: false
+					fillY: false
+					growX: false
+					growY: false
+					alignment: 1
+					minWidth: -1
+					minHeight: -1
+					maxWidth: -1
+					maxHeight: -1
+					preferredWidth: -1
+					preferredHeight: -1
+					uniformX: false
+					uniformY: false
+					colSpan: 1
+				}
+			]
+			name: Info
 			background: null
 			color: null
 			padLeft: 0

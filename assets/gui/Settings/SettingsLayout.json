@@ -156,7 +156,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "save_game",
 					"text": "Save Game",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -202,7 +202,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "load_game",
 					"text": "Load Game",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -248,7 +248,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "main_menu",
 					"text": "Main Menu",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -294,14 +294,14 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "settings",
 					"text": "Settings    ",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
 						"name": "middle_selected"
 					},
 					"checked": false,
-					"disabled": false,
+					"disabled": true,
 					"color": null,
 					"padLeft": 0,
 					"padRight": 0,
@@ -340,7 +340,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "quit",
 					"text": "Quit            ",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -386,7 +386,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "return",
 					"text": "Return       ",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -625,7 +625,7 @@
 			{
 				"child": {
 					"class": "ImageButton",
-					"name": null,
+					"name": "monika",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.ImageButton",
 						"name": "Monika"
@@ -670,7 +670,7 @@
 			{
 				"child": {
 					"class": "ImageButton",
-					"name": null,
+					"name": "sayori",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.ImageButton",
 						"name": "Sayori"
@@ -715,7 +715,7 @@
 			{
 				"child": {
 					"class": "ImageButton",
-					"name": null,
+					"name": "yuri",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.ImageButton",
 						"name": "Yuri"
@@ -760,7 +760,7 @@
 			{
 				"child": {
 					"class": "ImageButton",
-					"name": null,
+					"name": "natsuki",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.ImageButton",
 						"name": "Natsuki"
@@ -805,7 +805,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "log_out",
 					"text": "Log Out          ",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -850,6 +850,199 @@
 			}
 		],
 		"name": "Settings",
+		"background": null,
+		"color": null,
+		"padLeft": 0,
+		"padRight": 0,
+		"padTop": 0,
+		"padBottom": 0,
+		"paddingEnabled": false,
+		"alignment": 1,
+		"fillParent": true,
+		"touchable": "childrenOnly",
+		"visible": true
+	},
+	{
+		"class": "Table",
+		"cells": [
+			{
+				"child": {
+					"class": "Label",
+					"name": "username",
+					"style": {
+						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.Label",
+						"name": "info"
+					},
+					"text": "alkali",
+					"textAlignment": 8,
+					"ellipsis": false,
+					"ellipsisString": "...",
+					"wrap": false,
+					"color": null,
+					"touchable": "enabled",
+					"visible": true
+				},
+				"row": 0,
+				"column": 0,
+				"padLeft": 256,
+				"padRight": 0,
+				"padTop": 0,
+				"padBottom": 0,
+				"spaceLeft": 0,
+				"spaceRight": 0,
+				"spaceTop": 0,
+				"spaceBottom": 0,
+				"expandX": false,
+				"expandY": false,
+				"fillX": false,
+				"fillY": false,
+				"growX": false,
+				"growY": false,
+				"alignment": 1,
+				"minWidth": -1,
+				"minHeight": -1,
+				"maxWidth": -1,
+				"maxHeight": -1,
+				"preferredWidth": -1,
+				"preferredHeight": -1,
+				"uniformX": false,
+				"uniformY": false,
+				"colSpan": 1
+			},
+			{
+				"child": {
+					"class": "Label",
+					"name": "register_time",
+					"style": {
+						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.Label",
+						"name": "info"
+					},
+					"text": "2024/12/7/18:00",
+					"textAlignment": 8,
+					"ellipsis": false,
+					"ellipsisString": "...",
+					"wrap": false,
+					"color": null,
+					"touchable": "enabled",
+					"visible": true
+				},
+				"row": 1,
+				"column": 0,
+				"padLeft": 256,
+				"padRight": 0,
+				"padTop": 0,
+				"padBottom": 0,
+				"spaceLeft": 0,
+				"spaceRight": 0,
+				"spaceTop": 0,
+				"spaceBottom": 0,
+				"expandX": false,
+				"expandY": false,
+				"fillX": false,
+				"fillY": false,
+				"growX": false,
+				"growY": false,
+				"alignment": 1,
+				"minWidth": -1,
+				"minHeight": -1,
+				"maxWidth": -1,
+				"maxHeight": -1,
+				"preferredWidth": -1,
+				"preferredHeight": -1,
+				"uniformX": false,
+				"uniformY": false,
+				"colSpan": 1
+			},
+			{
+				"child": {
+					"class": "Label",
+					"name": "attempt_times",
+					"style": {
+						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.Label",
+						"name": "info"
+					},
+					"text": "114514",
+					"textAlignment": 8,
+					"ellipsis": false,
+					"ellipsisString": "...",
+					"wrap": false,
+					"color": null,
+					"touchable": "enabled",
+					"visible": true
+				},
+				"row": 2,
+				"column": 0,
+				"padLeft": 256,
+				"padRight": 0,
+				"padTop": 0,
+				"padBottom": 0,
+				"spaceLeft": 0,
+				"spaceRight": 0,
+				"spaceTop": 0,
+				"spaceBottom": 0,
+				"expandX": false,
+				"expandY": false,
+				"fillX": false,
+				"fillY": false,
+				"growX": false,
+				"growY": false,
+				"alignment": 1,
+				"minWidth": -1,
+				"minHeight": -1,
+				"maxWidth": -1,
+				"maxHeight": -1,
+				"preferredWidth": -1,
+				"preferredHeight": -1,
+				"uniformX": false,
+				"uniformY": false,
+				"colSpan": 1
+			},
+			{
+				"child": {
+					"class": "Label",
+					"name": "highest_score",
+					"style": {
+						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.Label",
+						"name": "info"
+					},
+					"text": "1919810",
+					"textAlignment": 8,
+					"ellipsis": false,
+					"ellipsisString": "...",
+					"wrap": false,
+					"color": null,
+					"touchable": "enabled",
+					"visible": true
+				},
+				"row": 3,
+				"column": 0,
+				"padLeft": 256,
+				"padRight": 0,
+				"padTop": 0,
+				"padBottom": 273,
+				"spaceLeft": 0,
+				"spaceRight": 0,
+				"spaceTop": 0,
+				"spaceBottom": 0,
+				"expandX": false,
+				"expandY": false,
+				"fillX": false,
+				"fillY": false,
+				"growX": false,
+				"growY": false,
+				"alignment": 1,
+				"minWidth": -1,
+				"minHeight": -1,
+				"maxWidth": -1,
+				"maxHeight": -1,
+				"preferredWidth": -1,
+				"preferredHeight": -1,
+				"uniformX": false,
+				"uniformY": false,
+				"colSpan": 1
+			}
+		],
+		"name": "Info",
 		"background": null,
 		"color": null,
 		"padLeft": 0,
