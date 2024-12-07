@@ -1,0 +1,467 @@
+
+MultiPlayer.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+main_menu
+  rotate: false
+  xy: 1, 1
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+menu_bg
+  rotate: false
+  xy: 1, 723
+  size: 1380, 1320
+  orig: 1380, 1320
+  offset: 0, 0
+  index: -1
+
+MultiPlayer2.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+Monika
+  rotate: false
+  xy: 1, 568
+  size: 506, 51
+  orig: 506, 51
+  offset: 0, 0
+  index: -1
+Natsuki
+  rotate: false
+  xy: 1027, 1132
+  size: 506, 37
+  orig: 506, 37
+  offset: 0, 0
+  index: -1
+Sayori
+  rotate: false
+  xy: 1, 530
+  size: 506, 36
+  orig: 506, 36
+  offset: 0, 0
+  index: -1
+Yuri_1
+  rotate: false
+  xy: 1027, 1080
+  size: 506, 50
+  orig: 506, 50
+  offset: 0, 0
+  index: -1
+Yuri_2
+  rotate: false
+  xy: 1, 102
+  size: 490, 15
+  orig: 490, 15
+  offset: 0, 0
+  index: -1
+Halogen
+  rotate: false
+  xy: 1, 449
+  size: 506, 79
+  orig: 506, 79
+  offset: 0, 0
+  index: -1
+Halogen_Big
+  rotate: false
+  xy: 1541, 927
+  size: 506, 260
+  orig: 506, 260
+  offset: 0, 0
+  index: -1
+Halogen_Middle
+  rotate: false
+  xy: 1027, 876
+  size: 505, 151
+  orig: 505, 151
+  offset: 0, 0
+  index: -1
+PerfectDOSVGA437
+  rotate: false
+  xy: 1027, 1029
+  size: 506, 49
+  orig: 506, 49
+  offset: 0, 0
+  index: -1
+RifficFree-Bold
+  rotate: false
+  xy: 1, 299
+  size: 506, 88
+  orig: 506, 88
+  offset: 0, 0
+  index: -1
+RifficFree-Bold_Big
+  rotate: false
+  xy: 1541, 1369
+  size: 506, 314
+  orig: 506, 314
+  offset: 0, 0
+  index: -1
+RifficFree-Bold_Middle
+  rotate: false
+  xy: 1541, 1189
+  size: 506, 178
+  orig: 506, 178
+  offset: 0, 0
+  index: -1
+RifficFree-Bold_Middle_Select
+  rotate: false
+  xy: 1, 119
+  size: 506, 178
+  orig: 506, 178
+  offset: 0, 0
+  index: -1
+zpix
+  rotate: false
+  xy: 1, 389
+  size: 506, 58
+  orig: 506, 58
+  offset: 0, 0
+  index: -1
+Chest
+  rotate: false
+  xy: 669, 625
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+End
+  rotate: false
+  xy: 403, 36
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Ground
+  rotate: false
+  xy: 949, 955
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Wall
+  rotate: false
+  xy: 1878, 861
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+choice_hover_background
+  rotate: false
+  xy: 1, 65
+  size: 400, 35
+  orig: 400, 35
+  offset: 0, 0
+  index: -1
+choice_idle_background
+  rotate: false
+  xy: 1, 28
+  size: 400, 35
+  orig: 400, 35
+  offset: 0, 0
+  index: -1
+Monika_256
+  rotate: false
+  xy: 1415, 706
+  size: 119, 168
+  orig: 119, 168
+  offset: 0, 0
+  index: -1
+Natsuki_256
+  rotate: false
+  xy: 767, 204
+  size: 141, 161
+  orig: 141, 161
+  offset: 0, 0
+  index: -1
+Sayori_256
+  rotate: false
+  xy: 1049, 701
+  size: 122, 173
+  orig: 122, 173
+  offset: 0, 0
+  index: -1
+Monika_Modified
+  rotate: false
+  xy: 1173, 706
+  size: 119, 168
+  orig: 119, 168
+  offset: 0, 0
+  index: -1
+Monika_Modified_256
+  rotate: false
+  xy: 1173, 706
+  size: 119, 168
+  orig: 119, 168
+  offset: 0, 0
+  index: -1
+Monika_Selected
+  rotate: false
+  xy: 1294, 706
+  size: 119, 168
+  orig: 119, 168
+  offset: 0, 0
+  index: -1
+Monika_Selected_256
+  rotate: false
+  xy: 1294, 706
+  size: 119, 168
+  orig: 119, 168
+  offset: 0, 0
+  index: -1
+Natsuki_Modified
+  rotate: false
+  xy: 767, 528
+  size: 141, 161
+  orig: 141, 161
+  offset: 0, 0
+  index: -1
+Natsuki_Modified_256
+  rotate: false
+  xy: 767, 528
+  size: 141, 161
+  orig: 141, 161
+  offset: 0, 0
+  index: -1
+Natsuki_Selected
+  rotate: false
+  xy: 767, 367
+  size: 141, 159
+  orig: 141, 159
+  offset: 0, 0
+  index: -1
+Natsuki_Selected_256
+  rotate: false
+  xy: 767, 367
+  size: 141, 159
+  orig: 141, 159
+  offset: 0, 0
+  index: -1
+Sayori_Modified
+  rotate: false
+  xy: 767, 29
+  size: 122, 173
+  orig: 122, 173
+  offset: 0, 0
+  index: -1
+Sayori_Modified_256
+  rotate: false
+  xy: 767, 29
+  size: 122, 173
+  orig: 122, 173
+  offset: 0, 0
+  index: -1
+Sayori_Selected
+  rotate: false
+  xy: 925, 701
+  size: 122, 173
+  orig: 122, 173
+  offset: 0, 0
+  index: -1
+Sayori_Selected_256
+  rotate: false
+  xy: 925, 701
+  size: 122, 173
+  orig: 122, 173
+  offset: 0, 0
+  index: -1
+Yuri
+  rotate: false
+  xy: 1650, 764
+  size: 112, 161
+  orig: 112, 161
+  offset: 0, 0
+  index: -1
+Yuri_256
+  rotate: false
+  xy: 1650, 764
+  size: 112, 161
+  orig: 112, 161
+  offset: 0, 0
+  index: -1
+Yuri_Modified
+  rotate: false
+  xy: 1536, 764
+  size: 112, 161
+  orig: 112, 161
+  offset: 0, 0
+  index: -1
+Yuri_Modified_256
+  rotate: false
+  xy: 1536, 764
+  size: 112, 161
+  orig: 112, 161
+  offset: 0, 0
+  index: -1
+Yuri_Selected
+  rotate: false
+  xy: 1764, 764
+  size: 112, 161
+  orig: 112, 161
+  offset: 0, 0
+  index: -1
+Yuri_Selected_256
+  rotate: false
+  xy: 1764, 764
+  size: 112, 161
+  orig: 112, 161
+  offset: 0, 0
+  index: -1
+icon_loading_jine_000
+  rotate: false
+  xy: 735, 671
+  size: 18, 18
+  orig: 18, 18
+  offset: 0, 0
+  index: -1
+icon_loading_jine_001
+  rotate: false
+  xy: 1, 8
+  size: 18, 18
+  orig: 18, 18
+  offset: 0, 0
+  index: -1
+icon_loading_jine_002
+  rotate: false
+  xy: 1991, 2027
+  size: 18, 18
+  orig: 18, 18
+  offset: 0, 0
+  index: -1
+icon_loading_jine_003
+  rotate: false
+  xy: 1536, 744
+  size: 18, 18
+  orig: 18, 18
+  offset: 0, 0
+  index: -1
+icon_loading_jine_004
+  rotate: false
+  xy: 469, 82
+  size: 18, 18
+  orig: 18, 18
+  offset: 0, 0
+  index: -1
+icon_loading_jine_005
+  rotate: false
+  xy: 949, 935
+  size: 18, 18
+  orig: 18, 18
+  offset: 0, 0
+  index: -1
+icon_loading_jine_006
+  rotate: false
+  xy: 1878, 841
+  size: 18, 18
+  orig: 18, 18
+  offset: 0, 0
+  index: -1
+icon_loading_jine_007
+  rotate: false
+  xy: 1944, 907
+  size: 18, 18
+  orig: 18, 18
+  offset: 0, 0
+  index: -1
+Logo1024
+  rotate: false
+  xy: 1, 1021
+  size: 1024, 1024
+  orig: 1024, 1024
+  offset: 0, 0
+  index: -1
+Logo
+  rotate: false
+  xy: 1, 1021
+  size: 1024, 1024
+  orig: 1024, 1024
+  offset: 0, 0
+  index: -1
+Logo128
+  rotate: false
+  xy: 819, 891
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+Logo16
+  rotate: false
+  xy: 819, 873
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Logo256
+  rotate: false
+  xy: 509, 105
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+Logo32
+  rotate: false
+  xy: 1669, 1691
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Logo512
+  rotate: false
+  xy: 1027, 1171
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Logo64
+  rotate: false
+  xy: 603, 625
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Abstract
+  rotate: false
+  xy: 1669, 1725
+  size: 320, 320
+  orig: 320, 320
+  offset: 0, 0
+  index: -1
+frame
+  rotate: false
+  xy: 1, 621
+  size: 600, 250
+  orig: 600, 250
+  offset: 0, 0
+  index: -1
+frame_Modified
+  rotate: false
+  xy: 603, 691
+  size: 320, 180
+  orig: 320, 180
+  offset: 0, 0
+  index: -1
+frame_big
+  rotate: false
+  xy: 1027, 1685
+  size: 640, 360
+  orig: 640, 360
+  offset: 0, 0
+  index: -1
+map_background
+  rotate: false
+  xy: 509, 363
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+textbox
+  rotate: false
+  xy: 1, 873
+  size: 816, 146
+  orig: 816, 146
+  offset: 0, 0
+  index: -1

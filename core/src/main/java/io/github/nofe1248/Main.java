@@ -35,7 +35,7 @@ public class Main extends ApplicationAdapter {
         Gdx.input.setInputProcessor(stage);
         Gdx.app.getGraphics().setTitle("TheBestSokobanGameEVER");
         Gdx.app.getGraphics().setForegroundFPS(Gdx.graphics.getDisplayMode().refreshRate + 1);
-        Gdx.app.getGraphics().setWindowedMode(1600, 900);
+        Gdx.app.getGraphics().setWindowedMode(1920, 1080);
 
         console = new GUIConsole(VisUI.getSkin(), true, 0, VisWindow.class, VisTable.class,
             "default-pane", TextField.class, VisTextButton.class, VisLabel.class, VisScrollPane.class);
