@@ -259,7 +259,7 @@
 			{
 				"child": {
 					"class": "ImageButton",
-					"name": null,
+					"name": "sayori",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.ImageButton",
 						"name": "Sayori"
@@ -304,7 +304,7 @@
 			{
 				"child": {
 					"class": "ImageButton",
-					"name": null,
+					"name": "natsuki",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.ImageButton",
 						"name": "Natsuki"
@@ -349,7 +349,7 @@
 			{
 				"child": {
 					"class": "ImageButton",
-					"name": null,
+					"name": "Monika",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.ImageButton",
 						"name": "default"
@@ -394,7 +394,7 @@
 			{
 				"child": {
 					"class": "ImageButton",
-					"name": null,
+					"name": "yuri",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.ImageButton",
 						"name": "Yuri"
@@ -456,7 +456,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "start_game",
 					"text": "Start Game",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -502,7 +502,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "load_game",
 					"text": "Load Game",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -548,7 +548,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "multiplayer",
 					"text": "Multiplayer     ",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -594,7 +594,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "settings",
 					"text": "Settings     ",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
@@ -640,7 +640,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": null,
+					"name": "quit",
 					"text": "Quit             ",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",

@@ -23,26 +23,6 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Menu/frame.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: frame
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: TEXTURE
-			hidden: false
-		}
-		{
 			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Menu/main_menu.png
 			bgColor: {
 				r: 1
@@ -63,26 +43,6 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Menu/map_background.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: map_background
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: TEXTURE
-			hidden: false
-		}
-		{
 			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Menu/menu_bg.png
 			bgColor: {
 				r: 1
@@ -93,26 +53,6 @@ atlasData: {
 			tint: null
 			tintName: null
 			name: menu_bg
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: TEXTURE
-			hidden: false
-		}
-		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Menu/textbox.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: textbox
 			tiled: false
 			minWidth: -1
 			minHeight: -1
@@ -463,26 +403,6 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Character/Modified/Monika_256.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: Monika_256
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: TEXTURE
-			hidden: false
-		}
-		{
 			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Character/Modified/Monika_Modified_256.png
 			bgColor: {
 				r: 1
@@ -703,7 +623,7 @@ atlasData: {
 			hidden: false
 		}
 		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Block/Chest.png
+			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Character/Modified/Monika_256.png
 			bgColor: {
 				r: 1
 				g: 1
@@ -712,67 +632,7 @@ atlasData: {
 			}
 			tint: null
 			tintName: null
-			name: Chest
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: TEXTURE
-			hidden: false
-		}
-		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Block/End.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: End
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: TEXTURE
-			hidden: false
-		}
-		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Block/Ground.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: Ground
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: TEXTURE
-			hidden: false
-		}
-		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/images/Block/Wall.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: Wall
+			name: Monika_256
 			tiled: false
 			minWidth: -1
 			minHeight: -1
@@ -785,106 +645,6 @@ atlasData: {
 	]
 	fontDrawables: [
 		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/Character/Monika.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: Monika
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: FONT
-			hidden: false
-		}
-		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/Character/Natsuki.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: Natsuki
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: FONT
-			hidden: false
-		}
-		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/Character/Sayori.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: Sayori
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: FONT
-			hidden: false
-		}
-		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/Character/Yuri_1.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: Yuri_1
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: FONT
-			hidden: false
-		}
-		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/Character/Yuri_2.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: Yuri_2
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: FONT
-			hidden: false
-		}
-		{
 			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/Halogen.png
 			bgColor: {
 				r: 1
@@ -895,46 +655,6 @@ atlasData: {
 			tint: null
 			tintName: null
 			name: Halogen
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: FONT
-			hidden: false
-		}
-		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/PerfectDOSVGA437.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: PerfectDOSVGA437
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: FONT
-			hidden: false
-		}
-		{
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/zpix.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: zpix
 			tiled: false
 			minWidth: -1
 			minHeight: -1
@@ -1064,6 +784,26 @@ atlasData: {
 			type: FONT
 			hidden: false
 		}
+		{
+			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/Halogen_Middle.png
+			bgColor: {
+				r: 1
+				g: 1
+				b: 1
+				a: 1
+			}
+			tint: null
+			tintName: null
+			name: Halogen_Middle
+			tiled: false
+			minWidth: -1
+			minHeight: -1
+			customized: false
+			tenPatchData: null
+			tvgData: null
+			type: FONT
+			hidden: false
+		}
 	]
 }
 jsonData: {
@@ -1128,27 +868,11 @@ jsonData: {
 		}
 		{
 			class: com.ray3k.skincomposer.data.FontData
-			name: Monika
+			name: Halogen_Middle
 			flip: false
 			markupEnabled: false
 			scaling: -1
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/Character/Monika.fnt
-		}
-		{
-			class: com.ray3k.skincomposer.data.FontData
-			name: Natsuki
-			flip: false
-			markupEnabled: false
-			scaling: -1
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/Character/Natsuki.fnt
-		}
-		{
-			class: com.ray3k.skincomposer.data.FontData
-			name: PerfectDOSVGA437
-			flip: false
-			markupEnabled: false
-			scaling: -1
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/PerfectDOSVGA437.fnt
+			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/Halogen_Middle.fnt
 		}
 		{
 			class: com.ray3k.skincomposer.data.FontData
@@ -1173,38 +897,6 @@ jsonData: {
 			markupEnabled: false
 			scaling: -1
 			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/RifficFree-Bold_Middle.fnt
-		}
-		{
-			class: com.ray3k.skincomposer.data.FontData
-			name: Sayori
-			flip: false
-			markupEnabled: false
-			scaling: -1
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/Character/Sayori.fnt
-		}
-		{
-			class: com.ray3k.skincomposer.data.FontData
-			name: Yuri_1
-			flip: false
-			markupEnabled: false
-			scaling: -1
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/Character/Yuri_1.fnt
-		}
-		{
-			class: com.ray3k.skincomposer.data.FontData
-			name: Yuri_2
-			flip: false
-			markupEnabled: false
-			scaling: -1
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/Character/Yuri_2.fnt
-		}
-		{
-			class: com.ray3k.skincomposer.data.FontData
-			name: zpix
-			flip: false
-			markupEnabled: false
-			scaling: -1
-			file: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/font/zpix.fnt
 		}
 	]
 	freeTypeFonts: []
@@ -2023,7 +1715,7 @@ jsonData: {
 						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
 						name: background
 						optional: true
-						value: menu_bg
+						value: null
 					}
 					titleFont: {
 						type: com.badlogic.gdx.graphics.g2d.BitmapFont
@@ -2035,13 +1727,13 @@ jsonData: {
 						type: com.badlogic.gdx.graphics.Color
 						name: titleFontColor
 						optional: true
-						value: RGBA_0_0_0_255
+						value: null
 					}
 					stageBackground: {
 						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
 						name: stageBackground
 						optional: true
-						value: menu_bg
+						value: null
 					}
 				}
 				deletable: false
@@ -2367,7 +2059,7 @@ jsonData: {
 						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
 						name: imageUp
 						optional: true
-						value: Monika_Modified
+						value: Monika_Selected
 					}
 					imageDown: {
 						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
@@ -3531,7 +3223,7 @@ preferences: {
 		value: 30
 	}
 }
-saveFile: D:/Project/Project/Work_In_Progress/TheBestSokobanGameEVER/assets/gui/MainMenu.scmp
+saveFile: C:/Users/qigao/Documents/GitHub/TheBestSokobanGameEVER/assets/gui/MainMenu.scmp
 version: 58
 sceneComposer: {
 	children: [
@@ -3870,7 +3562,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimImageButton
-						name: null
+						name: sayori
 						style: {
 							name: Sayori
 							clazz: com.badlogic.gdx.scenes.scene2d.ui.ImageButton
@@ -4051,7 +3743,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimImageButton
-						name: null
+						name: natsuki
 						style: {
 							name: Natsuki
 							clazz: com.badlogic.gdx.scenes.scene2d.ui.ImageButton
@@ -4232,7 +3924,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimImageButton
-						name: null
+						name: Monika
 						style: {
 							name: default
 							clazz: com.badlogic.gdx.scenes.scene2d.ui.ImageButton
@@ -4241,7 +3933,7 @@ sceneComposer: {
 									type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
 									name: imageUp
 									optional: true
-									value: Monika_Modified
+									value: Monika_Selected
 								}
 								imageDown: {
 									type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
@@ -4413,7 +4105,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimImageButton
-						name: null
+						name: yuri
 						style: {
 							name: Yuri
 							clazz: com.badlogic.gdx.scenes.scene2d.ui.ImageButton
@@ -4611,7 +4303,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextButton
-						name: null
+						name: start_game
 						text: Start Game
 						style: {
 							name: middle
@@ -4811,7 +4503,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextButton
-						name: null
+						name: load_game
 						text: Load Game
 						style: {
 							name: middle
@@ -5011,7 +4703,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextButton
-						name: null
+						name: multiplayer
 						text: "Multiplayer     "
 						style: {
 							name: middle
@@ -5211,7 +4903,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextButton
-						name: null
+						name: settings
 						text: "Settings     "
 						style: {
 							name: middle
@@ -5411,7 +5103,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextButton
-						name: null
+						name: quit
 						text: "Quit             "
 						style: {
 							name: middle
