@@ -3,9 +3,7 @@ package io.github.nofe1248.lwjgl3;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import io.github.nofe1248.Main;
-import io.github.nofe1248.gui.LoginPanel;
-import io.github.nofe1248.gui.MainMenu;
-import io.github.nofe1248.gui.Settings;
+import io.github.nofe1248.gui.*;
 
 /** Launches the desktop (LWJGL3) application. */
 public class Lwjgl3Launcher {
