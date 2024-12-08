@@ -1,5 +1,5 @@
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-eclipse.project.name = appName + '-core'
+eclipse.project.name = appName + '-map'
 
 dependencies {
   api "com.badlogicgames.ashley:ashley:$ashleyVersion"
@@ -8,10 +8,10 @@ dependencies {
   api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
   api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
   api "com.badlogicgames.gdx:gdx:$gdxVersion"
-  api "com.crashinvaders.vfx:gdx-vfx-core:$gdxVfxCoreVersion"
+  api "com.crashinvaders.vfx:gdx-vfx-map:$gdxVfxCoreVersion"
   api "com.crashinvaders.vfx:gdx-vfx-effects:$gdxVfxEffectsVersion"
-  api "com.github.MrStahlfelge.gdx-websockets:core:$websocketVersion"
-  api "com.github.crykn.guacamole:core:$guacamoleVersion"
+  api "com.github.MrStahlfelge.gdx-websockets:map:$websocketVersion"
+  api "com.github.crykn.guacamole:map:$guacamoleVersion"
   api "com.github.crykn.guacamole:gdx:$guacamoleVersion"
   api "com.github.czyzby:noise4j:$noise4jVersion"
   api "com.github.raeleus.stripe:stripe:$stripeVersion"
@@ -25,8 +25,8 @@ dependencies {
   api "com.github.tommyettinger:textratypist:$textratypistVersion"
   api "com.kotcrab.vis:vis-ui:$visUiVersion"
   api "com.rafaskoberg.gdx:typing-label:$typingLabelVersion"
-  api "de.tomgrill.gdxdialogs:gdx-dialogs-core:$dialogsVersion"
-  api "org.apache.fury:fury-core:$furyVersion"
+  api "de.tomgrill.gdxdialogs:gdx-dialogs-map:$dialogsVersion"
+  api "org.apache.fury:fury-map:$furyVersion"
 
   if(enableGraalNative == 'true') {
     implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
