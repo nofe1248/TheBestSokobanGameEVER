@@ -82,10 +82,7 @@ public class ReversePlayer {
         int reverseTargetX = currentX - move.x;
         int reverseTargetY = currentY - move.y;
 
-        System.out.printf("Current pos: %d, %d, moving to %d, %d\n", this.playerX, this.playerY, targetX, targetY);
-
-        if (
-            !this.map.isPositionValid(targetX, targetY) ||
+        if (!this.map.isPositionValid(targetX, targetY) ||
             (this.map.isPositionValid(targetX, targetY)
                 && this.map.getMapElement(targetX, targetY).isAnyOf(MapElement.BOX, MapElement.BOX_ON_GOAL))
         ) {
@@ -95,26 +92,24 @@ public class ReversePlayer {
         this.previousMove = new Point(-move.x, -move.y);
 
         this.map.setMapElement(currentX, currentY, quickConversionMap.get(this.map.getMapElement(currentX, currentY)));
-        if (this.map.isPositionValid(targetX, targetY)) {
-            this.map.setMapElement(targetX, targetY, quickConversionMap.get(this.map.getMapElement(targetX, targetY)));
-        }
+        this.map.setMapElement(targetX, targetY, quickConversionMap.get(this.map.getMapElement(targetX, targetY)));
         if (this.map.isPositionValid(reverseTargetX, reverseTargetY) &&
             this.map.getMapElement(reverseTargetX, reverseTargetY).isAnyOf(MapElement.BOX, MapElement.BOX_ON_GOAL)) {
-            this.map.setMapElement(reverseTargetX, reverseTargetY,
-                quickConversionMap.get(this.map.getMapElement(reverseTargetX, reverseTargetY)));
+            //this.map.setMapElement(reverseTargetX, reverseTargetY,
+            //    quickConversionMap.get(this.map.getMapElement(reverseTargetX, reverseTargetY)));
 
             int boxTargetX = reverseTargetX + move.x;
             int boxTargetY = reverseTargetY + move.y;
             if (this.map.isPositionValid(reverseTargetX, reverseTargetY)) {
                 if (this.map.getMapElement(reverseTargetX, reverseTargetY).isAnyOf(MapElement.BOX_ON_GOAL)) {
-                    this.map.setMapElement(boxTargetX, boxTargetY, MapElement.GOAL);
+                    this.map.setMapElement(reverseTargetX, reverseTargetY, MapElement.GOAL);
                 }
                 else {
-                    this.map.setMapElement(boxTargetX, boxTargetY, MapElement.EMPTY);
+                    this.map.setMapElement(reverseTargetX, reverseTargetY, MapElement.EMPTY);
                 }
             }
             if (this.map.isPositionValid(boxTargetX, boxTargetY)) {
-                if (this.map.getMapElement(boxTargetX, boxTargetY).isAnyOf(MapElement.GOAL, MapElement.PLAYER_ON_GOAL)) {
+                if (this.map.getMapElement(boxTargetX, boxTargetY).isAnyOf(MapElement.GOAL)) {
                     this.map.setMapElement(boxTargetX, boxTargetY, MapElement.BOX_ON_GOAL);
                 }
                 else {

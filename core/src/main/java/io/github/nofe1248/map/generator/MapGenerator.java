@@ -13,7 +13,7 @@ public class MapGenerator {
     public final int MAX_WIDTH = 15;
     public final int MAX_HEIGHT = 15;
     public final int MIN_BOXES = 4;
-    public final int MAX_BOXES = 10;
+    public final int MAX_BOXES = 15;
     public final double MIN_DIFFICULTY = 20;
     public final double MAX_DIFFICULTY = 40;
 
@@ -141,6 +141,7 @@ public class MapGenerator {
                 System.out.println("Invalid map, retrying with seed " + this.seed);
             }
         }
+        MapOptimizer.optimizeUnusableBoxes(map);
         return map;
     }
 }
