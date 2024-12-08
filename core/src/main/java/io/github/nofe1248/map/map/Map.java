@@ -35,43 +35,32 @@ public class Map {
         }
     }
 
-    /*
-        * - The player
-        % - The player on a goal
-        @ - A box
-        X - A goal
-        $ - A box on a goal
-        + - A wall
-        - - An empty position
-    */
+    public int outOfPlaceBoxesCount() {
+        int count = 0;
+        for (MapElement[] mapElements : underlyingMap) {
+            for (MapElement mapElement : mapElements) {
+                if (mapElement == MapElement.BOX) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    public boolean isPositionValid(Point position) {
+        return position.getX() >= 0 && position.getX() < getWidth() && position.getY() >= 0 && position.getY() < getHeight();
+    }
+
+    public boolean isPositionValid(int x, int y) {
+        return x >= 0 && x < getWidth() && y >= 0 && y < getHeight();
+    }
+
     public void fromRawMapString(String rawMap) {
         String[] lines = rawMap.split("\n");
         underlyingMap = new MapElement[lines.length][lines[0].length()];
         for (int i = 0; i < lines.length; i++) {
             for (int j = 0; j < lines[i].length(); j++) {
-                switch (lines[i].charAt(j)) {
-                    case '-':
-                        underlyingMap[i][j] = MapElement.EMPTY;
-                        break;
-                    case '+':
-                        underlyingMap[i][j] = MapElement.WALL;
-                        break;
-                    case 'X':
-                        underlyingMap[i][j] = MapElement.GOAL;
-                        break;
-                    case '@':
-                        underlyingMap[i][j] = MapElement.BOX;
-                        break;
-                    case '$':
-                        underlyingMap[i][j] = MapElement.BOX_ON_GOAL;
-                        break;
-                    case '%':
-                        underlyingMap[i][j] = MapElement.PLAYER_ON_GOAL;
-                        break;
-                    case '*':
-                        underlyingMap[i][j] = MapElement.PLAYER;
-                        break;
-                }
+                underlyingMap[i][j] = MapElement.fromCharRepresentation(lines[i].charAt(j));
             }
         }
     }
@@ -100,33 +89,19 @@ public class Map {
         underlyingMap[(int)position.getX()][(int)position.getY()] = element;
     }
 
+    public int getWidth() {
+        return underlyingMap.length;
+    }
+
+    public int getHeight() {
+        return underlyingMap[0].length;
+    }
+
     public String dump() {
         StringBuilder sb = new StringBuilder();
         for (MapElement[] row : underlyingMap) {
             for (MapElement element : row) {
-                switch (element) {
-                    case EMPTY:
-                        sb.append('-');
-                        break;
-                    case WALL:
-                        sb.append('+');
-                        break;
-                    case GOAL:
-                        sb.append('X');
-                        break;
-                    case BOX:
-                        sb.append('@');
-                        break;
-                    case BOX_ON_GOAL:
-                        sb.append('$');
-                        break;
-                    case PLAYER_ON_GOAL:
-                        sb.append('%');
-                        break;
-                    case PLAYER:
-                        sb.append('*');
-                        break;
-                }
+                sb.append(element.toCharRepresentation());
             }
             sb.append('\n');
         }
@@ -144,5 +119,10 @@ public class Map {
     @Override
     public String toString() {
         return String.format("Map(%d, %d):\n%s", underlyingMap.length, underlyingMap[0].length, this.dump());
+    }
+
+    @Override
+    public Map clone() {
+        return new Map(underlyingMap);
     }
 }

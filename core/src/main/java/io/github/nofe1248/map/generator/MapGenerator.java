@@ -10,15 +10,18 @@ import java.util.Random;
 public class MapGenerator {
     public final int MIN_WIDTH = 6;
     public final int MIN_HEIGHT = 6;
-    public final int MAX_WIDTH = 20;
-    public final int MAX_HEIGHT = 20;
+    public final int MAX_WIDTH = 15;
+    public final int MAX_HEIGHT = 15;
     public final int MIN_BOXES = 4;
-    public final int MAX_BOXES = 20;
+    public final int MAX_BOXES = 10;
+    public final double MIN_DIFFICULTY = 2;
+    public final double MAX_DIFFICULTY = 6;
 
     private int width = 0;
     private int height = 0;
     private int boxes = 0;
     private int seed = 114514;
+    private double difficulty = 4;
     private Random random;
 
     {
@@ -79,21 +82,40 @@ public class MapGenerator {
         this.seed = seed;
     }
 
+    public double getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(double difficulty) {
+        this.difficulty = difficulty;
+    }
+
     public Point randomValidPosition() {
-        return new Point(random.nextInt(1, width), random.nextInt(1, height));
+        return new Point(random.nextInt(1, width - 1), random.nextInt(1, height - 1));
     }
 
     public Map generateMap() {
         assert this.width >= MIN_WIDTH && this.width <= MAX_WIDTH;
         assert this.height >= MIN_HEIGHT && this.height <= MAX_HEIGHT;
         assert this.boxes >= MIN_BOXES && this.boxes <= MAX_BOXES;
-        Map map = new Map(width, height);
+
+        /*
+         * The generator will initially create a puzzle with a random board size,
+         * then the player and the boxes on goals will be randomly placed on the board.
+         * The player will only be able to pull boxes from their positions during the generation of a puzzle,
+         * breaking every wall on his way, so it is guaranteed that the puzzle will have a valid solution.
+         * */
+
+        Map map = null;
         boolean valid = false;
+
         while(!valid) {
+            map = new Map(width, height);
             HashSet<Point> boxesSeen = new HashSet<>();
             Point playerPosition = randomValidPosition();
             int boxesCreated = 0;
             map.setMapElement(playerPosition, MapElement.PLAYER);
+
             while(boxesCreated < this.boxes) {
                 Point boxPosition = randomValidPosition();
                 if (map.getMapElement(boxPosition).isAnyOf(MapElement.WALL)) {
@@ -102,7 +124,20 @@ public class MapGenerator {
                     boxesCreated++;
                 }
             }
-            valid = true;
+
+            ReversePlayer reversePlayer = new ReversePlayer(map, playerPosition);
+            long counter = Math.round(width * height * difficulty);
+            while (reversePlayer.getStates().get(reversePlayer.getCurrentStateString()) <= 20 && counter > 0) {
+                reversePlayer.update();
+                counter--;
+            }
+
+            if (reversePlayer.getMap().outOfPlaceBoxesCount() == 0) {
+                valid = true;
+            }
+            else {
+                this.seed++;
+            }
         }
         return map;
     }
