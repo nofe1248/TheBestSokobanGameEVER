@@ -14,14 +14,14 @@ public class MapGenerator {
     public final int MAX_HEIGHT = 15;
     public final int MIN_BOXES = 4;
     public final int MAX_BOXES = 10;
-    public final double MIN_DIFFICULTY = 2;
-    public final double MAX_DIFFICULTY = 6;
+    public final double MIN_DIFFICULTY = 20;
+    public final double MAX_DIFFICULTY = 40;
 
     private int width = 0;
     private int height = 0;
     private int boxes = 0;
     private int seed = 114514;
-    private double difficulty = 4;
+    private double difficulty = 30;
     private Random random;
 
     {
@@ -63,16 +63,15 @@ public class MapGenerator {
     public int getBoxes() {
         return boxes;
     }
-    public int updateBoxes() {
+    public void updateBoxes() {
         if (this.width == 0 || this.height == 0) {
             this.boxes = 0;
-            return 0;
+            return;
         }
         int area = width * height;
-        int m = (MAX_BOXES - MIN_BOXES) / (MAX_WIDTH * MAX_HEIGHT - MIN_WIDTH * MIN_HEIGHT);
-        int b = MIN_BOXES - m * MIN_WIDTH * MIN_HEIGHT;
-        this.boxes = m * area + b;
-        return this.boxes;
+        double m = (double) (MAX_BOXES - MIN_BOXES) / (MAX_WIDTH * MAX_HEIGHT - MIN_WIDTH * MIN_HEIGHT);
+        double b = MIN_BOXES - m * MIN_WIDTH * MIN_HEIGHT;
+        this.boxes = (int) (m * area + b);
     }
 
     public int getSeed() {
@@ -127,16 +126,19 @@ public class MapGenerator {
 
             ReversePlayer reversePlayer = new ReversePlayer(map, playerPosition);
             long counter = Math.round(width * height * difficulty);
-            while (reversePlayer.getStates().get(reversePlayer.getCurrentStateString()) <= 20 && counter > 0) {
+            while (reversePlayer.getStates().get(reversePlayer.getCurrentStateString()) <= 200 && counter > 0) {
+                System.out.println(reversePlayer.getMap());
                 reversePlayer.update();
                 counter--;
             }
 
-            if (reversePlayer.getMap().outOfPlaceBoxesCount() == 0) {
+            System.out.println("Out of place boxes : " + reversePlayer.getMap().outOfPlaceBoxesCount());
+            if (reversePlayer.getMap().outOfPlaceBoxesCount() >= (boxesCreated / 3) * 2) {
                 valid = true;
             }
             else {
                 this.seed++;
+                System.out.println("Invalid map, retrying with seed " + this.seed);
             }
         }
         return map;

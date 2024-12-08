@@ -37,9 +37,9 @@ public class Map {
 
     public int outOfPlaceBoxesCount() {
         int count = 0;
-        for (MapElement[] mapElements : underlyingMap) {
-            for (MapElement mapElement : mapElements) {
-                if (mapElement == MapElement.BOX) {
+        for (int i = 0; i < underlyingMap.length; i++) {
+            for (int j = 0; j < underlyingMap[i].length; j++) {
+                if (underlyingMap[i][j] == MapElement.BOX) {
                     count++;
                 }
             }

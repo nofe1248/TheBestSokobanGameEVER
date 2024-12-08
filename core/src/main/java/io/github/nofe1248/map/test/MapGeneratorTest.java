@@ -7,9 +7,8 @@ public class MapGeneratorTest {
     public static void main(String[] args) {
         MapGenerator mapGenerator = new MapGenerator();
 
-        mapGenerator.setWidth(6);
-        mapGenerator.setHeight(6);
-        mapGenerator.setSeed(new Random().nextInt());
+        mapGenerator.setWidth(15);
+        mapGenerator.setHeight(15);
         System.out.println(mapGenerator.generateMap());
     }
 }

@@ -74,12 +74,16 @@ public class ReversePlayer {
 
         Point move = this.selectRandomMove();
         this.states.put(this.getCurrentStateString(), this.states.get(this.getCurrentStateString()) + 1);
+
         int currentX = this.playerX;
         int currentY = this.playerY;
         int targetX = currentX + move.x;
         int targetY = currentY + move.y;
         int reverseTargetX = currentX - move.x;
         int reverseTargetY = currentY - move.y;
+
+        System.out.printf("Current pos: %d, %d, moving to %d, %d\n", this.playerX, this.playerY, targetX, targetY);
+
         if (
             !this.map.isPositionValid(targetX, targetY) ||
             (this.map.isPositionValid(targetX, targetY)
@@ -101,13 +105,21 @@ public class ReversePlayer {
 
             int boxTargetX = reverseTargetX + move.x;
             int boxTargetY = reverseTargetY + move.y;
-            if (this.map.isPositionValid(reverseTargetX, reverseTargetY)
-                && this.map.getMapElement(reverseTargetX, reverseTargetY).isAnyOf(MapElement.BOX_ON_GOAL)) {
-                this.map.setMapElement(boxTargetX, boxTargetY, MapElement.GOAL);
+            if (this.map.isPositionValid(reverseTargetX, reverseTargetY)) {
+                if (this.map.getMapElement(reverseTargetX, reverseTargetY).isAnyOf(MapElement.BOX_ON_GOAL)) {
+                    this.map.setMapElement(boxTargetX, boxTargetY, MapElement.GOAL);
+                }
+                else {
+                    this.map.setMapElement(boxTargetX, boxTargetY, MapElement.EMPTY);
+                }
             }
-            if (this.map.isPositionValid(boxTargetX, boxTargetY)
-                && this.map.getMapElement(boxTargetX, boxTargetY).isAnyOf(MapElement.GOAL)) {
-                this.map.setMapElement(boxTargetX, boxTargetY, MapElement.BOX_ON_GOAL);
+            if (this.map.isPositionValid(boxTargetX, boxTargetY)) {
+                if (this.map.getMapElement(boxTargetX, boxTargetY).isAnyOf(MapElement.GOAL, MapElement.PLAYER_ON_GOAL)) {
+                    this.map.setMapElement(boxTargetX, boxTargetY, MapElement.BOX_ON_GOAL);
+                }
+                else {
+                    this.map.setMapElement(boxTargetX, boxTargetY, MapElement.BOX);
+                }
             }
         }
         this.playerX = targetX;
