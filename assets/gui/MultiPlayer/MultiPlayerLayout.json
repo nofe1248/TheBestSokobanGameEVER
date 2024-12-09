@@ -719,6 +719,6 @@
 ],
 "backgroundColor": null,
 "skinPath": "skin.json",
-"packageString": "com.mygdx.game",
+"packageString": "io.github.alkali",
 "classString": "Core"
 }

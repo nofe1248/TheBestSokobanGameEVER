@@ -3933,7 +3933,7 @@ sceneComposer: {
 									type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
 									name: imageUp
 									optional: true
-									value: Monika_Selected
+									value: Monika_Modified
 								}
 								imageDown: {
 									type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
@@ -5317,7 +5317,7 @@ sceneComposer: {
 	]
 	backgroundColor: null
 	skinPath: skin.json
-	packageString: com.mygdx.game
+	packageString: io.github.alkalimc
 	classString: Core
 }
 }

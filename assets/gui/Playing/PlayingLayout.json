@@ -439,6 +439,52 @@
 			{
 				"child": {
 					"class": "TextButton",
+					"name": "hint",
+					"text": "Hint",
+					"style": {
+						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
+						"name": "mini"
+					},
+					"checked": false,
+					"disabled": false,
+					"color": null,
+					"padLeft": 0,
+					"padRight": 0,
+					"padTop": 0,
+					"padBottom": 0,
+					"touchable": "enabled",
+					"visible": true
+				},
+				"row": 0,
+				"column": 1,
+				"padLeft": 32,
+				"padRight": 0,
+				"padTop": 512,
+				"padBottom": 0,
+				"spaceLeft": 0,
+				"spaceRight": 0,
+				"spaceTop": 0,
+				"spaceBottom": 0,
+				"expandX": false,
+				"expandY": false,
+				"fillX": false,
+				"fillY": false,
+				"growX": false,
+				"growY": false,
+				"alignment": 1,
+				"minWidth": -1,
+				"minHeight": -1,
+				"maxWidth": -1,
+				"maxHeight": -1,
+				"preferredWidth": -1,
+				"preferredHeight": -1,
+				"uniformX": false,
+				"uniformY": false,
+				"colSpan": 1
+			},
+			{
+				"child": {
+					"class": "TextButton",
 					"name": "save",
 					"text": "Save",
 					"style": {
@@ -456,7 +502,7 @@
 					"visible": true
 				},
 				"row": 0,
-				"column": 1,
+				"column": 2,
 				"padLeft": 32,
 				"padRight": 0,
 				"padTop": 512,
@@ -502,7 +548,7 @@
 					"visible": true
 				},
 				"row": 0,
-				"column": 2,
+				"column": 3,
 				"padLeft": 32,
 				"padRight": 0,
 				"padTop": 512,
@@ -548,7 +594,7 @@
 					"visible": true
 				},
 				"row": 0,
-				"column": 3,
+				"column": 4,
 				"padLeft": 32,
 				"padRight": 0,
 				"padTop": 512,
@@ -591,6 +637,6 @@
 ],
 "backgroundColor": null,
 "skinPath": "skin.json",
-"packageString": "com.mygdx.game",
+"packageString": "io.github.alkalimc",
 "classString": "Core"
 }

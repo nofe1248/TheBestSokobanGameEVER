@@ -125,6 +125,31 @@ com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 		fontColor: RGBA_255_255_255_255
 	}
 }
+com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle: {
+	default-horizontal: {
+		background: choice_hover_background_Modified
+		knob: Chest_Modified
+	}
+	default: {
+		parent: default-horizontal
+		backgroundOver: choice_idle_background_Modified
+		backgroundDown: choice_idle_background_Modified
+		knobOver: Chest_Modified_36
+		knobDown: Chest_Modified_36
+		knobBeforeOver: choice_hover_background_Modified
+		knobBeforeDown: choice_hover_background_Modified
+		knobAfterOver: choice_idle_background_Modified
+		knobAfterDown: choice_idle_background_Modified
+		background: choice_hover_background_Modified
+		disabledBackground: choice_idle_background_Modified
+		knob: Chest_Modified
+		disabledKnob: Chest_Modified_36
+		knobBefore: choice_hover_background_Modified
+		disabledKnobBefore: choice_idle_background_Modified
+		knobAfter: choice_idle_background_Modified
+		disabledKnobAfter: choice_idle_background_Modified
+	}
+}
 com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
 	default: {
 		font: RifficFree-Bold_Big
