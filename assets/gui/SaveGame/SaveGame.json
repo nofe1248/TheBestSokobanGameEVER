@@ -158,6 +158,19 @@ com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
 		checkedOffsetX: 1
 		checkedOffsetY: 1
 	}
+	mini: {
+		font: RifficFree-Bold
+		fontColor: RGBA_255_255_255_255
+		downFontColor: RGBA_255_204_238_255
+		overFontColor: RGBA_187_85_153_255
+		disabledFontColor: RGBA_255_204_238_255
+		pressedOffsetX: 2
+		pressedOffsetY: 2
+		unpressedOffsetX: 1
+		unpressedOffsetY: 1
+		checkedOffsetX: 1
+		checkedOffsetY: 1
+	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle: {
 	default: {

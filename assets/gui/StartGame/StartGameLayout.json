@@ -538,18 +538,20 @@
 			},
 			{
 				"child": {
-					"class": "Label",
+					"class": "TextButton",
 					"name": "map1_title",
+					"text": "Map 1",
 					"style": {
-						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.Label",
+						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
 						"name": "mini"
 					},
-					"text": "Map 1",
-					"textAlignment": 8,
-					"ellipsis": false,
-					"ellipsisString": "...",
-					"wrap": false,
+					"checked": false,
+					"disabled": false,
 					"color": null,
+					"padLeft": 0,
+					"padRight": 0,
+					"padTop": 0,
+					"padBottom": 0,
 					"touchable": "enabled",
 					"visible": true
 				},
@@ -582,18 +584,20 @@
 			},
 			{
 				"child": {
-					"class": "Label",
+					"class": "TextButton",
 					"name": "map2_title",
+					"text": "Map 2",
 					"style": {
-						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.Label",
+						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
 						"name": "mini"
 					},
-					"text": "Map 2",
-					"textAlignment": 8,
-					"ellipsis": false,
-					"ellipsisString": "...",
-					"wrap": false,
+					"checked": false,
+					"disabled": false,
 					"color": null,
+					"padLeft": 0,
+					"padRight": 0,
+					"padTop": 0,
+					"padBottom": 0,
 					"touchable": "enabled",
 					"visible": true
 				},
@@ -716,18 +720,20 @@
 			},
 			{
 				"child": {
-					"class": "Label",
+					"class": "TextButton",
 					"name": "map3_title",
+					"text": "Map 3",
 					"style": {
-						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.Label",
+						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
 						"name": "mini"
 					},
-					"text": "Map 3",
-					"textAlignment": 8,
-					"ellipsis": false,
-					"ellipsisString": "...",
-					"wrap": false,
+					"checked": false,
+					"disabled": false,
 					"color": null,
+					"padLeft": 0,
+					"padRight": 0,
+					"padTop": 0,
+					"padBottom": 0,
 					"touchable": "enabled",
 					"visible": true
 				},
@@ -760,18 +766,20 @@
 			},
 			{
 				"child": {
-					"class": "Label",
+					"class": "TextButton",
 					"name": "map4_title",
+					"text": "Map 4",
 					"style": {
-						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.Label",
+						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
 						"name": "mini"
 					},
-					"text": "Map 4",
-					"textAlignment": 8,
-					"ellipsis": false,
-					"ellipsisString": "...",
-					"wrap": false,
+					"checked": false,
+					"disabled": false,
 					"color": null,
+					"padLeft": 0,
+					"padRight": 0,
+					"padTop": 0,
+					"padBottom": 0,
 					"touchable": "enabled",
 					"visible": true
 				},
@@ -803,7 +811,7 @@
 				"colSpan": 1
 			}
 		],
-		"name": "Map",
+		"name": "map4_title",
 		"background": null,
 		"color": null,
 		"padLeft": 0,
