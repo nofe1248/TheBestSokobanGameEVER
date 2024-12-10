@@ -1,7 +1,9 @@
 package io.github.nofe1248.gui;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
 import io.github.nofe1248.preferences.GamePreferences;
+import io.github.nofe1248.sound.BackgroundMusicManager;
 import io.github.nofe1248.sound.SoundEffectManager;
 
 import java.util.HashMap;
@@ -10,12 +12,8 @@ import java.util.Stack;
 public class GUIManager extends ApplicationAdapter {
     HashMap<GUISelection, BaseGUI> guiMap;
     Stack<GUISelection> guiSelectionStack;
-
-    public SoundEffectManager getSoundEffectManager() {
-        return soundEffectManager;
-    }
-
     SoundEffectManager soundEffectManager;
+    BackgroundMusicManager backgroundMusicManager;
 
     public BaseGUI getCurrentGUI() {
         return this.guiMap.get(this.guiSelectionStack.getLast());
@@ -25,8 +23,17 @@ public class GUIManager extends ApplicationAdapter {
         return this.guiSelectionStack.getLast();
     }
 
+    public BackgroundMusicManager getBackgroundMusicManager() {
+        return backgroundMusicManager;
+    }
+
+    public SoundEffectManager getSoundEffectManager() {
+        return soundEffectManager;
+    }
+
     public void setCurrentGUI(GUISelection gui) {
         this.guiSelectionStack.push(gui);
+        this.guiMap.get(gui).onShow();
         if (this.guiSelectionStack.size() > 256) {
             this.guiSelectionStack.removeFirst();
         }
@@ -34,14 +41,14 @@ public class GUIManager extends ApplicationAdapter {
 
     public void backToPreviousGUI() {
         if (this.guiSelectionStack.size() > 1) {
-            this.guiSelectionStack.removeLast();
+            this.guiMap.get(this.guiSelectionStack.removeLast()).onHide();
+            this.guiMap.get(this.guiSelectionStack.getLast()).onShow();
         }
     }
 
     @Override
     public void create() {
         this.guiSelectionStack = new Stack<>();
-        this.guiSelectionStack.push(GUISelection.LOGIN_PANEL);
 
         this.guiMap = new HashMap<>();
         this.guiMap.put(GUISelection.LOAD_GAME, new LoadGame());
@@ -57,6 +64,9 @@ public class GUIManager extends ApplicationAdapter {
         }
 
         this.soundEffectManager = new SoundEffectManager();
+        this.backgroundMusicManager = new BackgroundMusicManager();
+
+        this.setCurrentGUI(GUISelection.LOGIN_PANEL);
     }
 
     @Override
@@ -77,5 +87,9 @@ public class GUIManager extends ApplicationAdapter {
 
         this.soundEffectManager.dispose();
         GamePreferences.save();
+    }
+
+    static GUIManager getManager() {
+        return (GUIManager) Gdx.app.getApplicationListener();
     }
 }

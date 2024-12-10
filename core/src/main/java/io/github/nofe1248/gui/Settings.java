@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import io.github.nofe1248.preferences.GamePreferences;
+import io.github.nofe1248.sound.BackgroundMusicSelection;
 
 public class Settings extends BaseGUI {
     public Settings() {
@@ -44,7 +45,7 @@ public class Settings extends BaseGUI {
         quitButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
                 Gdx.app.exit();
             }
@@ -55,7 +56,7 @@ public class Settings extends BaseGUI {
         returnButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
                 manager.backToPreviousGUI();
             }
@@ -66,7 +67,7 @@ public class Settings extends BaseGUI {
         logoutButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.LOGIN_PANEL);
             }
@@ -77,7 +78,7 @@ public class Settings extends BaseGUI {
         mainMenuButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.MAIN_MENU);
             }
@@ -88,7 +89,7 @@ public class Settings extends BaseGUI {
         loadGameButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.LOAD_GAME);
             }
@@ -99,7 +100,7 @@ public class Settings extends BaseGUI {
         saveGameButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.SAVE_GAME);
             }
@@ -125,5 +126,18 @@ public class Settings extends BaseGUI {
                 GamePreferences.setSoundVolume(soundEffectVolumeSlider.getValue());
             }
         });
+    }
+
+    @Override
+    public void onShow() {
+        GUIManager
+            .getManager()
+            .getBackgroundMusicManager()
+            .playBackgroundMusic(BackgroundMusicSelection.SETTINGS, false);
+    }
+
+    @Override
+    public void onHide() {
+
     }
 }

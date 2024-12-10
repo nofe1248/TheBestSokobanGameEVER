@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import io.github.nofe1248.sound.BackgroundMusicSelection;
 
 public class LoginPanel extends BaseGUI {
     public LoginPanel() {
@@ -21,7 +22,7 @@ public class LoginPanel extends BaseGUI {
         quitButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
                 Gdx.app.exit();
             }
@@ -32,7 +33,7 @@ public class LoginPanel extends BaseGUI {
         loginButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.MAIN_MENU);
             }
@@ -43,10 +44,23 @@ public class LoginPanel extends BaseGUI {
         registerButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
+                GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.MAIN_MENU);
             }
         });
+    }
+
+    @Override
+    public void onShow() {
+        GUIManager
+            .getManager()
+            .getBackgroundMusicManager()
+            .playBackgroundMusic(BackgroundMusicSelection.MAIN_MENU, false);
+    }
+
+    @Override
+    public void onHide() {
+
     }
 }

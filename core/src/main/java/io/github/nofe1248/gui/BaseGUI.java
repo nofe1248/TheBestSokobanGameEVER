@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.ray3k.stripe.scenecomposer.SceneComposerStageBuilder;
 
-public class BaseGUI extends ApplicationAdapter {
+public abstract class BaseGUI extends ApplicationAdapter {
     protected String skinAssetPath;
     protected String layoutAssetPath;
     protected Viewport viewport;
@@ -58,4 +58,8 @@ public class BaseGUI extends ApplicationAdapter {
         this.stage.dispose();
         this.skin.dispose();
     }
+
+    public abstract void onShow();
+
+    public abstract void onHide();
 }
