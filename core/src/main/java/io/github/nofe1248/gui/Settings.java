@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import io.github.nofe1248.preferences.GamePreferences;
+import io.github.nofe1248.sound.BackgroundMusicManager;
 import io.github.nofe1248.sound.BackgroundMusicSelection;
 
 public class Settings extends BaseGUI {
@@ -110,6 +111,7 @@ public class Settings extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GamePreferences.setMasterVolume(masterVolumeSlider.getValue());
+                GUIManager.getManager().getBackgroundMusicManager().updateVolume();
             }
         });
 
@@ -117,6 +119,7 @@ public class Settings extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GamePreferences.setMusicVolume(musicVolumeSlider.getValue());
+                GUIManager.getManager().getBackgroundMusicManager().updateVolume();
             }
         });
 

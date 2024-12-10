@@ -57,4 +57,10 @@ public class BackgroundMusicManager {
             music.dispose();
         }
     }
+
+    public void updateVolume() {
+        if (this.previousPlaying != null) {
+            this.backgroundMusicMap.get(this.previousPlaying).setVolume(GamePreferences.getMasterVolume() * GamePreferences.getMusicVolume());
+        }
+    }
 }
