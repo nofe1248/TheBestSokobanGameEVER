@@ -69,9 +69,7 @@ subprojects {
   }
 
   dependencies {
-    api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-    implementation 'com.github.raeleus.stripe:stripe:2.0.0'
-    implementation 'com.github.raeleus.stripe:freetype:2.0.0'
+
   }
 }
 

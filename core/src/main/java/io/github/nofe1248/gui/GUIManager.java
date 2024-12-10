@@ -1,6 +1,7 @@
 package io.github.nofe1248.gui;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import io.github.nofe1248.preferences.GamePreferences;
 import io.github.nofe1248.sound.SoundEffectManager;
 
 import java.util.HashMap;
@@ -75,5 +76,6 @@ public class GUIManager extends ApplicationAdapter {
         }
 
         this.soundEffectManager.dispose();
+        GamePreferences.save();
     }
 }

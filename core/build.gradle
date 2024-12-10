@@ -1,6 +1,12 @@
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 eclipse.project.name = appName + '-core'
 
+repositories {
+  maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+  maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
+  maven { url 'https://jitpack.io' }
+}
+
 dependencies {
   api "com.badlogicgames.ashley:ashley:$ashleyVersion"
   api "com.badlogicgames.box2dlights:box2dlights:$box2dlightsVersion"
@@ -27,6 +33,12 @@ dependencies {
   api "com.rafaskoberg.gdx:typing-label:$typingLabelVersion"
   api "de.tomgrill.gdxdialogs:gdx-dialogs-core:$dialogsVersion"
   api "org.apache.fury:fury-core:$furyVersion"
+
+  api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+  implementation 'com.github.raeleus.stripe:stripe:2.0.0'
+  implementation 'com.github.raeleus.stripe:freetype:2.0.0'
+
+  implementation 'com.alibaba.fastjson2:fastjson2:2.0.53'
 
   if(enableGraalNative == 'true') {
     implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
