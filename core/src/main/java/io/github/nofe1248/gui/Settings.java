@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import io.github.nofe1248.preferences.GamePreferences;
 
 public class Settings extends BaseGUI {
     public Settings() {
@@ -22,10 +23,13 @@ public class Settings extends BaseGUI {
         Slider masterVolumeSlider = new Slider(0, 1, 0.01f, false, this.skin);
         Slider musicVolumeSlider = new Slider(0, 1, 0.01f, false, this.skin);
         Slider soundEffectVolumeSlider = new Slider(0, 1, 0.01f, false, this.skin);
+        musicVolumeSlider.setValue(GamePreferences.getMusicVolume());
+        soundEffectVolumeSlider.setValue(GamePreferences.getSoundVolume());
+        masterVolumeSlider.setValue(GamePreferences.getMasterVolume());
 
         var masterVolumeCell = settingsTable.getCells().get(4);
-        var musicVolumeCell = settingsTable.getCells().get(5);
-        var soundEffectVolumeCell = settingsTable.getCells().get(6);
+        var soundEffectVolumeCell = settingsTable.getCells().get(5);
+        var musicVolumeCell = settingsTable.getCells().get(6);
 
         assert masterVolumeCell != null;
         assert musicVolumeCell != null;
@@ -98,6 +102,27 @@ public class Settings extends BaseGUI {
                 GUIManager manager = (GUIManager) Gdx.app.getApplicationListener();
                 manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.SAVE_GAME);
+            }
+        });
+
+        masterVolumeSlider.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                GamePreferences.setMasterVolume(masterVolumeSlider.getValue());
+            }
+        });
+
+        musicVolumeSlider.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                GamePreferences.setMusicVolume(musicVolumeSlider.getValue());
+            }
+        });
+
+        soundEffectVolumeSlider.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                GamePreferences.setSoundVolume(soundEffectVolumeSlider.getValue());
             }
         });
     }

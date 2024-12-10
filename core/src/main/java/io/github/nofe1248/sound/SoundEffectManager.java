@@ -2,6 +2,7 @@ package io.github.nofe1248.sound;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import io.github.nofe1248.preferences.GamePreferences;
 
 import java.util.HashMap;
 
@@ -14,7 +15,7 @@ public class SoundEffectManager {
     }
 
     public void playSoundEffect(SoundEffectSelection soundEffectSelection) {
-        this.soundEffectMap.get(soundEffectSelection).play(1.0f);
+        this.soundEffectMap.get(soundEffectSelection).play(GamePreferences.getMasterVolume() * GamePreferences.getSoundVolume());
     }
 
     public void playClick(){
