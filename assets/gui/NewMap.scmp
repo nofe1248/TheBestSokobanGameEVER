@@ -5626,7 +5626,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimImageButton
-						name: null
+						name: dir
 						style: {
 							name: Dir_Big
 							clazz: com.badlogic.gdx.scenes.scene2d.ui.ImageButton
@@ -5834,7 +5834,7 @@ sceneComposer: {
 							deletable: false
 							parent: null
 						}
-						text: "Map Send          "
+						text: "Map Seed          "
 						textAlignment: 8
 						ellipsis: false
 						ellipsisString: ...
@@ -6522,7 +6522,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextField
-						name: map_send
+						name: map_seed
 						style: {
 							name: default
 							clazz: com.badlogic.gdx.scenes.scene2d.ui.TextField
