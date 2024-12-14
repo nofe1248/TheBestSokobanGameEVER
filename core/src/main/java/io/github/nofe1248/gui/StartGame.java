@@ -80,6 +80,7 @@ public class StartGame extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
+                manager.setCurrentGUI(GUISelection.NEW_MAP);
             }
         });
 

@@ -55,6 +55,7 @@ public class GUIManager extends ApplicationAdapter {
         this.guiMap.put(GUISelection.LOGIN_PANEL, new LoginPanel());
         this.guiMap.put(GUISelection.MAIN_MENU, new MainMenu());
         this.guiMap.put(GUISelection.MULTIPLAYER, new Multiplayer());
+        this.guiMap.put(GUISelection.NEW_MAP, new NewMap());
         this.guiMap.put(GUISelection.SAVE_GAME, new SaveGame());
         this.guiMap.put(GUISelection.SETTINGS, new Settings());
         this.guiMap.put(GUISelection.START_GAME, new StartGame());

@@ -5,6 +5,7 @@ public enum GUISelection {
     LOGIN_PANEL,
     MAIN_MENU,
     MULTIPLAYER,
+    NEW_MAP,
     SAVE_GAME,
     SETTINGS,
     START_GAME;
