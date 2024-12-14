@@ -127,20 +127,19 @@ public class MapGenerator {
             ReversePlayer reversePlayer = new ReversePlayer(map, playerPosition);
             long counter = Math.round(width * height * difficulty);
             while (reversePlayer.getStates().get(reversePlayer.getCurrentStateString()) <= 200 && counter > 0) {
-                System.out.println(reversePlayer.getMap());
                 reversePlayer.update();
                 counter--;
             }
 
-            System.out.println("Out of place boxes : " + reversePlayer.getMap().outOfPlaceBoxesCount());
             if (reversePlayer.getMap().outOfPlaceBoxesCount() >= (boxesCreated / 3) * 2) {
                 valid = true;
             }
             else {
                 this.seed++;
-                System.out.println("Invalid map, retrying with seed " + this.seed);
             }
         }
+        map.update();
+        map.setSeed(this.seed);
         MapOptimizer.optimizeUnusableBoxes(map);
         return map;
     }
