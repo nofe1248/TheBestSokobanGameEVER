@@ -596,7 +596,7 @@
 			{
 				"child": {
 					"class": "ImageButton",
-					"name": null,
+					"name": "dir",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.ImageButton",
 						"name": "Dir_Big"
@@ -646,7 +646,7 @@
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.Label",
 						"name": "default"
 					},
-					"text": "Map Send          ",
+					"text": "Map Seed          ",
 					"textAlignment": 8,
 					"ellipsis": false,
 					"ellipsisString": "...",
@@ -934,7 +934,7 @@
 			{
 				"child": {
 					"class": "TextField",
-					"name": "map_send",
+					"name": "map_seed",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextField",
 						"name": "default"
