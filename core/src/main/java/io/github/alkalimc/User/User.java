@@ -3,6 +3,7 @@ package io.github.alkalimc.User;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class User {
@@ -107,8 +108,8 @@ public class User {
     public String getAccount() {
         return account;
     }
-    public LocalDateTime getFirstLoginTime() {
-        return firstLoginTime;
+    public String getFirstLoginTime() {
+        return firstLoginTime.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
     }
     public int getAttemptTimes() {
         return attemptTimes;
