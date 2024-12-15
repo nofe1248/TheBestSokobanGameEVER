@@ -103,8 +103,21 @@ public class User {
         return "用户: " + this.id + "用户名: " + this.account + "于" + this.firstLoginTime + "首次加入游戏，最后一次登入的时间是: " + this.lastLoginTime + " 目前的在线状态: " + this.online;
     }
 
+    //这部分用于输出给settings的内容
+    public String getAccount() {
+        return account;
+    }
+    public LocalDateTime getFirstLoginTime() {
+        return firstLoginTime;
+    }
+    public int getAttemptTimes() {
+        return attemptTimes;
+    }
+    public int getMaxScore() {
+        return maxScore;
+    }
 
-    //计算md5
+    //计算md5，这个没验证能不能用，验证一下？
     public static String getMD5(String input) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
