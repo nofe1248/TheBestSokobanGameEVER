@@ -38,7 +38,7 @@ public class User {
     }
 
     //新用户注册
-    public boolean add(String account, String password) {
+    public boolean User(String account, String password) {
         if (User.passwordValidityVerification(password)) {
             this.id = ++count;
             this.account = account;
@@ -108,8 +108,14 @@ public class User {
     public String getAccount() {
         return account;
     }
+    public String getKey() {
+        return key;
+    }
     public String getFirstLoginTime() {
         return firstLoginTime.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
+    }
+    public String getLastLoginTime() {
+        return lastLoginTime.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
     }
     public int getAttemptTimes() {
         return attemptTimes;
