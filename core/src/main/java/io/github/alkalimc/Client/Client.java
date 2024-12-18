@@ -1,6 +1,7 @@
 package io.github.alkalimc.Client;
 
 import io.github.alkalimc.User.Log;
+import io.github.alkalimc.User.UserInfo;
 import io.github.nofe1248.map.map.Map;
 
 import java.io.*;
@@ -37,27 +38,100 @@ public class Client {
         }
     }
 
-    public Map sendData(String data) {
+    public boolean sendData(String data) {
         if (socket != null && socket.isConnected()) {
             try {
-                // 获取输出流，并向服务器发送数据
                 OutputStream outputStream = socket.getOutputStream();
                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-                objectOutputStream.writeObject(data);  // 向服务器发送请求数据
-
-                // 获取输入流，从服务器接收响应
-                InputStream inputStream = socket.getInputStream();
-                ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-
-                // 读取服务器返回的 Map 对象
-                Object response = objectInputStream.readObject();
-
-                // 返回接收到的 Map 对象
-                return (Map) response;
-            } catch (IOException | ClassNotFoundException e) {
+                objectOutputStream.writeObject(data);
+                return true;
+            } catch (IOException e) {
                 Log.writeLogToFile("IOException: " + e.getMessage());
             }
         }
-        return null;  // 如果连接关闭或发生异常，则返回 null
+        return false;
+    }
+    public String receiveData() {
+        if (socket != null && socket.isConnected()) {
+            try {
+                InputStream inputStream = socket.getInputStream();
+                ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+                Object response = objectInputStream.readObject();
+                if (response instanceof String) {
+                    return (String) response;
+                }
+                else {
+                    Log.writeLogToFile("Received object is not a String: " + response.getClass().getName());
+                }
+            }
+            catch (IOException | ClassNotFoundException e) {
+                Log.writeLogToFile("Exception: " + e.getMessage());
+            }
+        }
+        return null;
+    }
+    public boolean sendMap(Map map) {
+        if (socket != null && socket.isConnected()) {
+            try {
+                OutputStream outputStream = socket.getOutputStream();
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+                objectOutputStream.writeObject(map);
+                return true;
+            } catch (IOException e) {
+                Log.writeLogToFile("IOException: " + e.getMessage());
+            }
+        }
+        return false;
+    }
+    public Map receiveMap() {
+        if (socket != null && socket.isConnected()) {
+            try {
+                InputStream inputStream = socket.getInputStream();
+                ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+                Object response = objectInputStream.readObject();
+                if (response instanceof Map) {
+                    return (Map) response;
+                }
+                else {
+                    Log.writeLogToFile("Received object is not a Map: " + response.getClass().getName());
+                }
+            }
+            catch (IOException | ClassNotFoundException e) {
+                Log.writeLogToFile("Exception: " + e.getMessage());
+            }
+        }
+        return null;
+    }
+    public boolean sendUserInfo(UserInfo userInfo) {
+        if (socket != null && socket.isConnected()) {
+            try {
+                OutputStream outputStream = socket.getOutputStream();
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+                objectOutputStream.writeObject(userInfo);
+                return true;
+            } catch (IOException e) {
+                Log.writeLogToFile("IOException: " + e.getMessage());
+            }
+        }
+        return false;
+    }
+    public UserInfo receiveUserInfo() {
+        if (socket != null && socket.isConnected()) {
+            try {
+                InputStream inputStream = socket.getInputStream();
+                ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+                Object response = objectInputStream.readObject();
+                if (response instanceof UserInfo) {
+                    return (UserInfo) response;
+                }
+                else {
+                    Log.writeLogToFile("Received object is not a UserInfo: " + response.getClass().getName());
+                }
+            }
+            catch (IOException | ClassNotFoundException e) {
+                Log.writeLogToFile("Exception: " + e.getMessage());
+            }
+        }
+        return null;
     }
 }

@@ -99,21 +99,22 @@ public class User {
         return true;
     }
 
-    //这部分没什么用，实际用起来肯定是一条一条返回的
-    @Override
-    public String toString() {
-        return "用户: " + this.id + "用户名: " + this.account + "于" + this.firstLoginTime + "首次加入游戏，最后一次登入的时间是: " + this.lastLoginTime + " 目前的在线状态: " + this.online;
+    //这部分用于输出内容
+    public int getId() {
+        return id;
     }
-
-    //这部分用于输出给settings的内容
     public String getAccount() {
         return account;
     }
-    public String getKey() {
-        return key;
+    public boolean isOnline() {
+        return online;
     }
-    public String getFirstLoginTime() {
-        return firstLoginTime.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
+    public LocalDateTime getFirstLoginTime() {
+        return firstLoginTime;
+        //.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"))
+    }
+    public LocalDateTime getLastLoginTime() {
+        return lastLoginTime;
     }
     public int getAttemptTimes() {
         return attemptTimes;
