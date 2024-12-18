@@ -51,14 +51,12 @@ public class Client {
         return false;
     }
 
-    // 接收对象数据，只有String、Map和UserInfo三种类型
     public Object receiveObject() {
         if (socket != null && socket.isConnected()) {
             try (InputStream inputStream = socket.getInputStream();
                  ObjectInputStream objectInputStream = new ObjectInputStream(inputStream)) {
                 Object response = objectInputStream.readObject();
 
-                // 分类处理
                 if (response instanceof String) {
                     return (String) response;
                 } else if (response instanceof Map) {
