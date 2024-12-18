@@ -10,7 +10,6 @@ public class UserDataManager {
     //用于保存或更新用户数据
     public static void saveOrUpdateUser(User user) {
         ArrayList<User> users = loadUserFromFile();
-
         //检查用户是否已存在，如果存在则更新，否则新增用户，这个逻辑应该不难理解？
         boolean userExists = false;
         for (int i = 0; i < users.size(); i++) {

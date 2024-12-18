@@ -24,6 +24,7 @@ public class User {
     private ArrayList scoreList;
     private ArrayList timeList;
     private int maxScore = 0;
+    private String lastConnectedIp = "xxx.xxx.xxx.xxx";
 
     //密码合法性校验
     private static boolean passwordValidityVerification(String password) {
@@ -113,9 +114,6 @@ public class User {
     }
     public String getFirstLoginTime() {
         return firstLoginTime.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
-    }
-    public String getLastLoginTime() {
-        return lastLoginTime.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
     }
     public int getAttemptTimes() {
         return attemptTimes;
