@@ -38,11 +38,10 @@ public class Client {
         }
     }
 
-    public boolean sendData(String data) {
+    public <T> boolean sendObject(T data) {
         if (socket != null && socket.isConnected()) {
-            try {
-                OutputStream outputStream = socket.getOutputStream();
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            try (OutputStream outputStream = socket.getOutputStream();
+                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream)) {
                 objectOutputStream.writeObject(data);
                 return true;
             } catch (IOException e) {
@@ -51,84 +50,25 @@ public class Client {
         }
         return false;
     }
-    public String receiveData() {
+
+    // 接收对象数据，只有String、Map和UserInfo三种类型
+    public Object receiveObject() {
         if (socket != null && socket.isConnected()) {
-            try {
-                InputStream inputStream = socket.getInputStream();
-                ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+            try (InputStream inputStream = socket.getInputStream();
+                 ObjectInputStream objectInputStream = new ObjectInputStream(inputStream)) {
                 Object response = objectInputStream.readObject();
+
+                // 分类处理
                 if (response instanceof String) {
                     return (String) response;
-                }
-                else {
-                    Log.writeLogToFile("Received object is not a String: " + response.getClass().getName());
-                }
-            }
-            catch (IOException | ClassNotFoundException e) {
-                Log.writeLogToFile("Exception: " + e.getMessage());
-            }
-        }
-        return null;
-    }
-    public boolean sendMap(Map map) {
-        if (socket != null && socket.isConnected()) {
-            try {
-                OutputStream outputStream = socket.getOutputStream();
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-                objectOutputStream.writeObject(map);
-                return true;
-            } catch (IOException e) {
-                Log.writeLogToFile("IOException: " + e.getMessage());
-            }
-        }
-        return false;
-    }
-    public Map receiveMap() {
-        if (socket != null && socket.isConnected()) {
-            try {
-                InputStream inputStream = socket.getInputStream();
-                ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-                Object response = objectInputStream.readObject();
-                if (response instanceof Map) {
+                } else if (response instanceof Map) {
                     return (Map) response;
-                }
-                else {
-                    Log.writeLogToFile("Received object is not a Map: " + response.getClass().getName());
-                }
-            }
-            catch (IOException | ClassNotFoundException e) {
-                Log.writeLogToFile("Exception: " + e.getMessage());
-            }
-        }
-        return null;
-    }
-    public boolean sendUserInfo(UserInfo userInfo) {
-        if (socket != null && socket.isConnected()) {
-            try {
-                OutputStream outputStream = socket.getOutputStream();
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-                objectOutputStream.writeObject(userInfo);
-                return true;
-            } catch (IOException e) {
-                Log.writeLogToFile("IOException: " + e.getMessage());
-            }
-        }
-        return false;
-    }
-    public UserInfo receiveUserInfo() {
-        if (socket != null && socket.isConnected()) {
-            try {
-                InputStream inputStream = socket.getInputStream();
-                ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-                Object response = objectInputStream.readObject();
-                if (response instanceof UserInfo) {
+                } else if (response instanceof UserInfo) {
                     return (UserInfo) response;
+                } else {
+                    Log.writeLogToFile("Received object is not a valid type. Received type: " + response.getClass().getName());
                 }
-                else {
-                    Log.writeLogToFile("Received object is not a UserInfo: " + response.getClass().getName());
-                }
-            }
-            catch (IOException | ClassNotFoundException e) {
+            } catch (IOException | ClassNotFoundException e) {
                 Log.writeLogToFile("Exception: " + e.getMessage());
             }
         }
