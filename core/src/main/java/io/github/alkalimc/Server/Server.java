@@ -9,16 +9,20 @@ import io.github.nofe1248.map.map.Map;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Server {
     private static Socket socket = null;
     private static boolean listening = false;
+    private static ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-    public static boolean Server() {
-        try (ServerSocket serverSocket = new ServerSocket(11451)) {
+    public static boolean connect() {
+        try (ServerSocket serverSocket = new ServerSocket(23456)) {
             while (true) {
                 socket = serverSocket.accept();
                 listening = true;
+                executorService.submit(Server::receiveObject);
                 return true;
             }
         } catch (IOException e) {
@@ -29,7 +33,10 @@ public class Server {
     }
 
     public static boolean isConnected() {
-        return socket.isConnected();
+        if (socket != null && socket.isConnected()) {
+            return true;
+        }
+        return false;
     }
 
     public static void disconnect() {
@@ -64,7 +71,7 @@ public class Server {
                     Object response = objectInputStream.readObject();
 
                     if (response instanceof Map) {
-                        new UpdateMap((Map) response);
+                        UpdateMap.updateMap((Map) response);
                         return (Map) response;
                     }
                     else if (response instanceof UserInfo) {
