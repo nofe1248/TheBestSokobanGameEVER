@@ -1,7 +1,9 @@
 package io.github.nofe1248.map.test;
 
 import io.github.nofe1248.map.generator.MapGenerator;
-import java.util.Random;
+import io.github.nofe1248.map.map.Map;
+
+import java.nio.file.Path;
 
 public class MapGeneratorTest {
     public static void main(String[] args) {
@@ -9,6 +11,8 @@ public class MapGeneratorTest {
 
         mapGenerator.setWidth(15);
         mapGenerator.setHeight(15);
-        System.out.println(mapGenerator.generateMap());
+        Map map = mapGenerator.generateMap();
+        System.out.println(map);
+        map.saveMapImage(Path.of("map.png"));
     }
 }

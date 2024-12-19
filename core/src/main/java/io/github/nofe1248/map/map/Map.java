@@ -1,8 +1,12 @@
 package io.github.nofe1248.map.map;
 
+import com.alibaba.fastjson2.JSONObject;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,11 +15,21 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Map implements Cloneable {
+    public static final int MIN_WIDTH = 5;
+    public static final int MIN_HEIGHT = 5;
+    public static final int MAX_WIDTH = 15;
+    public static final int MAX_HEIGHT = 15;
+    public static final int MIN_BOXES = 2;
+    public static final int MAX_BOXES = 15;
+    public static final double MIN_DIFFICULTY = 20;
+    public static final double MAX_DIFFICULTY = 40;
+
     MapElement[][] underlyingMap;
     Point playerPosition = null;
     Set<Point> boxPositions = new HashSet<>();
     Set<Point> goalPositions = new HashSet<>();
     int seed = 0;
+    double difficulty = 0;
     Table renderTable = new Table();
 
     public Map(Map map) {
@@ -47,14 +61,14 @@ public class Map implements Cloneable {
     }
 
     public Map(String rawMap) {
-        this.fromRawMapString(rawMap);
+        this.fromJSON(rawMap);
     }
 
     //load map from file
     public Map(Path path) {
         try {
             String rawMap = Files.readString(path);
-            this.fromRawMapString(rawMap);
+            this.fromJSON(rawMap);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -176,6 +190,14 @@ public class Map implements Cloneable {
 
     public void setSeed(int seed) {
         this.seed = seed;
+    }
+
+    public double getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(double difficulty) {
+        this.difficulty = difficulty;
     }
 
     public MapElement[][] getUnderlyingMap() {
@@ -308,7 +330,6 @@ public class Map implements Cloneable {
             for (MapElement element : row) {
                 sb.append(element.toCharRepresentation());
             }
-            sb.append('\n');
         }
         return sb.toString();
     }
@@ -337,6 +358,126 @@ public class Map implements Cloneable {
             return map;
         } catch (CloneNotSupportedException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void fromJSON(String json) {
+        JSONObject obj = JSONObject.parseObject(json);
+        assert obj.containsKey("width");
+        assert obj.containsKey("height");
+        assert obj.containsKey("seed");
+        assert obj.containsKey("difficulty");
+        assert obj.containsKey("map");
+
+        assert obj.getInteger("width") >= MIN_WIDTH && obj.getInteger("width") <= MAX_WIDTH;
+        assert obj.getInteger("height") >= MIN_HEIGHT && obj.getInteger("height") <= MAX_HEIGHT;
+        assert obj.getInteger("seed") >= 0;
+        assert obj.getDouble("difficulty") >= MIN_DIFFICULTY && obj.getDouble("difficulty") <= MAX_DIFFICULTY;
+
+        this.seed = obj.getInteger("seed");
+        this.difficulty = obj.getDouble("difficulty");
+        this.underlyingMap = new MapElement[obj.getInteger("width")][obj.getInteger("height")];
+        String map = obj.getString("map");
+        for (int i = 0; i < getWidth(); i++) {
+            for (int j = 0; j < getHeight(); j++) {
+                underlyingMap[i][j] = MapElement.fromCharRepresentation(map.charAt(j));
+            }
+        }
+        update();
+    }
+
+    public String toJSON() {
+        JSONObject obj = new JSONObject();
+        obj.put("width", getWidth());
+        obj.put("height", getHeight());
+        obj.put("seed", seed);
+        obj.put("difficulty", difficulty);
+        obj.put("map", dump());
+        return obj.toJSONString();
+    }
+
+    public void saveMapImage(Path path) {
+        //generate an image of the map and save it to the path, each cell is 30x30
+        //we use pure color to represent the map element
+        //background: 230 180 180
+        //wall: 230 230 230
+        //goal: 65 243 132
+        //box: 243 139 170
+        //player: CYAN
+
+        int cellSize = 30;
+        int width = getWidth() * cellSize;
+        int height = getHeight() * cellSize;
+
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = image.createGraphics();
+
+        // Draw the background
+        g.setColor(Color.GRAY);
+        g.fillRect(0, 0, width, height);
+
+        // Draw the map elements
+        for (int i = 0; i < getWidth(); i++) {
+            for (int j = 0; j < getHeight(); j++) {
+                MapElement element = getMapElement(i, j);
+                switch (element) {
+                    case WALL:
+                        g.setColor(new Color(230, 230, 230));
+                        break;
+                    case GOAL:
+                        g.setColor(new Color(65, 243, 132));
+                        break;
+                    case BOX, BOX_ON_GOAL:
+                        g.setColor(new Color(243, 139, 170));
+                        break;
+                    case PLAYER, PLAYER_ON_GOAL:
+                        g.setColor(Color.CYAN);
+                        break;
+                    case EMPTY:
+                        g.setColor(new Color(230, 180, 180));
+                        break;
+                    default:
+                        g.setColor(Color.GRAY);
+                        break;
+                }
+                g.fillRect(i * cellSize, j * cellSize, cellSize, cellSize);
+            }
+        }
+
+        g.dispose();
+
+        // Rotate the image 90 degrees counter-clockwise
+        BufferedImage rotatedImage = new BufferedImage(height, width, BufferedImage.TYPE_INT_ARGB);
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                rotatedImage.setRGB(i, j, image.getRGB(j, height - 1 - i));
+            }
+        }
+
+        // Mirror the image horizontally
+        BufferedImage mirroredImage = new BufferedImage(height, width, BufferedImage.TYPE_INT_ARGB);
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                mirroredImage.setRGB(i, j, rotatedImage.getRGB(height - 1 - i, j));
+            }
+        }
+
+        // Pad the image with white (75 alpha) to have a 16:9 aspect ratio, and draw a slim line around the image
+        int paddedWidth = Math.max(mirroredImage.getWidth(), mirroredImage.getHeight() * 16 / 9);
+        int paddedHeight = Math.max(mirroredImage.getHeight(), mirroredImage.getWidth() * 9 / 16);
+        BufferedImage paddedImage = new BufferedImage(paddedWidth, paddedHeight, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = paddedImage.createGraphics();
+        g2.setColor(new Color(230, 180, 180, 70));
+        g2.fillRect(0, 0, paddedWidth, paddedHeight);
+        g2.drawImage(mirroredImage, (paddedWidth - mirroredImage.getWidth()) / 2, (paddedHeight - mirroredImage.getHeight()) / 2, null);
+        g2.setColor(Color.GRAY);
+        g2.drawRect(0, 0, paddedWidth - 1, paddedHeight - 1);
+        g2.dispose();
+
+        try {
+            ImageIO.write(paddedImage, "png", new File(path.toString()));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

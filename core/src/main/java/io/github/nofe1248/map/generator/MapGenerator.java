@@ -8,15 +8,6 @@ import java.util.HashSet;
 import java.util.Random;
 
 public class MapGenerator {
-    public final int MIN_WIDTH = 6;
-    public final int MIN_HEIGHT = 6;
-    public final int MAX_WIDTH = 15;
-    public final int MAX_HEIGHT = 15;
-    public final int MIN_BOXES = 4;
-    public final int MAX_BOXES = 15;
-    public final double MIN_DIFFICULTY = 20;
-    public final double MAX_DIFFICULTY = 40;
-
     private int width = 0;
     private int height = 0;
     private int boxes = 0;
@@ -36,7 +27,7 @@ public class MapGenerator {
         this.updateBoxes();
     }
     public int generateRandomWidth() {
-        return this.random.nextInt(MAX_WIDTH - MIN_WIDTH + 1) + MIN_WIDTH;
+        return this.random.nextInt(Map.MAX_WIDTH - Map.MIN_WIDTH + 1) + Map.MIN_WIDTH;
     }
     public int generateAndSetRandomWidth() {
         width = generateRandomWidth();
@@ -52,7 +43,7 @@ public class MapGenerator {
         this.updateBoxes();
     }
     public int generateRandomHeight() {
-        return this.random.nextInt(MAX_HEIGHT - MIN_HEIGHT + 1) + MIN_HEIGHT;
+        return this.random.nextInt(Map.MAX_HEIGHT - Map.MIN_HEIGHT + 1) + Map.MIN_HEIGHT;
     }
     public int generateAndSetRandomHeight() {
         height = generateRandomHeight();
@@ -69,8 +60,8 @@ public class MapGenerator {
             return;
         }
         int area = width * height;
-        double m = (double) (MAX_BOXES - MIN_BOXES) / (MAX_WIDTH * MAX_HEIGHT - MIN_WIDTH * MIN_HEIGHT);
-        double b = MIN_BOXES - m * MIN_WIDTH * MIN_HEIGHT;
+        double m = (double) (Map.MAX_BOXES - Map.MIN_BOXES) / (Map.MAX_WIDTH * Map.MAX_HEIGHT - Map.MIN_WIDTH * Map.MIN_HEIGHT);
+        double b = Map.MIN_BOXES - m * Map.MIN_WIDTH * Map.MIN_HEIGHT;
         this.boxes = (int) (m * area + b);
     }
 
@@ -94,9 +85,9 @@ public class MapGenerator {
     }
 
     public Map generateMap() {
-        assert this.width >= MIN_WIDTH && this.width <= MAX_WIDTH;
-        assert this.height >= MIN_HEIGHT && this.height <= MAX_HEIGHT;
-        assert this.boxes >= MIN_BOXES && this.boxes <= MAX_BOXES;
+        assert this.width >= Map.MIN_WIDTH && this.width <= Map.MAX_WIDTH;
+        assert this.height >= Map.MIN_HEIGHT && this.height <= Map.MAX_HEIGHT;
+        assert this.boxes >= Map.MIN_BOXES && this.boxes <= Map.MAX_BOXES;
 
         /*
          * The generator will initially create a puzzle with a random board size,

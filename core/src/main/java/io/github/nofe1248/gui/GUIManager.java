@@ -2,6 +2,7 @@ package io.github.nofe1248.gui;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import io.github.nofe1248.map.MapManager;
 import io.github.nofe1248.preferences.GamePreferences;
 import io.github.nofe1248.sound.BackgroundMusicManager;
 import io.github.nofe1248.sound.SoundEffectManager;
@@ -88,6 +89,7 @@ public class GUIManager extends ApplicationAdapter {
 
         this.soundEffectManager.dispose();
         GamePreferences.save();
+        MapManager.saveAllMaps();
     }
 
     static GUIManager getManager() {
