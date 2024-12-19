@@ -1,0 +1,17 @@
+IOException: Address already in use: bind
+IOException: Connection refused: connect
+Exception: Connection reset
+Exception: writing aborted; java.io.NotSerializableException: io.github.nofe1248.map.map.Map
+IOException: io.github.nofe1248.map.map.Map
+Exception: Socket closed
+Exception: writing aborted; java.io.NotSerializableException: io.github.nofe1248.map.map.Map
+IOException: io.github.nofe1248.map.map.Map
+Exception: Socket closed
+Exception: invalid stream header: 00057200
+Exception: invalid stream header: ACED7B73
+Exception: null
+IOException: Socket closed
+Exception: invalid stream header: 00057B73
+Exception: invalid stream header: ACED7200
+IOException: Socket closed
+Exception: null

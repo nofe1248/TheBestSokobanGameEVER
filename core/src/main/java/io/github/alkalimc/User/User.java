@@ -3,6 +3,7 @@ package io.github.alkalimc.User;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class User {
@@ -23,6 +24,7 @@ public class User {
     private ArrayList scoreList;
     private ArrayList timeList;
     private int maxScore = 0;
+    private String lastConnectedIp = "xxx.xxx.xxx.xxx";
 
     //密码合法性校验
     private static boolean passwordValidityVerification(String password) {
@@ -37,7 +39,7 @@ public class User {
     }
 
     //新用户注册
-    public boolean add(String account, String password) {
+    public boolean User(String account, String password) {
         if (User.passwordValidityVerification(password)) {
             this.id = ++count;
             this.account = account;
@@ -97,14 +99,31 @@ public class User {
         return true;
     }
 
-    //这部分没什么用，实际用起来肯定是一条一条返回的
-    @Override
-    public String toString() {
-        return "用户: " + this.id + "用户名: " + this.account + "于" + this.firstLoginTime + "首次加入游戏，最后一次登入的时间是: " + this.lastLoginTime + " 目前的在线状态: " + this.online;
+    //这部分用于输出内容
+    public int getId() {
+        return id;
+    }
+    public String getAccount() {
+        return account;
+    }
+    public boolean isOnline() {
+        return online;
+    }
+    public LocalDateTime getFirstLoginTime() {
+        return firstLoginTime;
+        //.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"))
+    }
+    public LocalDateTime getLastLoginTime() {
+        return lastLoginTime;
+    }
+    public int getAttemptTimes() {
+        return attemptTimes;
+    }
+    public int getMaxScore() {
+        return maxScore;
     }
 
-
-    //计算md5
+    //计算md5，这个没验证能不能用，验证一下？
     public static String getMD5(String input) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");

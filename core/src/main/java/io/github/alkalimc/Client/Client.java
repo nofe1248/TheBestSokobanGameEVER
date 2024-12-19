@@ -1,98 +1,104 @@
 package io.github.alkalimc.Client;
 
+import io.github.alkalimc.Server.Server;
+import io.github.alkalimc.Update.UpdateMap;
+import io.github.alkalimc.Update.UpdateUserInfo;
+import io.github.alkalimc.User.Log;
+import io.github.alkalimc.User.UserInfo;
 import io.github.nofe1248.map.map.Map;
 
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Client {
-    private Socket clientSocket = null;
-    private String lastConnectedIp = null;
-    private static final String CONFIG_FILE = "last_connected_ip.txt"; //最后一次成功连接的ip
-    private static final String DEFAULT_IP = "xxx.xxx.xxx.xxx"; //这个要连接到label上去，默认返回这个，如果有上一次连接就返回文件里面存的那个
+    private static Socket socket = null;
+    private static boolean listening = true;
+    private static boolean firstMap = false;
+    private static ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-    //读文件用的
-    private void loadLastConnectedIp() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(CONFIG_FILE))) {
-            lastConnectedIp = reader.readLine();
-        } catch (IOException e) {
-            lastConnectedIp = null;
-        }
-    }
-
-    //存文件用的
-    private void saveLastConnectedIp() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(CONFIG_FILE))) {
-            if (lastConnectedIp != null) {
-                writer.write(lastConnectedIp);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public boolean connect(String ip) {
+    public static boolean connect(String ip) {
         try {
-            clientSocket = new Socket(ip, 11451);
-            lastConnectedIp = ip;
-            saveLastConnectedIp();
+            socket = new Socket(ip, 23456);
+            listening = true;
+            firstMap = true;
+            executorService.submit(Client::receiveObject);
             return true;
         } catch (UnknownHostException e) {
+            Log.writeLogToFile("UnknownHostException: " + e.getMessage());
+            firstMap = false;
             return false;
         } catch (IOException e) {
+            Log.writeLogToFile("IOException: " + e.getMessage());
+            firstMap = false;
             return false;
         }
     }
 
-    public void disconnect() {
-        if (clientSocket != null && !clientSocket.isClosed()) {
-            try {
-                clientSocket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public boolean isConnected() {
-        if (clientSocket != null && !clientSocket.isClosed()) {
+    public static boolean isConnected() {
+        if (socket != null && socket.isConnected()) {
             return true;
         }
         return false;
     }
 
-    //这个是用来返回上一次成功连接的ip的，我觉得可以在ui里直接回车输入？
-    public String getLastConnectedIp() {
-        loadLastConnectedIp();
-        if (lastConnectedIp == null) {
-            return DEFAULT_IP;
-        }
-        return lastConnectedIp;
-    }
-
-    public Map sendData(String data) {
-        if (clientSocket != null && !clientSocket.isClosed()) {
+    public static void disconnect() {
+        if (socket != null && socket.isConnected()) {
             try {
-                // 获取输出流，并向服务器发送数据
-                OutputStream outputStream = clientSocket.getOutputStream();
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-                objectOutputStream.writeObject(data);  // 向服务器发送请求数据
-
-                // 获取输入流，从服务器接收响应
-                InputStream inputStream = clientSocket.getInputStream();
-                ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-
-                // 读取服务器返回的 Map 对象
-                Object response = objectInputStream.readObject();
-
-                // 返回接收到的 Map 对象
-                return (Map) response;
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
+                socket.close();
+                listening = false;
+                firstMap = false;
+            } catch (IOException e) {
+                Log.writeLogToFile("IOException: " + e.getMessage());
             }
         }
-        return null;  // 如果连接关闭或发生异常，则返回 null
     }
 
+    public static <T> boolean sendObject(T data) {
+        if (socket != null && socket.isConnected()) {
+            try (OutputStream outputStream = socket.getOutputStream();
+                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream)) {
+                objectOutputStream.writeObject(data);
+                return true;
+            } catch (IOException e) {
+                Log.writeLogToFile("IOException: " + e.getMessage());
+            }
+        }
+        return false;
     }
+
+    public static Object receiveObject() {
+        while (listening) {
+            if (socket != null && socket.isConnected()) {
+                try (InputStream inputStream = socket.getInputStream();
+                     ObjectInputStream objectInputStream = new ObjectInputStream(inputStream)) {
+                    Object response = objectInputStream.readObject();
+
+                    if (response instanceof Map) {
+                        if (firstMap) {
+                            GetMap.getMap((Map) response);
+                            firstMap = false;
+                        }
+                        else {
+                            UpdateMap.updateMap((Map) response);
+                        }
+                        return (Map) response;
+                    }
+                    else if (response instanceof UserInfo) {
+                        new UpdateUserInfo((UserInfo) response);
+                        return (UserInfo) response;
+                    }
+                    else {
+                        Log.writeLogToFile("Received object is not a valid type. Received type: " + response.getClass().getName());
+                    }
+                } catch (IOException | ClassNotFoundException e) {
+                    Log.writeLogToFile("Exception: " + e.getMessage());
+                }
+            }
+            return null;
+        }
+        return null;
+    }
+}
