@@ -140,7 +140,7 @@ public class MapGenerator {
         }
         map.update();
         map.setSeed(this.seed);
-        MapOptimizer.optimizeUnusableBoxes(map);
+        MapOptimizer.optimizeMap(map);
         return map;
     }
 }

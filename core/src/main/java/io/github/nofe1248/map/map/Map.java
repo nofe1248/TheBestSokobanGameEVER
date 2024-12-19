@@ -1,5 +1,7 @@
 package io.github.nofe1248.map.map;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+
 import java.awt.*;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,6 +16,7 @@ public class Map implements Cloneable {
     Set<Point> boxPositions = new HashSet<>();
     Set<Point> goalPositions = new HashSet<>();
     int seed = 0;
+    Table renderTable = new Table();
 
     public Map(Map map) {
         this(map.getUnderlyingMap());
@@ -30,6 +33,8 @@ public class Map implements Cloneable {
                 underlyingMap[i][j] = MapElement.WALL;
             }
         }
+
+        createEmptyRenderTable();
     }
 
     public Map(MapElement[][] underlyingMap) {
@@ -59,6 +64,7 @@ public class Map implements Cloneable {
         updatePlayerPosition();
         updateBoxPositions();
         updateGoalPositions();
+        updateRenderTable();
     }
 
     private void updatePlayerPosition() {
@@ -99,6 +105,28 @@ public class Map implements Cloneable {
         }
     }
 
+    private void updateRenderTable() {
+        this.renderTable.clear();
+        this.renderTable.setFillParent(true);
+        for (MapElement[] mapElements : underlyingMap) {
+            for (MapElement mapElement : mapElements) {
+                this.renderTable.add(mapElement.getActor()).width(30).height(30);
+            }
+            this.renderTable.row();
+        }
+    }
+
+    private void createEmptyRenderTable() {
+        this.renderTable.clear();
+        this.renderTable.setFillParent(true);
+        for (MapElement[] mapElements : underlyingMap) {
+            for (MapElement mapElement : mapElements) {
+                this.renderTable.add(MapElement.EMPTY.getActor());
+            }
+            this.renderTable.row();
+        }
+    }
+
     public int outOfPlaceBoxesCount() {
         int count = 0;
         for (int i = 0; i < underlyingMap.length; i++) {
@@ -121,6 +149,14 @@ public class Map implements Cloneable {
 
     public boolean isPositionValid(int x, int y) {
         return x >= 0 && x < getWidth() && y >= 0 && y < getHeight();
+    }
+
+    public boolean isPositionOnBorder(Point position) {
+        return position.getX() == 0 || position.getX() == getWidth() - 1 || position.getY() == 0 || position.getY() == getHeight() - 1;
+    }
+
+    public boolean isPositionOnBorder(int x, int y) {
+        return x == 0 || x == getWidth() - 1 || y == 0 || y == getHeight() - 1;
     }
 
     public void fromRawMapString(String rawMap) {
@@ -158,7 +194,21 @@ public class Map implements Cloneable {
         return underlyingMap[(int)position.getX()][(int)position.getY()];
     }
 
+    public Table getRenderTable() {
+        return renderTable;
+    }
+
+    private int convertPointToIndexInRenderTable(Point position) {
+        return position.y + position.x * underlyingMap[0].length;
+    }
+
+    private int convertPointToIndexInRenderTable(int x, int y) {
+        return y + x * underlyingMap[0].length;
+    }
+
     public void setMapElement(int x, int y, MapElement element) {
+        this.renderTable.getCells().get(convertPointToIndexInRenderTable(x, y)).getActor().remove();
+        this.renderTable.getCells().get(convertPointToIndexInRenderTable(x, y)).setActor(element.getActor());
         if (underlyingMap[x][y] == element) {
             return ;
         }

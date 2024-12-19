@@ -74,6 +74,14 @@ public class GamePreferences {
         GamePreferences.musicVolume = musicVolume;
     }
 
+    public static CharacterSelection getCharacterSelection() {
+        return characterSelection;
+    }
+
+    public static void setCharacterSelection(CharacterSelection characterSelection) {
+        GamePreferences.characterSelection = characterSelection;
+    }
+
     public static void save() {
         JSONObject obj = new JSONObject();
         obj.put("masterVolume", masterVolume);
