@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
+import com.alibaba.fastjson2.JSONWriter;
 
 public class GamePreferences {
     private static float masterVolume = 1.0f;
@@ -89,7 +90,7 @@ public class GamePreferences {
         obj.put("musicVolume", musicVolume);
         obj.put("characterSelection", characterSelection.name());
         try {
-            Files.writeString(Path.of("./config.json"), obj.toJSONString());
+            Files.writeString(Path.of("./config.json"), obj.toJSONString(JSONWriter.Feature.PrettyFormat));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

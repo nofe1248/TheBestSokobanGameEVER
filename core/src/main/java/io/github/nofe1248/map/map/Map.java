@@ -1,6 +1,7 @@
 package io.github.nofe1248.map.map;
 
 import com.alibaba.fastjson2.JSONObject;
+import com.alibaba.fastjson2.JSONWriter;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 import javax.imageio.ImageIO;
@@ -393,7 +394,7 @@ public class Map implements Cloneable {
         obj.put("seed", seed);
         obj.put("difficulty", difficulty);
         obj.put("map", dump());
-        return obj.toJSONString();
+        return obj.toJSONString(JSONWriter.Feature.PrettyFormat);
     }
 
     public void saveMapImage(Path path) {
