@@ -4,4 +4,6 @@ public enum SoundEffectSelection {
     BUTTON_CLICK,
     PLAYER_MOVE,
     PLAYER_MOVE_FAIL,
+    ERROR,
+    SUCCESS,
 }

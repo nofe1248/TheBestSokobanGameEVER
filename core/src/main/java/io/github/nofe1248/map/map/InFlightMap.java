@@ -21,6 +21,14 @@ public class InFlightMap {
         this.map = new Map(map);
     }
 
+    public InFlightMap(JSONObject json) {
+        fromJSON(json.toJSONString());
+    }
+
+    public InFlightMap(String jsonContent) {
+        fromJSON(jsonContent);
+    }
+
     public Map getMap() {
         return map;
     }
@@ -47,6 +55,10 @@ public class InFlightMap {
 
     public void suspendTimer() {
         elapsedTime += System.currentTimeMillis() - startTime;
+    }
+
+    public void updateElapsedTime() {
+        elapsedTime = System.currentTimeMillis() - startTime;
     }
 
     public boolean revertLastMove() {
@@ -145,6 +157,7 @@ public class InFlightMap {
         }
         json.put("previousMaps", previousMapsJson);
         json.put("steps", steps);
+        updateElapsedTime();
         json.put("elapsedTime", elapsedTime);
         return json;
     }

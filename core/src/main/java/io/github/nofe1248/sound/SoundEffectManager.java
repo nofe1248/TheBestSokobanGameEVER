@@ -14,6 +14,8 @@ public class SoundEffectManager {
         this.soundEffectMap.put(SoundEffectSelection.BUTTON_CLICK, Gdx.audio.newSound(Gdx.files.internal("audio/Action/Keyboard/click.ogg")));
         this.soundEffectMap.put(SoundEffectSelection.PLAYER_MOVE, Gdx.audio.newSound(Gdx.files.internal("audio/Action/Keyboard/move.wav")));
         this.soundEffectMap.put(SoundEffectSelection.PLAYER_MOVE_FAIL, Gdx.audio.newSound(Gdx.files.internal("audio/Action/Keyboard/move_failed.wav")));
+        this.soundEffectMap.put(SoundEffectSelection.ERROR, Gdx.audio.newSound(Gdx.files.internal("audio/Action/Mouse/Failed.ogg")));
+        this.soundEffectMap.put(SoundEffectSelection.SUCCESS, Gdx.audio.newSound(Gdx.files.internal("audio/Action/Mouse/Succeed.ogg")));
     }
 
     public void playSoundEffect(SoundEffectSelection soundEffectSelection) {
@@ -30,6 +32,14 @@ public class SoundEffectManager {
 
     public void playPlayerMoveFail(){
         this.playSoundEffect(SoundEffectSelection.PLAYER_MOVE_FAIL);
+    }
+
+    public void playError(){
+        this.playSoundEffect(SoundEffectSelection.ERROR);
+    }
+
+    public void playSuccess(){
+        this.playSoundEffect(SoundEffectSelection.SUCCESS);
     }
 
     public void dispose() {

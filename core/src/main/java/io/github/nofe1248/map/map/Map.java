@@ -391,7 +391,7 @@ public class Map implements Cloneable {
         String map = obj.getString("map");
         for (int i = 0; i < getWidth(); i++) {
             for (int j = 0; j < getHeight(); j++) {
-                underlyingMap[i][j] = MapElement.fromCharRepresentation(map.charAt(j));
+                underlyingMap[i][j] = MapElement.fromCharRepresentation(map.charAt(i * getHeight() + j));
             }
         }
         update();

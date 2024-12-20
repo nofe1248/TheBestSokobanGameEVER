@@ -1,5 +1,6 @@
 package io.github.nofe1248.gui;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -27,6 +28,7 @@ public abstract class BaseSaveGUI extends BaseGUI {
     protected boolean map2Exists = false;
     protected boolean map3Exists = false;
     protected boolean map4Exists = false;
+    protected Texture placeholder = new Texture("images/Menu/frame_Modified.png");
 
     public BaseSaveGUI(String skinAssetPath, String layoutAssetPath) {
         super(skinAssetPath, layoutAssetPath);

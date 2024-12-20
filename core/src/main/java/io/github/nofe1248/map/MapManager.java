@@ -16,6 +16,45 @@ public class MapManager {
     static HashMap<Integer, Map> mapList = new HashMap<>();
 
     static {
+        updateMapList();
+    }
+
+    public static Map getMap(int mapNumber) {
+        //return the map object with the given map number, if the map does not exist, return null
+        return mapList.get(mapNumber);
+    }
+
+    public static Image getMapImage(int mapNumber) {
+        //load the map image file from the disk, if the file does not exist, create it
+        //the map image should be named as map1.png, map2.png, map3.png, etc.
+        //return the map image as an Image object
+        Path mapImagePath = Paths.get("map", "map" + mapNumber + ".png");
+        if (!Files.exists(mapImagePath)) {
+            if (mapList.containsKey(mapNumber)) {
+                mapList.get(mapNumber).saveMapImage(mapImagePath);
+            }
+            else {
+                return null;
+            }
+        }
+        Image mapImage = new Image(new Texture(mapImagePath.toString()));
+        mapImage.setHeight(180);
+        mapImage.setWidth(320);
+        return mapImage;
+    }
+
+    public static Map saveAllMaps() {
+        //save all the maps in mapList to the disk
+        //the map JSON should be named as map1.json, map2.json, map3.json, etc.
+        //save all the map image files to the disk
+        //the map image should be named as map1.png, map2.png, map3.png, etc.
+        mapList.forEach((key, value) -> {
+
+        });
+        return null;
+    }
+
+    public static void updateMapList() {
         //scan all the map JSON files under /map/ folder, if the folder does not exist, create it
         //load all the map JSON files into mapList
         //the map JSON should be named as map1.json, map2.json, map3.json, etc.
@@ -58,6 +97,7 @@ public class MapManager {
             {MapElement.WALL, MapElement.EMPTY, MapElement.GOAL, MapElement.BOX, MapElement.EMPTY, MapElement.WALL},
             {MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL}
         });
+        map1.setDifficulty(20);
         mapList.put(1, map1);
 
         Map map2 = new Map(new MapElement[][]{
@@ -68,6 +108,7 @@ public class MapManager {
             {MapElement.WALL, MapElement.EMPTY, MapElement.EMPTY, MapElement.EMPTY, MapElement.EMPTY, MapElement.EMPTY, MapElement.WALL},
             {MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL}
         });
+        map2.setDifficulty(20);
         mapList.put(2, map2);
 
         Map map3 = new Map(new MapElement[][]{
@@ -78,6 +119,7 @@ public class MapManager {
             {MapElement.WALL, MapElement.EMPTY, MapElement.WALL, MapElement.GOAL, MapElement.EMPTY, MapElement.EMPTY, MapElement.WALL},
             {MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL}
         });
+        map3.setDifficulty(20);
         mapList.put(3, map3);
 
         Map map4 = new Map(new MapElement[][]{
@@ -89,6 +131,7 @@ public class MapManager {
             {MapElement.WALL, MapElement.EMPTY, MapElement.EMPTY, MapElement.GOAL, MapElement.EMPTY, MapElement.EMPTY, MapElement.WALL},
             {MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL}
         });
+        map4.setDifficulty(20);
         mapList.put(4, map4);
 
         Map map5 = new Map(new MapElement[][]{
@@ -99,48 +142,9 @@ public class MapManager {
             {MapElement.WALL, MapElement.EMPTY, MapElement.EMPTY, MapElement.WALL, MapElement.EMPTY, MapElement.GOAL, MapElement.EMPTY, MapElement.WALL},
             {MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL}
         });
+        map5.setDifficulty(20);
         mapList.put(5, map5);
 
         saveAllMaps();
-    }
-
-    public static Map getMap(int mapNumber) {
-        //return the map object with the given map number, if the map does not exist, return null
-        return mapList.get(mapNumber);
-    }
-
-    public static Image getMapImage(int mapNumber) {
-        //load the map image file from the disk, if the file does not exist, create it
-        //the map image should be named as map1.png, map2.png, map3.png, etc.
-        //return the map image as an Image object
-        Path mapImagePath = Paths.get("map", "map" + mapNumber + ".png");
-        if (!Files.exists(mapImagePath)) {
-            if (mapList.containsKey(mapNumber)) {
-                mapList.get(mapNumber).saveMapImage(mapImagePath);
-            }
-            else {
-                return null;
-            }
-        }
-        Image mapImage = new Image(new Texture(mapImagePath.toString()));
-        mapImage.setHeight(180);
-        mapImage.setWidth(320);
-        return mapImage;
-    }
-
-    public static Map saveAllMaps() {
-        //save all the maps in mapList to the disk
-        //the map JSON should be named as map1.json, map2.json, map3.json, etc.
-        //save all the map image files to the disk
-        //the map image should be named as map1.png, map2.png, map3.png, etc.
-        mapList.forEach((key, value) -> {
-            try {
-                Files.writeString(Paths.get("map", "map" + key + ".json"), value.toJSONString());
-                value.saveMapImage(Paths.get("map", "map" + key + ".png"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        return null;
     }
 }

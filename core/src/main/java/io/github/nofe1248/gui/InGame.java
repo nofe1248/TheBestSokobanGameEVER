@@ -210,6 +210,8 @@ public class InGame extends BaseGUI {
             this.mapRenderTable.remove();
         }
         this.activeMap = activeMap;
+        updateTimer();
+        stepLabel.setText(String.valueOf(activeMap.getSteps()));
     }
 
     public InFlightMap getActiveMap() {

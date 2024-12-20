@@ -15,8 +15,6 @@ import io.github.nofe1248.map.map.InFlightMap;
 import io.github.nofe1248.sound.BackgroundMusicSelection;
 
 public class StartGame extends BaseSaveGUI {
-    Texture placeholder = new Texture("images/Menu/frame_Modified.png");
-
     public StartGame() {
         super("gui/StartGame/StartGame.json", "gui/StartGame/StartGameLayout.json");
     }
