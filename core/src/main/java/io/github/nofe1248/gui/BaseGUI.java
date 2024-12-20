@@ -46,6 +46,8 @@ public abstract class BaseGUI extends ApplicationAdapter {
 
     @Override
     public void render() {
+        input();
+
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.input.setInputProcessor(this.stage);
@@ -63,4 +65,8 @@ public abstract class BaseGUI extends ApplicationAdapter {
     public abstract void onShow();
 
     public abstract void onHide();
+
+    public void input() {
+
+    }
 }

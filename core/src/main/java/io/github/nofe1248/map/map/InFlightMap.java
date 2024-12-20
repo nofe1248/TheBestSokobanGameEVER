@@ -61,6 +61,8 @@ public class InFlightMap {
         Point playerPosition = map.getPlayerPosition();
         Point newPosition = new Point(playerPosition.x + movementVector.x, playerPosition.y + movementVector.y);
         Point boxTargetPosition = new Point(playerPosition.x + movementVector.x * 2, playerPosition.y + movementVector.y * 2);
+        System.out.println(direction);
+        Map oldMap = new Map(map);
 
         if (!map.isPositionValid(newPosition)) {
             return false;
@@ -78,16 +80,16 @@ public class InFlightMap {
                 return false;
             }
             map.setMapElement(boxTargetPosition, map.getMapElement(newPosition).isAnyOf(MapElement.GOAL) ? MapElement.BOX_ON_GOAL : MapElement.BOX);
-            map.setMapElement(newPosition, map.getMapElement(playerPosition).isAnyOf(MapElement.GOAL, MapElement.BOX_ON_GOAL) ? MapElement.PLAYER_ON_GOAL : MapElement.PLAYER);
+            map.setMapElement(newPosition, map.getMapElement(newPosition).isAnyOf(MapElement.GOAL, MapElement.BOX_ON_GOAL) ? MapElement.PLAYER_ON_GOAL : MapElement.PLAYER);
             map.setMapElement(playerPosition, map.getMapElement(playerPosition).isAnyOf(MapElement.PLAYER_ON_GOAL) ? MapElement.GOAL : MapElement.EMPTY);
         }
         else {
-            map.setMapElement(newPosition, map.getMapElement(playerPosition).isAnyOf(MapElement.GOAL) ? MapElement.PLAYER_ON_GOAL : MapElement.PLAYER);
+            map.setMapElement(newPosition, map.getMapElement(newPosition).isAnyOf(MapElement.GOAL) ? MapElement.PLAYER_ON_GOAL : MapElement.PLAYER);
             map.setMapElement(playerPosition, map.getMapElement(playerPosition).isAnyOf(MapElement.PLAYER_ON_GOAL) ? MapElement.GOAL : MapElement.EMPTY);
         }
 
         steps++;
-        previousMaps.add(new Map(map));
+        previousMaps.add(oldMap);
 
         return true;
     }

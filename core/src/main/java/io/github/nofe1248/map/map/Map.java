@@ -238,8 +238,10 @@ public class Map implements Cloneable {
     }
 
     public void setMapElement(int x, int y, MapElement element) {
-        this.renderTable.getCells().get(convertPointToIndexInRenderTable(x, y)).getActor().remove();
-        this.renderTable.getCells().get(convertPointToIndexInRenderTable(x, y)).setActor(element.getActor());
+        var cell = this.renderTable.getCells().get(convertPointToIndexInRenderTable(x, y));
+        assert cell != null;
+        cell.clearActor();
+        cell.setActor(element.getActor());
         if (underlyingMap[x][y] == element) {
             return ;
         }
@@ -287,7 +289,7 @@ public class Map implements Cloneable {
     }
 
     public void setMapElement(Point position, MapElement element) {
-        underlyingMap[(int)position.getX()][(int)position.getY()] = element;
+        setMapElement(position.x, position.y, element);
     }
 
     public int getWidth() {
@@ -318,12 +320,13 @@ public class Map implements Cloneable {
         return goalPositions.size();
     }
 
-    public String getStateString() {
+    public String getStringRepresentation() {
         StringBuilder sb = new StringBuilder();
         for (MapElement[] row : underlyingMap) {
             for (MapElement element : row) {
                 sb.append(element.toCharRepresentation());
             }
+            sb.append("\n");
         }
         return sb.toString();
     }
@@ -353,7 +356,7 @@ public class Map implements Cloneable {
 
     @Override
     public String toString() {
-        return String.format("Map(height: %d, width: %d, seed: %d):\n%s", underlyingMap.length, underlyingMap[0].length, this.seed, this.dump());
+        return String.format("Map(height: %d, width: %d, seed: %d):\n%s", underlyingMap.length, underlyingMap[0].length, this.seed, this.getStringRepresentation());
     }
 
     @Override
