@@ -13,56 +13,53 @@ import java.net.Socket;
 public class Server {
     private Socket socket = null;
     private boolean listening = false;
+    private Map map;
 
-    public boolean connect() {
+    public Server(Map map) {
+        this.map = map;
+        this.listening = true;
         try (ServerSocket serverSocket = new ServerSocket(23456)) {
-            while (true) {
-                socket = serverSocket.accept();
-                listening = true;
-                return true;
+            while (this.listening) {
+                this.socket = serverSocket.accept();
             }
         } catch (IOException e) {
             Log.writeLogToFile("IOException: " + e.getMessage());
-            listening = false;
-            return false;
         }
     }
 
     public boolean isConnected() {
-        if (socket != null && socket.isConnected()) {
+        if (this.socket != null && this.socket.isConnected()) {
             return true;
         }
         return false;
     }
 
     public void disconnect() {
-        if (socket != null && socket.isConnected()) {
+        if (this.socket != null && this.socket.isConnected()) {
             try {
-                socket.close();
-                listening = false;
+                this.socket.close();
+                this.listening = false;
             } catch (IOException e) {
                 Log.writeLogToFile("IOException: " + e.getMessage());
             }
         }
     }
 
-    public <T> boolean sendObject(T data) {
-        if (socket != null && socket.isConnected()) {
-            try (OutputStream outputStream = socket.getOutputStream();
+    public <T> void sendObject(T data) {
+        if (this.socket != null && this.socket.isConnected()) {
+            try (OutputStream outputStream = this.socket.getOutputStream();
                  ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream)) {
                 objectOutputStream.writeObject(data);
-                return true;
             } catch (IOException e) {
                 Log.writeLogToFile("IOException: " + e.getMessage());
             }
         }
-        return false;
     }
 
     public Object receiveObject() {
-        while (listening) {
-            if (socket != null && socket.isConnected()) {
-                try (InputStream inputStream = socket.getInputStream();
+        while (this.listening) {
+            if (this.socket != null && this.socket.isConnected()) {
+                try (InputStream inputStream = this.socket.getInputStream();
                      ObjectInputStream objectInputStream = new ObjectInputStream(inputStream)) {
                     Object response = objectInputStream.readObject();
 
