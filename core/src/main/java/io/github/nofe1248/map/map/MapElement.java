@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
+import com.badlogic.gdx.utils.Scaling;
 import io.github.nofe1248.preferences.GamePreferences;
 
 public enum MapElement {
@@ -23,6 +24,7 @@ public enum MapElement {
     static Texture goalTexture = new Texture("images/Block/Goal.png");
     static Texture wallTexture = new Texture("images/Block/Wall.png");
     static Texture emptyTexture = new Texture("images/Block/Ground.png");
+    static Texture boxOnGoalTexture = new Texture("images/Block/Chest_Goal.png");
 
     public boolean isAnyOf(MapElement... elements) {
         for (MapElement element : elements) {
@@ -72,45 +74,33 @@ public enum MapElement {
             case PLAYER -> {
                 Stack stack = new Stack();
                 stack.add(new Image(emptyTexture));
-                stack.add(new Image(switch (GamePreferences.getCharacterSelection()) {
+                Image playerImage = new Image(switch (GamePreferences.getCharacterSelection()) {
                     case MONIKA -> playerMonikaTexture;
                     case NATSUKI -> playerNatsukiTexture;
                     case SAYORI -> playerSayoriTexture;
                     case YURI -> playerYuriTexture;
-                }));
+                });
+                playerImage.setScaling(Scaling.fit);
+                stack.add(playerImage);
                 yield stack;
             }
             case PLAYER_ON_GOAL -> {
                 Stack stack = new Stack();
                 stack.add(new Image(emptyTexture));
                 stack.add(new Image(goalTexture));
-                stack.add(new Image(switch (GamePreferences.getCharacterSelection()) {
+                Image playerImage = new Image(switch (GamePreferences.getCharacterSelection()) {
                     case MONIKA -> playerMonikaTexture;
                     case NATSUKI -> playerNatsukiTexture;
                     case SAYORI -> playerSayoriTexture;
                     case YURI -> playerYuriTexture;
-                }));
+                });
+                playerImage.setScaling(Scaling.fit);
+                stack.add(playerImage);
                 yield stack;
             }
-            case BOX -> {
-                Stack stack = new Stack();
-                stack.add(new Image(emptyTexture));
-                stack.add(new Image(boxTexture));
-                yield stack;
-            }
-            case GOAL -> {
-                Stack stack = new Stack();
-                stack.add(new Image(emptyTexture));
-                stack.add(new Image(goalTexture));
-                yield stack;
-            }
-            case BOX_ON_GOAL -> {
-                Stack stack = new Stack();
-                stack.add(new Image(emptyTexture));
-                stack.add(new Image(goalTexture));
-                stack.add(new Image(boxTexture));
-                yield stack;
-            }
+            case BOX -> new Image(boxTexture);
+            case GOAL -> new Image(goalTexture);
+            case BOX_ON_GOAL -> new Image(boxOnGoalTexture);
             case WALL -> new Image(wallTexture);
             case EMPTY -> new Image(emptyTexture);
         };
