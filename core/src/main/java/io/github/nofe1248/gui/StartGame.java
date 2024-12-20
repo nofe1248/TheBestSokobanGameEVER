@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import io.github.nofe1248.map.MapManager;
+import io.github.nofe1248.map.map.InFlightMap;
 import io.github.nofe1248.sound.BackgroundMusicSelection;
 
 public class StartGame extends BaseSaveGUI {
@@ -162,5 +163,18 @@ public class StartGame extends BaseSaveGUI {
     @Override
     public void onHide() {
 
+    }
+
+    @Override
+    protected void mapButtonCallback(int mapIndex, boolean mapExists) {
+        GUIManager manager = GUIManager.getManager();
+        if (mapExists) {
+            manager.getSoundEffectManager().playClick();
+            ((InGame) manager.getGUI(GUISelection.IN_GAME)).setActiveMap(new InFlightMap(MapManager.getMap(mapIndex)));
+            manager.setCurrentGUI(GUISelection.IN_GAME);
+        }
+        else {
+            manager.setCurrentGUI(GUISelection.NEW_MAP);
+        }
     }
 }
