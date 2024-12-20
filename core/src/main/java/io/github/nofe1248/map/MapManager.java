@@ -39,7 +39,7 @@ public class MapManager {
                         try {
                             String jsonContent = Files.readString(path);
                             Map map = new Map(jsonContent);
-                            map.fromJSON(jsonContent);
+                            map.fromJSONString(jsonContent);
                             mapList.put(mapNumber, map);
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -135,7 +135,7 @@ public class MapManager {
         //the map image should be named as map1.png, map2.png, map3.png, etc.
         mapList.forEach((key, value) -> {
             try {
-                Files.writeString(Paths.get("map", "map" + key + ".json"), value.toJSON());
+                Files.writeString(Paths.get("map", "map" + key + ".json"), value.toJSONString());
                 value.saveMapImage(Paths.get("map", "map" + key + ".png"));
             } catch (IOException e) {
                 e.printStackTrace();

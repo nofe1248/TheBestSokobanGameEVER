@@ -67,9 +67,7 @@ public abstract class BaseSaveGUI extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
-                if (!map1Exists) {
-                    manager.setCurrentGUI(GUISelection.NEW_MAP);
-                }
+                mapButtonCallback(currentPage * 4 - 3, map1Exists);
             }
         });
 
@@ -80,9 +78,7 @@ public abstract class BaseSaveGUI extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
-                if (!map2Exists) {
-                    manager.setCurrentGUI(GUISelection.NEW_MAP);
-                }
+                mapButtonCallback(currentPage * 4 - 2, map2Exists);
             }
         });
 
@@ -93,9 +89,7 @@ public abstract class BaseSaveGUI extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
-                if (!map3Exists) {
-                    manager.setCurrentGUI(GUISelection.NEW_MAP);
-                }
+                mapButtonCallback(currentPage * 4 - 1, map3Exists);
             }
         });
 
@@ -106,9 +100,7 @@ public abstract class BaseSaveGUI extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
-                if (!map4Exists) {
-                    manager.setCurrentGUI(GUISelection.NEW_MAP);
-                }
+                mapButtonCallback(currentPage * 4, map4Exists);
             }
         });
 
@@ -119,9 +111,7 @@ public abstract class BaseSaveGUI extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
-                if (!map1Exists) {
-                    manager.setCurrentGUI(GUISelection.NEW_MAP);
-                }
+                mapButtonCallback(currentPage * 4 - 3, map1Exists);
             }
         });
 
@@ -132,9 +122,7 @@ public abstract class BaseSaveGUI extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
-                if (!map2Exists) {
-                    manager.setCurrentGUI(GUISelection.NEW_MAP);
-                }
+                mapButtonCallback(currentPage * 4 - 2, map2Exists);
             }
         });
 
@@ -145,9 +133,7 @@ public abstract class BaseSaveGUI extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
-                if (!map3Exists) {
-                    manager.setCurrentGUI(GUISelection.NEW_MAP);
-                }
+                mapButtonCallback(currentPage * 4 - 1, map3Exists);
             }
         });
 
@@ -158,9 +144,7 @@ public abstract class BaseSaveGUI extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
-                if (!map4Exists) {
-                    manager.setCurrentGUI(GUISelection.NEW_MAP);
-                }
+                mapButtonCallback(currentPage * 4, map4Exists);
             }
         });
 
@@ -210,4 +194,6 @@ public abstract class BaseSaveGUI extends BaseGUI {
             }
         });
     }
+
+    abstract protected void mapButtonCallback(int mapNumber, boolean exists);
 }

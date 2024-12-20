@@ -62,17 +62,21 @@ public class Map implements Cloneable {
     }
 
     public Map(String rawMap) {
-        this.fromJSON(rawMap);
+        this.fromJSONString(rawMap);
     }
 
     //load map from file
     public Map(Path path) {
         try {
             String rawMap = Files.readString(path);
-            this.fromJSON(rawMap);
+            this.fromJSONString(rawMap);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Map(JSONObject obj) {
+        this.fromJSON(obj);
     }
 
     public void update() {
@@ -125,7 +129,11 @@ public class Map implements Cloneable {
         this.renderTable.setFillParent(true);
         for (MapElement[] mapElements : underlyingMap) {
             for (MapElement mapElement : mapElements) {
-                this.renderTable.add(mapElement.getActor()).width(30).height(30);
+                //the smaller the map, the larger the cell size, the 15 * 15 map will have a cell size of 30
+                //and the 5 * 5 map will have a cell size of 220
+                int width = 30 + (15 - getWidth()) * 4;
+                int height = 30 + (15 - getHeight()) * 4;
+                this.renderTable.add(mapElement.getActor()).width(width).height(height);
             }
             this.renderTable.row();
         }
@@ -362,8 +370,7 @@ public class Map implements Cloneable {
         }
     }
 
-    public void fromJSON(String json) {
-        JSONObject obj = JSONObject.parseObject(json);
+    public void fromJSON(JSONObject obj) {
         assert obj.containsKey("width");
         assert obj.containsKey("height");
         assert obj.containsKey("seed");
@@ -387,14 +394,23 @@ public class Map implements Cloneable {
         update();
     }
 
-    public String toJSON() {
+    public void fromJSONString(String json) {
+        JSONObject obj = JSONObject.parseObject(json);
+        fromJSON(obj);
+    }
+
+    public JSONObject toJSON() {
         JSONObject obj = new JSONObject();
         obj.put("width", getWidth());
         obj.put("height", getHeight());
         obj.put("seed", seed);
         obj.put("difficulty", difficulty);
         obj.put("map", dump());
-        return obj.toJSONString(JSONWriter.Feature.PrettyFormat);
+        return obj;
+    }
+
+    public String toJSONString() {
+        return toJSON().toJSONString(JSONWriter.Feature.PrettyFormat);
     }
 
     public void saveMapImage(Path path) {
