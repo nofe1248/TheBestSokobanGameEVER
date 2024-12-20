@@ -206,6 +206,9 @@ public class InGame extends BaseGUI {
     }
 
     public void setActiveMap(InFlightMap activeMap) {
+        if (this.activeMap != null) {
+            this.mapRenderTable.remove();
+        }
         this.activeMap = activeMap;
     }
 

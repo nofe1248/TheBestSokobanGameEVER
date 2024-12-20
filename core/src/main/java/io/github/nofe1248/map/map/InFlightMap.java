@@ -18,7 +18,7 @@ public class InFlightMap {
     private long startTime = 0;
 
     public InFlightMap(Map map) {
-        this.map = map;
+        this.map = new Map(map);
     }
 
     public Map getMap() {
