@@ -47,6 +47,10 @@ public class GUIManager extends ApplicationAdapter {
         }
     }
 
+    public BaseGUI getGUI(GUISelection selection) {
+        return this.guiMap.get(selection);
+    }
+
     @Override
     public void create() {
         this.guiSelectionStack = new Stack<>();
@@ -54,6 +58,7 @@ public class GUIManager extends ApplicationAdapter {
         this.guiMap = new HashMap<>();
         this.guiMap.put(GUISelection.LOAD_GAME, new LoadGame());
         this.guiMap.put(GUISelection.LOGIN_PANEL, new LoginPanel());
+        this.guiMap.put(GUISelection.IN_GAME, new InGame());
         this.guiMap.put(GUISelection.MAIN_MENU, new MainMenu());
         this.guiMap.put(GUISelection.MULTIPLAYER, new Multiplayer());
         this.guiMap.put(GUISelection.NEW_MAP, new NewMap());
