@@ -12,6 +12,8 @@ public class SoundEffectManager {
     public SoundEffectManager() {
         this.soundEffectMap = new HashMap<>();
         this.soundEffectMap.put(SoundEffectSelection.BUTTON_CLICK, Gdx.audio.newSound(Gdx.files.internal("audio/Action/Keyboard/click.ogg")));
+        this.soundEffectMap.put(SoundEffectSelection.PLAYER_MOVE, Gdx.audio.newSound(Gdx.files.internal("audio/Action/Keyboard/move.wav")));
+        this.soundEffectMap.put(SoundEffectSelection.PLAYER_MOVE_FAIL, Gdx.audio.newSound(Gdx.files.internal("audio/Action/Keyboard/move_failed.wav")));
     }
 
     public void playSoundEffect(SoundEffectSelection soundEffectSelection) {
@@ -20,6 +22,14 @@ public class SoundEffectManager {
 
     public void playClick(){
         this.playSoundEffect(SoundEffectSelection.BUTTON_CLICK);
+    }
+
+    public void playPlayerMove(){
+        this.playSoundEffect(SoundEffectSelection.PLAYER_MOVE);
+    }
+
+    public void playPlayerMoveFail(){
+        this.playSoundEffect(SoundEffectSelection.PLAYER_MOVE_FAIL);
     }
 
     public void dispose() {

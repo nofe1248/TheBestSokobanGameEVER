@@ -3,6 +3,8 @@ package io.github.nofe1248.map.map;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import com.alibaba.fastjson2.JSONWriter;
+import io.github.nofe1248.gui.GUIManager;
+import io.github.nofe1248.sound.SoundEffectManager;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -32,7 +34,7 @@ public class InFlightMap {
     }
 
     public long getElapsedTime() {
-        return elapsedTime;
+        return System.currentTimeMillis() - startTime;
     }
 
     public void clearElapsedTime() {
@@ -43,8 +45,8 @@ public class InFlightMap {
         startTime = System.currentTimeMillis();
     }
 
-    public void stopTimer() {
-        elapsedTime = System.currentTimeMillis() - startTime;
+    public void suspendTimer() {
+        elapsedTime += System.currentTimeMillis() - startTime;
     }
 
     public boolean revertLastMove() {
@@ -61,25 +63,30 @@ public class InFlightMap {
         Point playerPosition = map.getPlayerPosition();
         Point newPosition = new Point(playerPosition.x + movementVector.x, playerPosition.y + movementVector.y);
         Point boxTargetPosition = new Point(playerPosition.x + movementVector.x * 2, playerPosition.y + movementVector.y * 2);
-        System.out.println(direction);
         Map oldMap = new Map(map);
 
+        SoundEffectManager soundEffectManager = GUIManager.getManager().getSoundEffectManager();
+
         if (!map.isPositionValid(newPosition)) {
+            soundEffectManager.playPlayerMoveFail();
             return false;
         }
 
         if (map.getMapElement(newPosition).isAnyOf(MapElement.WALL)) {
+            soundEffectManager.playPlayerMoveFail();
             return false;
         }
 
         if (map.getMapElement(newPosition).isAnyOf(MapElement.BOX, MapElement.BOX_ON_GOAL)) {
             if (!map.isPositionValid(boxTargetPosition)) {
+                soundEffectManager.playPlayerMoveFail();
                 return false;
             }
             if (map.getMapElement(boxTargetPosition).isAnyOf(MapElement.WALL, MapElement.BOX, MapElement.BOX_ON_GOAL)) {
+                soundEffectManager.playPlayerMoveFail();
                 return false;
             }
-            map.setMapElement(boxTargetPosition, map.getMapElement(newPosition).isAnyOf(MapElement.GOAL) ? MapElement.BOX_ON_GOAL : MapElement.BOX);
+            map.setMapElement(boxTargetPosition, map.getMapElement(boxTargetPosition).isAnyOf(MapElement.GOAL) ? MapElement.BOX_ON_GOAL : MapElement.BOX);
             map.setMapElement(newPosition, map.getMapElement(newPosition).isAnyOf(MapElement.GOAL, MapElement.BOX_ON_GOAL) ? MapElement.PLAYER_ON_GOAL : MapElement.PLAYER);
             map.setMapElement(playerPosition, map.getMapElement(playerPosition).isAnyOf(MapElement.PLAYER_ON_GOAL) ? MapElement.GOAL : MapElement.EMPTY);
         }
@@ -88,6 +95,7 @@ public class InFlightMap {
             map.setMapElement(playerPosition, map.getMapElement(playerPosition).isAnyOf(MapElement.PLAYER_ON_GOAL) ? MapElement.GOAL : MapElement.EMPTY);
         }
 
+        soundEffectManager.playPlayerMove();
         steps++;
         previousMaps.add(oldMap);
 
@@ -143,5 +151,13 @@ public class InFlightMap {
 
     public String toJSONString() {
         return toJSON().toJSONString(JSONWriter.Feature.PrettyFormat);
+    }
+
+    //calculate the score based on the steps, time, and difficult of the map
+    //for the steps and the time, the less the better
+    //for the difficulty, the more the better
+    //the range is 0-1000
+    public int getScore() {
+        return 0;
     }
 }

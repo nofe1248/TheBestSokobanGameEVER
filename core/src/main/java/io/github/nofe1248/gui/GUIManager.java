@@ -97,7 +97,7 @@ public class GUIManager extends ApplicationAdapter {
         MapManager.saveAllMaps();
     }
 
-    static GUIManager getManager() {
+    public static GUIManager getManager() {
         return (GUIManager) Gdx.app.getApplicationListener();
     }
 }
