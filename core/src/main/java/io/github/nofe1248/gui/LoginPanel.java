@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import io.github.nofe1248.sound.BackgroundMusicSelection;
@@ -16,6 +17,11 @@ public class LoginPanel extends BaseGUI {
     @Override
     public void create() {
         super.create();
+
+        TextField usernameField = this.stage.getRoot().findActor("username");
+        assert usernameField != null;
+        TextField passwordField = this.stage.getRoot().findActor("password");
+        assert passwordField != null;
 
         TextButton quitButton = this.stage.getRoot().findActor("quit");
         assert quitButton != null;
@@ -36,6 +42,9 @@ public class LoginPanel extends BaseGUI {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.MAIN_MENU);
+
+                String username = usernameField.getText();
+                String password = passwordField.getText();
             }
         });
 
@@ -47,6 +56,9 @@ public class LoginPanel extends BaseGUI {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
                 manager.setCurrentGUI(GUISelection.MAIN_MENU);
+
+                String username = usernameField.getText();
+                String password = passwordField.getText();
             }
         });
     }
