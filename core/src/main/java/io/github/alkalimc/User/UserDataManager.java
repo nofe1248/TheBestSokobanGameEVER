@@ -25,7 +25,7 @@ public class UserDataManager {
         updateUserToFile(users);
     }
 
-    //从文件加载所有用户，会返回一个表，但还是建议在这个class里面实现其他需要使用的功能
+    //从文件加载所有用户，会返回一个表
     public static ArrayList<User> loadUserFromFile() {
         ArrayList<User> users = new ArrayList<>();
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
