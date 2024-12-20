@@ -7066,7 +7066,7 @@ sceneComposer: {
 						selectionEnd: 0
 						selectAll: false
 						focusTraversal: true
-						maxLength: 0
+						maxLength: 3
 						messageText: " 1"
 						touchable: enabled
 						visible: true

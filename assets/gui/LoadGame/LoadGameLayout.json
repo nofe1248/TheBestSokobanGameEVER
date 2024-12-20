@@ -845,8 +845,8 @@
 					"selectionEnd": 0,
 					"selectAll": false,
 					"focusTraversal": true,
-					"maxLength": 0,
-					"messageText": null,
+					"maxLength": 3,
+					"messageText": " 1",
 					"touchable": "enabled",
 					"visible": true
 				},
