@@ -15,7 +15,7 @@ public class InFlightMap {
     private List<Map> previousMaps = new ArrayList<>();
     private int steps = 0;
     private long elapsedTime = 0;
-    private long startTime = 0;
+    private long startTime = System.currentTimeMillis();
 
     public InFlightMap(Map map) {
         this.map = new Map(map);
@@ -42,7 +42,8 @@ public class InFlightMap {
     }
 
     public long getElapsedTime() {
-        return System.currentTimeMillis() - startTime;
+        updateElapsedTime();
+        return elapsedTime;
     }
 
     public void clearElapsedTime() {
@@ -58,7 +59,8 @@ public class InFlightMap {
     }
 
     public void updateElapsedTime() {
-        elapsedTime = System.currentTimeMillis() - startTime;
+        elapsedTime += System.currentTimeMillis() - startTime;
+        startTime = System.currentTimeMillis();
     }
 
     public boolean revertLastMove() {
@@ -158,6 +160,7 @@ public class InFlightMap {
         json.put("previousMaps", previousMapsJson);
         json.put("steps", steps);
         updateElapsedTime();
+        this.startTime = System.currentTimeMillis();
         json.put("elapsedTime", elapsedTime);
         return json;
     }

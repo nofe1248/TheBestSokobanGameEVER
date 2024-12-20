@@ -303,6 +303,7 @@ public class SaveGame extends BaseSaveGUI {
 
     @Override
     public void onShow() {
+        updateMapTitleOnPageChange();
         GUIManager
             .getManager()
             .getBackgroundMusicManager()
