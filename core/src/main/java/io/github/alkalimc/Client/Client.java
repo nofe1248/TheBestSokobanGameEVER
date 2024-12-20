@@ -10,21 +10,17 @@ import io.github.nofe1248.map.map.Map;
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Client {
-    private static Socket socket = null;
-    private static boolean listening = true;
+    private Socket socket = null;
+    private boolean listening = true;
     private static boolean firstMap = false;
-    private static ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-    public static boolean connect(String ip) {
+    public boolean connect(String ip) {
         try {
             socket = new Socket(ip, 23456);
             listening = true;
             firstMap = true;
-            executorService.submit(Client::receiveObject);
             return true;
         } catch (UnknownHostException e) {
             Log.writeLogToFile("UnknownHostException: " + e.getMessage());
@@ -37,14 +33,14 @@ public class Client {
         }
     }
 
-    public static boolean isConnected() {
+    public boolean isConnected() {
         if (socket != null && socket.isConnected()) {
             return true;
         }
         return false;
     }
 
-    public static void disconnect() {
+    public void disconnect() {
         if (socket != null && socket.isConnected()) {
             try {
                 socket.close();
@@ -56,7 +52,7 @@ public class Client {
         }
     }
 
-    public static <T> boolean sendObject(T data) {
+    public <T> boolean sendObject(T data) {
         if (socket != null && socket.isConnected()) {
             try (OutputStream outputStream = socket.getOutputStream();
                  ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream)) {
@@ -69,7 +65,7 @@ public class Client {
         return false;
     }
 
-    public static Object receiveObject() {
+    public Object receiveObject() {
         while (listening) {
             if (socket != null && socket.isConnected()) {
                 try (InputStream inputStream = socket.getInputStream();
@@ -78,7 +74,6 @@ public class Client {
 
                     if (response instanceof Map) {
                         if (firstMap) {
-                            GetMap.getMap((Map) response);
                             firstMap = false;
                         }
                         else {
