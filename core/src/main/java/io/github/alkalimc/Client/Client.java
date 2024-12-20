@@ -1,10 +1,11 @@
 package io.github.alkalimc.Client;
 
-import io.github.alkalimc.Server.Server;
+import io.github.alkalimc.Update.Lose;
 import io.github.alkalimc.Update.UpdateMap;
 import io.github.alkalimc.Update.UpdateUserInfo;
 import io.github.alkalimc.User.Log;
-import io.github.alkalimc.User.UserInfo;
+import io.github.alkalimc.Info.UserInfo;
+import io.github.alkalimc.Info.WinInfo;
 import io.github.nofe1248.map.map.Map;
 
 import java.io.*;
@@ -13,77 +14,72 @@ import java.net.UnknownHostException;
 
 public class Client {
     private Socket socket = null;
-    private boolean listening = true;
+    private boolean listening = false;
     private static boolean firstMap = false;
 
-    public boolean connect(String ip) {
+    public void start(String ip) {
         try {
-            socket = new Socket(ip, 23456);
-            listening = true;
-            firstMap = true;
-            return true;
+            this.socket = new Socket(ip, 23456);
+            this.listening = true;
+            this.firstMap = true;
         } catch (UnknownHostException e) {
             Log.writeLogToFile("UnknownHostException: " + e.getMessage());
-            firstMap = false;
-            return false;
         } catch (IOException e) {
             Log.writeLogToFile("IOException: " + e.getMessage());
-            firstMap = false;
-            return false;
         }
     }
 
     public boolean isConnected() {
-        if (socket != null && socket.isConnected()) {
+        if (this.socket != null && this.socket.isConnected()) {
             return true;
         }
         return false;
     }
 
     public void disconnect() {
-        if (socket != null && socket.isConnected()) {
+        if (this.socket != null && this.socket.isConnected()) {
             try {
-                socket.close();
-                listening = false;
-                firstMap = false;
+                this.socket.close();
+                this.listening = false;
+                this.firstMap = false;
             } catch (IOException e) {
                 Log.writeLogToFile("IOException: " + e.getMessage());
             }
         }
     }
 
-    public <T> boolean sendObject(T data) {
-        if (socket != null && socket.isConnected()) {
-            try (OutputStream outputStream = socket.getOutputStream();
+    public <T> void sendObject(T data) {
+        if (this.socket != null && this.socket.isConnected()) {
+            try (OutputStream outputStream = this.socket.getOutputStream();
                  ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream)) {
                 objectOutputStream.writeObject(data);
-                return true;
             } catch (IOException e) {
                 Log.writeLogToFile("IOException: " + e.getMessage());
             }
         }
-        return false;
     }
 
-    public Object receiveObject() {
-        while (listening) {
-            if (socket != null && socket.isConnected()) {
-                try (InputStream inputStream = socket.getInputStream();
+    public void receiveObject() {
+        while (this.listening) {
+            if (this.socket != null && this.socket.isConnected()) {
+                try (InputStream inputStream = this.socket.getInputStream();
                      ObjectInputStream objectInputStream = new ObjectInputStream(inputStream)) {
                     Object response = objectInputStream.readObject();
 
                     if (response instanceof Map) {
-                        if (firstMap) {
-                            firstMap = false;
+                        if (this.firstMap) {
+                            new GetMap((Map) response);
+                            this.firstMap = false;
                         }
                         else {
-                            UpdateMap.updateMap((Map) response);
+                            new UpdateMap((Map) response);
                         }
-                        return (Map) response;
                     }
                     else if (response instanceof UserInfo) {
                         new UpdateUserInfo((UserInfo) response);
-                        return (UserInfo) response;
+                    }
+                    else if (response instanceof WinInfo) {
+                        new Lose((WinInfo) response);
                     }
                     else {
                         Log.writeLogToFile("Received object is not a valid type. Received type: " + response.getClass().getName());
@@ -92,8 +88,6 @@ public class Client {
                     Log.writeLogToFile("Exception: " + e.getMessage());
                 }
             }
-            return null;
         }
-        return null;
     }
 }

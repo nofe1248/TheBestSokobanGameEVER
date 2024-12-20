@@ -1,4 +1,6 @@
-package io.github.alkalimc.User;
+package io.github.alkalimc.Info;
+
+import io.github.alkalimc.User.User;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
