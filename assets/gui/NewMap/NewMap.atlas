@@ -26,16 +26,9 @@ filter: Linear, Linear
 repeat: none
 Dir
   rotate: false
-  xy: 1629, 1798
-  size: 28, 28
-  orig: 28, 28
-  offset: 0, 0
-  index: -1
-Dir_Big
-  rotate: false
-  xy: 965, 971
-  size: 48, 48
-  orig: 48, 48
+  xy: 1223, 729
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
   index: -1
 Halogen
