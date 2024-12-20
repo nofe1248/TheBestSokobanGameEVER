@@ -12,12 +12,6 @@ com.badlogic.gdx.graphics.g2d.BitmapFont: {
 		markupEnabled: false
 		flip: false
 	}
-	Halogen_Black: {
-		file: Halogen_Black.fnt
-		scaledSize: -1
-		markupEnabled: false
-		flip: false
-	}
 	Halogen_Middle: {
 		file: Halogen_Middle.fnt
 		scaledSize: -1
@@ -32,12 +26,6 @@ com.badlogic.gdx.graphics.g2d.BitmapFont: {
 	}
 	RifficFree-Bold_Big: {
 		file: RifficFree-Bold_Big.fnt
-		scaledSize: -1
-		markupEnabled: false
-		flip: false
-	}
-	RifficFree-Bold_Black: {
-		file: RifficFree-Bold_Black.fnt
 		scaledSize: -1
 		markupEnabled: false
 		flip: false
@@ -86,12 +74,6 @@ com.badlogic.gdx.graphics.Color: {
 		b: 1
 		a: 1
 	}
-	RGBA_85_34_34_255: {
-		r: 0.33333334
-		g: 0.13333334
-		b: 0.13333334
-		a: 1
-	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle: {
 	default: {
@@ -124,30 +106,6 @@ com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle: {
 		imageOver: Yuri_Selected
 		imageDisabled: Yuri_Modified
 	}
-	left: {
-		imageUp: left_Modified
-		imageDown: left_Modified
-		imageOver: left_Selected_Modified
-		imageDisabled: left_Selected_Modified
-	}
-	right: {
-		imageUp: right_Modified
-		imageDown: right_Modified
-		imageOver: right_Selected_Modified
-		imageDisabled: right_Selected_Modified
-	}
-	up: {
-		imageUp: up_Modified
-		imageDown: up_Modified
-		imageOver: up_Selected_Modified
-		imageDisabled: up_Selected_Modified
-	}
-	down: {
-		imageUp: down_Modified
-		imageDown: down_Modified
-		imageOver: down_Selected_Modified
-		imageDisabled: down_Selected_Modified
-	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 	default: {
@@ -166,9 +124,30 @@ com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 		font: Halogen_Middle
 		fontColor: RGBA_255_255_255_255
 	}
-	mini: {
-		font: Halogen_Black
-		fontColor: RGBA_255_255_255_255
+}
+com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle: {
+	default-horizontal: {
+		background: choice_hover_background_Modified
+		knob: Chest_Modified
+	}
+	default: {
+		parent: default-horizontal
+		backgroundOver: choice_idle_background_Modified
+		backgroundDown: choice_idle_background_Modified
+		knobOver: Chest_Modified_36
+		knobDown: Chest_Modified_36
+		knobBeforeOver: choice_hover_background_Modified
+		knobBeforeDown: choice_hover_background_Modified
+		knobAfterOver: choice_idle_background_Modified
+		knobAfterDown: choice_idle_background_Modified
+		background: choice_hover_background_Modified
+		disabledBackground: choice_idle_background_Modified
+		knob: Chest_Modified
+		disabledKnob: Chest_Modified_36
+		knobBefore: choice_hover_background_Modified
+		disabledKnobBefore: choice_idle_background_Modified
+		knobAfter: choice_idle_background_Modified
+		disabledKnobAfter: choice_idle_background_Modified
 	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
@@ -198,18 +177,6 @@ com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
 	}
 	middle_selected: {
 		font: RifficFree-Bold_Middle_Select
-		fontColor: RGBA_255_255_255_255
-		downFontColor: RGBA_255_255_255_255
-		overFontColor: RGBA_187_85_153_255
-		pressedOffsetX: 2
-		pressedOffsetY: 2
-		unpressedOffsetX: 1
-		unpressedOffsetY: 1
-		checkedOffsetX: 1
-		checkedOffsetY: 1
-	}
-	mini: {
-		font: RifficFree-Bold_Black
 		fontColor: RGBA_255_255_255_255
 		downFontColor: RGBA_255_255_255_255
 		overFontColor: RGBA_187_85_153_255

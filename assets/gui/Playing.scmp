@@ -4497,7 +4497,7 @@ preferences: {
 	}
 	last-import-export-path: {
 		class: java.lang.String
-		value: C:/Users/qigao/Documents/GitHub/TheBestSokobanGameEVER/assets/gui/Settings/Settings.json
+		value: C:/Users/qigao/Documents/GitHub/TheBestSokobanGameEVER/assets/gui/Playing/Playing.json
 	}
 	resources-relative: {
 		class: java.lang.Boolean

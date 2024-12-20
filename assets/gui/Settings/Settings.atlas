@@ -24,339 +24,311 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-down_Modified
+Chest
   rotate: false
-  xy: 949, 955
+  xy: 1294, 1004
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-down_Selected_Modified
+Chest_Modified
   rotate: false
-  xy: 509, 474
-  size: 64, 64
-  orig: 64, 64
+  xy: 1429, 1746
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
   index: -1
-left_Modified
+Chest_Modified_36
   rotate: false
-  xy: 67, 54
-  size: 64, 64
-  orig: 64, 64
+  xy: 1535, 1805
+  size: 36, 36
+  orig: 36, 36
   offset: 0, 0
   index: -1
-left_Selected_Modified
+choice_hover_background
   rotate: false
-  xy: 133, 54
-  size: 64, 64
-  orig: 64, 64
+  xy: 1027, 1743
+  size: 400, 35
+  orig: 400, 35
   offset: 0, 0
   index: -1
-right_Modified
+choice_hover_background_Modified
   rotate: false
-  xy: 199, 54
-  size: 64, 64
-  orig: 64, 64
+  xy: 1535, 1843
+  size: 183, 16
+  orig: 183, 16
   offset: 0, 0
   index: -1
-right_Selected_Modified
+choice_idle_background
   rotate: false
-  xy: 949, 889
-  size: 64, 64
-  orig: 64, 64
+  xy: 1, 112
+  size: 400, 35
+  orig: 400, 35
   offset: 0, 0
   index: -1
-up_Modified
+choice_idle_background_Modified
   rotate: false
-  xy: 1535, 1314
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-up_Selected_Modified
-  rotate: false
-  xy: 1601, 1314
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-textbox_Modified
-  rotate: false
-  xy: 1, 779
-  size: 512, 92
-  orig: 512, 92
+  xy: 515, 528
+  size: 183, 16
+  orig: 183, 16
   offset: 0, 0
   index: -1
 Halogen
   rotate: false
-  xy: 1541, 1966
+  xy: 1027, 1960
   size: 506, 79
   orig: 506, 79
   offset: 0, 0
   index: -1
 Halogen_Big
   rotate: false
-  xy: 1, 517
+  xy: 1, 149
   size: 506, 260
   orig: 506, 260
   offset: 0, 0
   index: -1
-Halogen_Black
-  rotate: false
-  xy: 1, 436
-  size: 506, 79
-  orig: 506, 79
-  offset: 0, 0
-  index: -1
 Halogen_Middle
   rotate: false
-  xy: 1, 283
+  xy: 515, 546
   size: 505, 151
   orig: 505, 151
   offset: 0, 0
   index: -1
 RifficFree-Bold
   rotate: false
-  xy: 1541, 1876
+  xy: 1, 411
   size: 506, 88
   orig: 506, 88
   offset: 0, 0
   index: -1
 RifficFree-Bold_Big
   rotate: false
-  xy: 1541, 1560
+  xy: 515, 699
   size: 506, 314
   orig: 506, 314
   offset: 0, 0
   index: -1
-RifficFree-Bold_Black
-  rotate: false
-  xy: 1027, 1287
-  size: 506, 64
-  orig: 506, 64
-  offset: 0, 0
-  index: -1
 RifficFree-Bold_Middle
   rotate: false
-  xy: 1541, 1380
+  xy: 1027, 1780
   size: 506, 178
   orig: 506, 178
   offset: 0, 0
   index: -1
 RifficFree-Bold_Middle_Select
   rotate: false
-  xy: 1027, 1353
+  xy: 1535, 1861
   size: 506, 178
   orig: 506, 178
   offset: 0, 0
   index: -1
 Monika_256
   rotate: false
-  xy: 515, 703
+  xy: 1285, 1233
   size: 119, 168
   orig: 119, 168
   offset: 0, 0
   index: -1
 Natsuki_256
   rotate: false
-  xy: 144, 120
+  xy: 1023, 676
   size: 141, 161
   orig: 141, 161
   offset: 0, 0
   index: -1
 Sayori_256
   rotate: false
-  xy: 1428, 1112
+  xy: 1166, 638
   size: 122, 173
   orig: 122, 173
   offset: 0, 0
   index: -1
 Monika_Modified
   rotate: false
-  xy: 1285, 956
+  xy: 1349, 1573
   size: 119, 168
   orig: 119, 168
   offset: 0, 0
   index: -1
 Monika_Modified_256
   rotate: false
-  xy: 1285, 956
+  xy: 1349, 1573
   size: 119, 168
   orig: 119, 168
   offset: 0, 0
   index: -1
 Monika_Selected
   rotate: false
-  xy: 1406, 942
+  xy: 1349, 1403
   size: 119, 168
   orig: 119, 168
   offset: 0, 0
   index: -1
 Monika_Selected_256
   rotate: false
-  xy: 1406, 942
+  xy: 1349, 1403
   size: 119, 168
   orig: 119, 168
   offset: 0, 0
   index: -1
 Natsuki_Modified
   rotate: false
-  xy: 1, 120
+  xy: 1027, 1000
   size: 141, 161
   orig: 141, 161
   offset: 0, 0
   index: -1
 Natsuki_Modified_256
   rotate: false
-  xy: 1, 120
+  xy: 1027, 1000
   size: 141, 161
   orig: 141, 161
   offset: 0, 0
   index: -1
 Natsuki_Selected
   rotate: false
-  xy: 1285, 1126
+  xy: 1023, 839
   size: 141, 159
   orig: 141, 159
   offset: 0, 0
   index: -1
 Natsuki_Selected_256
   rotate: false
-  xy: 1285, 1126
+  xy: 1023, 839
   size: 141, 159
   orig: 141, 159
   offset: 0, 0
   index: -1
 Sayori_Modified
   rotate: false
-  xy: 287, 108
+  xy: 1170, 988
   size: 122, 173
   orig: 122, 173
   offset: 0, 0
   index: -1
 Sayori_Modified_256
   rotate: false
-  xy: 287, 108
+  xy: 1170, 988
   size: 122, 173
   orig: 122, 173
   offset: 0, 0
   index: -1
 Sayori_Selected
   rotate: false
-  xy: 411, 108
+  xy: 1166, 813
   size: 122, 173
   orig: 122, 173
   offset: 0, 0
   index: -1
 Sayori_Selected_256
   rotate: false
-  xy: 411, 108
+  xy: 1166, 813
   size: 122, 173
   orig: 122, 173
   offset: 0, 0
   index: -1
 Yuri
   rotate: false
-  xy: 509, 540
+  xy: 1294, 1070
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
   index: -1
 Yuri_256
   rotate: false
-  xy: 509, 540
+  xy: 1294, 1070
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
   index: -1
 Yuri_Modified
   rotate: false
-  xy: 636, 710
+  xy: 1406, 1240
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
   index: -1
 Yuri_Modified_256
   rotate: false
-  xy: 636, 710
+  xy: 1406, 1240
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
   index: -1
 Yuri_Selected
   rotate: false
-  xy: 750, 710
+  xy: 1408, 1077
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
   index: -1
 Yuri_Selected_256
   rotate: false
-  xy: 750, 710
+  xy: 1408, 1077
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
   index: -1
 Logo1024
   rotate: false
-  xy: 1, 1021
+  xy: 1, 1015
   size: 1024, 1024
   orig: 1024, 1024
   offset: 0, 0
   index: -1
 Logo
   rotate: false
-  xy: 1, 1021
+  xy: 1, 1015
   size: 1024, 1024
   orig: 1024, 1024
   offset: 0, 0
   index: -1
 Logo128
   rotate: false
-  xy: 819, 891
+  xy: 1022, 546
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 Logo16
   rotate: false
-  xy: 819, 873
+  xy: 1285, 1403
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 Logo256
   rotate: false
-  xy: 1027, 1029
+  xy: 1027, 1163
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 Logo32
   rotate: false
-  xy: 1, 20
+  xy: 403, 115
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Logo512
   rotate: false
-  xy: 1027, 1533
+  xy: 1, 501
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 Logo64
   rotate: false
-  xy: 1, 54
+  xy: 1, 46
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-textbox
+Abstract
   rotate: false
-  xy: 1, 873
-  size: 816, 146
-  orig: 816, 146
+  xy: 1027, 1421
+  size: 320, 320
+  orig: 320, 320
   offset: 0, 0
   index: -1

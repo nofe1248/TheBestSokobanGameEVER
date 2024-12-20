@@ -124,6 +124,30 @@ com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle: {
 		imageOver: Yuri_Selected
 		imageDisabled: Yuri_Modified
 	}
+	left: {
+		imageUp: left_Modified
+		imageDown: left_Modified
+		imageOver: left_Selected_Modified
+		imageDisabled: left_Selected_Modified
+	}
+	right: {
+		imageUp: right_Modified
+		imageDown: right_Modified
+		imageOver: right_Selected_Modified
+		imageDisabled: right_Selected_Modified
+	}
+	up: {
+		imageUp: up_Modified
+		imageDown: up_Modified
+		imageOver: up_Selected_Modified
+		imageDisabled: up_Selected_Modified
+	}
+	down: {
+		imageUp: down_Modified
+		imageDown: down_Modified
+		imageOver: down_Selected_Modified
+		imageDisabled: down_Selected_Modified
+	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 	default: {

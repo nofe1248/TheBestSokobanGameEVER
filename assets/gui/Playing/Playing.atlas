@@ -24,6 +24,62 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
+down_Modified
+  rotate: false
+  xy: 949, 955
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+down_Selected_Modified
+  rotate: false
+  xy: 509, 474
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+left_Modified
+  rotate: false
+  xy: 67, 54
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+left_Selected_Modified
+  rotate: false
+  xy: 133, 54
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+right_Modified
+  rotate: false
+  xy: 199, 54
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+right_Selected_Modified
+  rotate: false
+  xy: 949, 889
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+up_Modified
+  rotate: false
+  xy: 1535, 1314
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+up_Selected_Modified
+  rotate: false
+  xy: 1601, 1314
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 textbox_Modified
   rotate: false
   xy: 1, 779
@@ -278,7 +334,7 @@ Logo256
   index: -1
 Logo32
   rotate: false
-  xy: 949, 987
+  xy: 1, 20
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
