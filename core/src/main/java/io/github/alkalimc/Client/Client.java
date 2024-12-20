@@ -66,10 +66,11 @@ public class Client {
 
                     if (response instanceof Map) {
                         if (this.firstMap) {
+                            new GetMap((Map) response);
                             this.firstMap = false;
                         }
                         else {
-                            UpdateMap.updateMap((Map) response);
+                            new UpdateMap((Map) response);
                         }
                         return (Map) response;
                     }

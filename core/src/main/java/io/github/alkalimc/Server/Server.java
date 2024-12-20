@@ -11,16 +11,19 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
-    private Socket socket = null;
+    private static Socket socket = null;
     private boolean listening = false;
     private Map map;
 
     public Server(Map map) {
         this.map = map;
+    }
+
+    public void start() {
         this.listening = true;
         try (ServerSocket serverSocket = new ServerSocket(23456)) {
             while (this.listening) {
-                this.socket = serverSocket.accept();
+                socket = serverSocket.accept();
             }
         } catch (IOException e) {
             Log.writeLogToFile("IOException: " + e.getMessage());
@@ -28,16 +31,16 @@ public class Server {
     }
 
     public boolean isConnected() {
-        if (this.socket != null && this.socket.isConnected()) {
+        if (socket != null && socket.isConnected()) {
             return true;
         }
         return false;
     }
 
     public void disconnect() {
-        if (this.socket != null && this.socket.isConnected()) {
+        if (socket != null && socket.isConnected()) {
             try {
-                this.socket.close();
+                socket.close();
                 this.listening = false;
             } catch (IOException e) {
                 Log.writeLogToFile("IOException: " + e.getMessage());
@@ -46,8 +49,8 @@ public class Server {
     }
 
     public <T> void sendObject(T data) {
-        if (this.socket != null && this.socket.isConnected()) {
-            try (OutputStream outputStream = this.socket.getOutputStream();
+        if (socket != null && socket.isConnected()) {
+            try (OutputStream outputStream = socket.getOutputStream();
                  ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream)) {
                 objectOutputStream.writeObject(data);
             } catch (IOException e) {
@@ -58,13 +61,13 @@ public class Server {
 
     public Object receiveObject() {
         while (this.listening) {
-            if (this.socket != null && this.socket.isConnected()) {
-                try (InputStream inputStream = this.socket.getInputStream();
+            if (socket != null && socket.isConnected()) {
+                try (InputStream inputStream = socket.getInputStream();
                      ObjectInputStream objectInputStream = new ObjectInputStream(inputStream)) {
                     Object response = objectInputStream.readObject();
 
                     if (response instanceof Map) {
-                        UpdateMap.updateMap((Map) response);
+                        new UpdateMap((Map) response);
                         return (Map) response;
                     }
                     else if (response instanceof UserInfo) {
