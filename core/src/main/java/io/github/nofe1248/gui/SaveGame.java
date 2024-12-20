@@ -196,11 +196,6 @@ public class SaveGame extends BaseSaveGUI {
     }
 
     @Override
-    protected void mapButtonCallback(int mapNumber, boolean exists) {
-
-    }
-
-    @Override
     public void onShow() {
         GUIManager
             .getManager()
