@@ -28,7 +28,7 @@ public class Log {
         }
     }
 
-    //日志输出
+    //日志格式
     public static void logSuccessful(int category, int id, String account, String situation) {
         writeLogToFile(LocalDateTime.now() +"[" + logCategory(category) + "] 用户: " + id + " 用户名: " + account + " 成功" + situation);
     }

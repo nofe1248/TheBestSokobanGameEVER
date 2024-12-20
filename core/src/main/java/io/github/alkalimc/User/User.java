@@ -41,13 +41,19 @@ public class User {
     //新用户注册
     public boolean User(String account, String password) {
         if (User.passwordValidityVerification(password)) {
-            this.id = ++count;
-            this.account = account;
-            this.key = getMD5(password);
-            this.firstLoginTime = LocalDateTime.now();
-            this.online = true;
-            Log.logSuccessful(3, this.id, this.account, "注册");
-            return true;
+            if (UserDataManager.findUserByAccount(account) == null) {
+                this.id = ++count;
+                this.account = account;
+                this.key = getMD5(password);
+                this.firstLoginTime = LocalDateTime.now();
+                this.online = true;
+                Log.logSuccessful(3, this.id, this.account, "注册");
+                return true;
+            }
+            else {
+                Log.illegal(4, this.id, this.account, "注册","用户已存在");
+                return false;
+            }
         }
         else {
             Log.illegal(2, this.id, this.account, "注册","非法密钥");
@@ -76,27 +82,24 @@ public class User {
     }
 
     //登出
-    public boolean logout(int permissions) {
+    public void logout(int permissions) {
         if (this.online) {
             this.online = false;
             Log.logSuccessful(4, this.id, this.account, "被登出");
-            return true;
         }
         else {
             Log.illegal(3, this.id, this.account, "登出", "意外的已被登出");
-            return true;
         }
     }
 
     //记录挑战数据
-    public boolean newAttempts(int score) {
+    public void newAttempts(int score) {
         attemptTimes++;
         if (this.maxScore < score) {
             this.maxScore = score;
         }
         scoreList.add(score);
         timeList.add(LocalDateTime.now());
-        return true;
     }
 
     //这部分用于输出内容
@@ -134,7 +137,8 @@ public class User {
             }
             return hexString.toString();
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("MD5 algorithm not available", e);
+            Log.writeLogToFile("No MD5 algorithm available" + e.getMessage());
+            return null;
         }
     }
 }

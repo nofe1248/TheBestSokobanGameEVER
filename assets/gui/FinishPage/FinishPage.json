@@ -1,0 +1,182 @@
+{
+com.badlogic.gdx.graphics.g2d.BitmapFont: {
+	Halogen: {
+		file: Halogen.fnt
+		scaledSize: -1
+		markupEnabled: false
+		flip: false
+	}
+	Halogen_Big: {
+		file: Halogen_Big.fnt
+		scaledSize: -1
+		markupEnabled: false
+		flip: false
+	}
+	Halogen_Middle: {
+		file: Halogen_Middle.fnt
+		scaledSize: -1
+		markupEnabled: false
+		flip: false
+	}
+	RifficFree-Bold: {
+		file: RifficFree-Bold.fnt
+		scaledSize: -1
+		markupEnabled: false
+		flip: false
+	}
+	RifficFree-Bold_Big: {
+		file: RifficFree-Bold_Big.fnt
+		scaledSize: -1
+		markupEnabled: false
+		flip: false
+	}
+	RifficFree-Bold_Middle: {
+		file: RifficFree-Bold_Middle.fnt
+		scaledSize: -1
+		markupEnabled: false
+		flip: false
+	}
+	RifficFree-Bold_Middle_Select: {
+		file: RifficFree-Bold_Middle_Select.fnt
+		scaledSize: -1
+		markupEnabled: false
+		flip: false
+	}
+}
+com.badlogic.gdx.graphics.Color: {
+	RGBA_0_0_0_127: {
+		r: 0
+		g: 0
+		b: 0
+		a: 0.49803922
+	}
+	RGBA_0_0_0_255: {
+		r: 0
+		g: 0
+		b: 0
+		a: 1
+	}
+	RGBA_187_85_153_255: {
+		r: 0.73333335
+		g: 0.33333334
+		b: 0.6
+		a: 1
+	}
+	RGBA_255_204_238_255: {
+		r: 1
+		g: 0.8
+		b: 0.93333334
+		a: 1
+	}
+	RGBA_255_255_255_255: {
+		r: 1
+		g: 1
+		b: 1
+		a: 1
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle: {
+	default: {
+		imageUp: frame_Modified
+		imageDown: frame_Modified
+		imageOver: frame_Modified
+		imageDisabled: frame_Modified
+	}
+	Monika: {
+		imageUp: Monika_Modified
+		imageDown: Monika_Selected
+		imageOver: Monika_Selected
+		imageDisabled: Monika_Modified
+	}
+	Natsuki: {
+		imageUp: Natsuki_Modified
+		imageDown: Natsuki_Selected
+		imageOver: Natsuki_Selected
+		imageDisabled: Natsuki_Modified
+	}
+	Sayori: {
+		imageUp: Sayori_Modified
+		imageDown: Sayori_Selected
+		imageOver: Sayori_Selected
+		imageDisabled: Sayori_Modified
+	}
+	Yuri: {
+		imageUp: Yuri_Modified
+		imageDown: Yuri_Selected
+		imageOver: Yuri_Selected
+		imageDisabled: Yuri_Modified
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
+	default: {
+		font: RifficFree-Bold_Big
+		fontColor: RGBA_255_255_255_255
+	}
+	middle_selected: {
+		font: RifficFree-Bold_Middle_Select
+		fontColor: RGBA_255_255_255_255
+	}
+	mini: {
+		font: RifficFree-Bold
+		fontColor: RGBA_255_255_255_255
+	}
+	middle: {
+		font: RifficFree-Bold_Middle
+		fontColor: RGBA_255_255_255_255
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
+	default: {
+		font: RifficFree-Bold_Big
+		fontColor: RGBA_255_255_255_255
+		downFontColor: RGBA_255_204_238_255
+		overFontColor: RGBA_187_85_153_255
+		disabledFontColor: RGBA_255_204_238_255
+		pressedOffsetX: 2
+		pressedOffsetY: 2
+		unpressedOffsetX: 1
+		unpressedOffsetY: 1
+		checkedOffsetX: 1
+		checkedOffsetY: 1
+	}
+	middle: {
+		font: RifficFree-Bold_Middle
+		fontColor: RGBA_255_255_255_255
+		downFontColor: RGBA_255_204_238_255
+		overFontColor: RGBA_187_85_153_255
+		disabledFontColor: RGBA_255_204_238_255
+		pressedOffsetX: 2
+		pressedOffsetY: 2
+		unpressedOffsetX: 1
+		unpressedOffsetY: 1
+		checkedOffsetX: 1
+		checkedOffsetY: 1
+	}
+	middle_selected: {
+		font: RifficFree-Bold_Middle_Select
+		fontColor: RGBA_255_255_255_255
+		pressedOffsetX: 2
+		pressedOffsetY: 2
+		unpressedOffsetX: 1
+		unpressedOffsetY: 1
+		checkedOffsetX: 1
+		checkedOffsetY: 1
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle: {
+	default: {
+		font: Halogen_Big
+		fontColor: RGBA_255_255_255_255
+		focusedFontColor: RGBA_187_85_153_255
+		disabledFontColor: RGBA_187_85_153_255
+		background: choice_hover_background
+		focusedBackground: choice_idle_background
+		disabledBackground: choice_idle_background
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle: {
+	default: {
+		label: default
+	}
+}
+}
