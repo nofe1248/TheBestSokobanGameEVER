@@ -1,9 +1,11 @@
 package io.github.alkalimc.Client;
 
+import io.github.alkalimc.Update.Lose;
 import io.github.alkalimc.Update.UpdateMap;
 import io.github.alkalimc.Update.UpdateUserInfo;
 import io.github.alkalimc.User.Log;
-import io.github.alkalimc.User.UserInfo;
+import io.github.alkalimc.Info.UserInfo;
+import io.github.alkalimc.Info.WinInfo;
 import io.github.nofe1248.map.map.Map;
 
 import java.io.*;
@@ -15,7 +17,7 @@ public class Client {
     private boolean listening = false;
     private static boolean firstMap = false;
 
-    public Client(String ip) {
+    public void start(String ip) {
         try {
             this.socket = new Socket(ip, 23456);
             this.listening = true;
@@ -57,7 +59,7 @@ public class Client {
         }
     }
 
-    public Object receiveObject() {
+    public void receiveObject() {
         while (this.listening) {
             if (this.socket != null && this.socket.isConnected()) {
                 try (InputStream inputStream = this.socket.getInputStream();
@@ -72,11 +74,12 @@ public class Client {
                         else {
                             new UpdateMap((Map) response);
                         }
-                        return (Map) response;
                     }
                     else if (response instanceof UserInfo) {
                         new UpdateUserInfo((UserInfo) response);
-                        return (UserInfo) response;
+                    }
+                    else if (response instanceof WinInfo) {
+                        new Lose((WinInfo) response);
                     }
                     else {
                         Log.writeLogToFile("Received object is not a valid type. Received type: " + response.getClass().getName());
@@ -85,8 +88,6 @@ public class Client {
                     Log.writeLogToFile("Exception: " + e.getMessage());
                 }
             }
-            return null;
         }
-        return null;
     }
 }

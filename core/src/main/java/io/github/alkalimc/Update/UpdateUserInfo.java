@@ -1,6 +1,6 @@
 package io.github.alkalimc.Update;
 
-import io.github.alkalimc.User.UserInfo;
+import io.github.alkalimc.Info.UserInfo;
 
 public class UpdateUserInfo {
     public UpdateUserInfo(UserInfo userInfo) {

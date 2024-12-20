@@ -2,8 +2,10 @@ package io.github.alkalimc.Server;
 
 import io.github.alkalimc.Update.UpdateMap;
 import io.github.alkalimc.Update.UpdateUserInfo;
+import io.github.alkalimc.Update.Lose;
 import io.github.alkalimc.User.Log;
-import io.github.alkalimc.User.UserInfo;
+import io.github.alkalimc.Info.UserInfo;
+import io.github.alkalimc.Info.WinInfo;
 import io.github.nofe1248.map.map.Map;
 
 import java.io.*;
@@ -15,11 +17,8 @@ public class Server {
     private boolean listening = false;
     private Map map;
 
-    public Server(Map map) {
+    public void start(Map map) {
         this.map = map;
-    }
-
-    public void start() {
         this.listening = true;
         try (ServerSocket serverSocket = new ServerSocket(23456)) {
             while (this.listening) {
@@ -59,7 +58,7 @@ public class Server {
         }
     }
 
-    public Object receiveObject() {
+    public void receiveObject() {
         while (this.listening) {
             if (socket != null && socket.isConnected()) {
                 try (InputStream inputStream = socket.getInputStream();
@@ -68,11 +67,12 @@ public class Server {
 
                     if (response instanceof Map) {
                         new UpdateMap((Map) response);
-                        return (Map) response;
                     }
                     else if (response instanceof UserInfo) {
                         new UpdateUserInfo((UserInfo) response);
-                        return (UserInfo) response;
+                    }
+                    else if (response instanceof WinInfo) {
+                        new Lose((WinInfo) response);
                     }
                     else {
                         Log.writeLogToFile("Received object is not a valid type. Received type: " + response.getClass().getName());
@@ -81,8 +81,6 @@ public class Server {
                     Log.writeLogToFile("Exception: " + e.getMessage());
                 }
             }
-            return null;
         }
-        return null;
     }
 }
