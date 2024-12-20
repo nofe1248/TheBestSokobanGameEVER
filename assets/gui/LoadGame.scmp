@@ -682,6 +682,46 @@ atlasData: {
 			type: TEXTURE
 			hidden: false
 		}
+		{
+			file: C:/Users/qigao/Documents/GitHub/TheBestSokobanGameEVER/assets/images/Button/choice_hover_background.png
+			bgColor: {
+				r: 1
+				g: 1
+				b: 1
+				a: 1
+			}
+			tint: null
+			tintName: null
+			name: choice_hover_background
+			tiled: false
+			minWidth: -1
+			minHeight: -1
+			customized: false
+			tenPatchData: null
+			tvgData: null
+			type: TEXTURE
+			hidden: false
+		}
+		{
+			file: C:/Users/qigao/Documents/GitHub/TheBestSokobanGameEVER/assets/images/Button/choice_idle_background.png
+			bgColor: {
+				r: 1
+				g: 1
+				b: 1
+				a: 1
+			}
+			tint: null
+			tintName: null
+			name: choice_idle_background
+			tiled: false
+			minWidth: -1
+			minHeight: -1
+			customized: false
+			tenPatchData: null
+			tvgData: null
+			type: TEXTURE
+			hidden: false
+		}
 	]
 	fontDrawables: [
 		{
@@ -1911,43 +1951,43 @@ jsonData: {
 						type: com.badlogic.gdx.graphics.g2d.BitmapFont
 						name: font
 						optional: false
-						value: null
+						value: Halogen_Middle
 					}
 					fontColor: {
 						type: com.badlogic.gdx.graphics.Color
 						name: fontColor
 						optional: false
-						value: null
+						value: RGBA_255_255_255_255
 					}
 					focusedFontColor: {
 						type: com.badlogic.gdx.graphics.Color
 						name: focusedFontColor
 						optional: true
-						value: null
+						value: RGBA_187_85_153_255
 					}
 					disabledFontColor: {
 						type: com.badlogic.gdx.graphics.Color
 						name: disabledFontColor
 						optional: true
-						value: null
+						value: RGBA_187_85_153_255
 					}
 					background: {
 						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
 						name: background
 						optional: true
-						value: null
+						value: choice_hover_background
 					}
 					focusedBackground: {
 						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
 						name: focusedBackground
 						optional: true
-						value: null
+						value: choice_idle_background
 					}
 					disabledBackground: {
 						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
 						name: disabledBackground
 						optional: true
-						value: null
+						value: choice_idle_background
 					}
 					cursor: {
 						type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
@@ -6922,7 +6962,7 @@ sceneComposer: {
 					colSpan: 1
 				}
 			]
-			name: Map
+			name: Load
 			background: null
 			color: null
 			padLeft: 0
@@ -6938,6 +6978,126 @@ sceneComposer: {
 		{
 			class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTable
 			cells: [
+				{
+					child: {
+						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextField
+						name: null
+						style: {
+							name: default
+							clazz: com.badlogic.gdx.scenes.scene2d.ui.TextField
+							properties: {
+								font: {
+									type: com.badlogic.gdx.graphics.g2d.BitmapFont
+									name: font
+									optional: false
+									value: Halogen_Middle
+								}
+								fontColor: {
+									type: com.badlogic.gdx.graphics.Color
+									name: fontColor
+									optional: false
+									value: RGBA_255_255_255_255
+								}
+								focusedFontColor: {
+									type: com.badlogic.gdx.graphics.Color
+									name: focusedFontColor
+									optional: true
+									value: RGBA_187_85_153_255
+								}
+								disabledFontColor: {
+									type: com.badlogic.gdx.graphics.Color
+									name: disabledFontColor
+									optional: true
+									value: RGBA_187_85_153_255
+								}
+								background: {
+									type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
+									name: background
+									optional: true
+									value: choice_hover_background
+								}
+								focusedBackground: {
+									type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
+									name: focusedBackground
+									optional: true
+									value: choice_idle_background
+								}
+								disabledBackground: {
+									type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
+									name: disabledBackground
+									optional: true
+									value: choice_idle_background
+								}
+								cursor: {
+									type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
+									name: cursor
+									optional: true
+									value: null
+								}
+								selection: {
+									type: com.badlogic.gdx.scenes.scene2d.utils.Drawable
+									name: selection
+									optional: true
+									value: null
+								}
+								messageFont: {
+									type: com.badlogic.gdx.graphics.g2d.BitmapFont
+									name: messageFont
+									optional: true
+									value: null
+								}
+								messageFontColor: {
+									type: com.badlogic.gdx.graphics.Color
+									name: messageFontColor
+									optional: true
+									value: null
+								}
+							}
+							deletable: false
+							parent: null
+						}
+						text: null
+						passwordCharacter: •
+						passwordMode: false
+						alignment: 8
+						disabled: false
+						cursorPosition: 0
+						selectionStart: 0
+						selectionEnd: 0
+						selectAll: false
+						focusTraversal: true
+						maxLength: 3
+						messageText: " 1"
+						touchable: enabled
+						visible: true
+					}
+					row: 0
+					column: 0
+					padLeft: 576
+					padRight: 0
+					padTop: 486
+					padBottom: 0
+					spaceLeft: 0
+					spaceRight: 0
+					spaceTop: 0
+					spaceBottom: 0
+					expandX: false
+					expandY: false
+					fillX: false
+					fillY: false
+					growX: false
+					growY: false
+					alignment: 1
+					minWidth: -1
+					minHeight: -1
+					maxWidth: 64
+					maxHeight: -1
+					preferredWidth: -1
+					preferredHeight: -1
+					uniformX: false
+					uniformY: false
+					colSpan: 1
+				}
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextButton
@@ -7112,8 +7272,8 @@ sceneComposer: {
 						visible: true
 					}
 					row: 0
-					column: 0
-					padLeft: 720
+					column: 1
+					padLeft: 0
 					padRight: 0
 					padTop: 480
 					padBottom: 0
@@ -7312,7 +7472,7 @@ sceneComposer: {
 						visible: true
 					}
 					row: 0
-					column: 1
+					column: 2
 					padLeft: 16
 					padRight: 0
 					padTop: 480
@@ -7512,7 +7672,7 @@ sceneComposer: {
 						visible: true
 					}
 					row: 0
-					column: 2
+					column: 3
 					padLeft: 32
 					padRight: 0
 					padTop: 480
@@ -7712,7 +7872,7 @@ sceneComposer: {
 						visible: true
 					}
 					row: 0
-					column: 3
+					column: 4
 					padLeft: 16
 					padRight: 0
 					padTop: 480

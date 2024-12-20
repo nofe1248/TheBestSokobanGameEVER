@@ -599,7 +599,7 @@
 					"name": "dir",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.ImageButton",
-						"name": "Dir_Big"
+						"name": "Dir"
 					},
 					"checked": false,
 					"disabled": false,

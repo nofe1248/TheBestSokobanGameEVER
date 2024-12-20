@@ -24,6 +24,20 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
+choice_hover_background
+  rotate: false
+  xy: 603, 984
+  size: 400, 35
+  orig: 400, 35
+  offset: 0, 0
+  index: -1
+choice_idle_background
+  rotate: false
+  xy: 1027, 1316
+  size: 400, 35
+  orig: 400, 35
+  offset: 0, 0
+  index: -1
 Halogen
   rotate: false
   xy: 1541, 1966
@@ -75,147 +89,147 @@ RifficFree-Bold_Middle_Select
   index: -1
 Monika_256
   rotate: false
-  xy: 1418, 857
+  xy: 881, 632
   size: 119, 168
   orig: 119, 168
   offset: 0, 0
   index: -1
 Natsuki_256
   rotate: false
-  xy: 1349, 1027
+  xy: 323, 28
   size: 141, 161
   orig: 141, 161
   offset: 0, 0
   index: -1
 Sayori_256
   rotate: false
-  xy: 1173, 856
+  xy: 757, 627
   size: 122, 173
   orig: 122, 173
   offset: 0, 0
   index: -1
 Monika_Modified
   rotate: false
-  xy: 509, 599
+  xy: 925, 814
   size: 119, 168
   orig: 119, 168
   offset: 0, 0
   index: -1
 Monika_Modified_256
   rotate: false
-  xy: 509, 599
+  xy: 925, 814
   size: 119, 168
   orig: 119, 168
   offset: 0, 0
   index: -1
 Monika_Selected
   rotate: false
-  xy: 1297, 857
+  xy: 1046, 888
   size: 119, 168
   orig: 119, 168
   offset: 0, 0
   index: -1
 Monika_Selected_256
   rotate: false
-  xy: 1297, 857
+  xy: 1046, 888
   size: 119, 168
   orig: 119, 168
   offset: 0, 0
   index: -1
 Natsuki_Modified
   rotate: false
-  xy: 1349, 1190
+  xy: 323, 191
   size: 141, 161
   orig: 141, 161
   offset: 0, 0
   index: -1
 Natsuki_Modified_256
   rotate: false
-  xy: 1349, 1190
+  xy: 323, 191
   size: 141, 161
   orig: 141, 161
   offset: 0, 0
   index: -1
 Natsuki_Selected
   rotate: false
-  xy: 259, 193
+  xy: 1285, 1155
   size: 141, 159
   orig: 141, 159
   offset: 0, 0
   index: -1
 Natsuki_Selected_256
   rotate: false
-  xy: 259, 193
+  xy: 1285, 1155
   size: 141, 159
   orig: 141, 159
   offset: 0, 0
   index: -1
 Sayori_Modified
   rotate: false
-  xy: 925, 846
+  xy: 509, 594
   size: 122, 173
   orig: 122, 173
   offset: 0, 0
   index: -1
 Sayori_Modified_256
   rotate: false
-  xy: 925, 846
+  xy: 509, 594
   size: 122, 173
   orig: 122, 173
   offset: 0, 0
   index: -1
 Sayori_Selected
   rotate: false
-  xy: 1049, 856
+  xy: 633, 627
   size: 122, 173
   orig: 122, 173
   offset: 0, 0
   index: -1
 Sayori_Selected_256
   rotate: false
-  xy: 1049, 856
+  xy: 633, 627
   size: 122, 173
   orig: 122, 173
   offset: 0, 0
   index: -1
 Yuri
   rotate: false
-  xy: 630, 676
+  xy: 1281, 862
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
   index: -1
 Yuri_256
   rotate: false
-  xy: 630, 676
+  xy: 1281, 862
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
   index: -1
 Yuri_Modified
   rotate: false
-  xy: 259, 30
+  xy: 1167, 895
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
   index: -1
 Yuri_Modified_256
   rotate: false
-  xy: 259, 30
+  xy: 1167, 895
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
   index: -1
 Yuri_Selected
   rotate: false
-  xy: 744, 676
+  xy: 466, 191
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
   index: -1
 Yuri_Selected_256
   rotate: false
-  xy: 744, 676
+  xy: 466, 191
   size: 112, 161
   orig: 112, 161
   offset: 0, 0
@@ -236,28 +250,28 @@ Logo
   index: -1
 Logo128
   rotate: false
-  xy: 402, 224
+  xy: 1285, 1025
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 Logo16
   rotate: false
-  xy: 402, 206
+  xy: 1, 14
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 Logo256
   rotate: false
-  xy: 1, 96
+  xy: 1027, 1058
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 Logo32
   rotate: false
-  xy: 1492, 1319
+  xy: 1429, 1319
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -271,14 +285,14 @@ Logo512
   index: -1
 Logo64
   rotate: false
-  xy: 509, 533
+  xy: 1046, 822
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 Abstract
   rotate: false
-  xy: 1027, 1031
+  xy: 1, 32
   size: 320, 320
   orig: 320, 320
   offset: 0, 0
@@ -292,7 +306,7 @@ frame
   index: -1
 frame_Modified
   rotate: false
-  xy: 603, 839
+  xy: 603, 802
   size: 320, 180
   orig: 320, 180
   offset: 0, 0

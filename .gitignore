@@ -167,3 +167,4 @@ Thumbs.db
 /gradle/wrapper/gradle-wrapper.jar
 /.editorconfig
 /map/
+/logs/

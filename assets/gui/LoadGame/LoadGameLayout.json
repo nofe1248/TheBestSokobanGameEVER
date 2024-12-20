@@ -811,7 +811,7 @@
 				"colSpan": 1
 			}
 		],
-		"name": "Map",
+		"name": "Load",
 		"background": null,
 		"color": null,
 		"padLeft": 0,
@@ -827,6 +827,56 @@
 	{
 		"class": "Table",
 		"cells": [
+			{
+				"child": {
+					"class": "TextField",
+					"name": null,
+					"style": {
+						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextField",
+						"name": "default"
+					},
+					"text": null,
+					"passwordCharacter": "•",
+					"passwordMode": false,
+					"alignment": 8,
+					"disabled": false,
+					"cursorPosition": 0,
+					"selectionStart": 0,
+					"selectionEnd": 0,
+					"selectAll": false,
+					"focusTraversal": true,
+					"maxLength": 3,
+					"messageText": " 1",
+					"touchable": "enabled",
+					"visible": true
+				},
+				"row": 0,
+				"column": 0,
+				"padLeft": 576,
+				"padRight": 0,
+				"padTop": 486,
+				"padBottom": 0,
+				"spaceLeft": 0,
+				"spaceRight": 0,
+				"spaceTop": 0,
+				"spaceBottom": 0,
+				"expandX": false,
+				"expandY": false,
+				"fillX": false,
+				"fillY": false,
+				"growX": false,
+				"growY": false,
+				"alignment": 1,
+				"minWidth": -1,
+				"minHeight": -1,
+				"maxWidth": 64,
+				"maxHeight": -1,
+				"preferredWidth": -1,
+				"preferredHeight": -1,
+				"uniformX": false,
+				"uniformY": false,
+				"colSpan": 1
+			},
 			{
 				"child": {
 					"class": "TextButton",
@@ -847,8 +897,8 @@
 					"visible": true
 				},
 				"row": 0,
-				"column": 0,
-				"padLeft": 720,
+				"column": 1,
+				"padLeft": 0,
 				"padRight": 0,
 				"padTop": 480,
 				"padBottom": 0,
@@ -893,7 +943,7 @@
 					"visible": true
 				},
 				"row": 0,
-				"column": 1,
+				"column": 2,
 				"padLeft": 16,
 				"padRight": 0,
 				"padTop": 480,
@@ -939,7 +989,7 @@
 					"visible": true
 				},
 				"row": 0,
-				"column": 2,
+				"column": 3,
 				"padLeft": 32,
 				"padRight": 0,
 				"padTop": 480,
@@ -985,7 +1035,7 @@
 					"visible": true
 				},
 				"row": 0,
-				"column": 3,
+				"column": 4,
 				"padLeft": 16,
 				"padRight": 0,
 				"padTop": 480,

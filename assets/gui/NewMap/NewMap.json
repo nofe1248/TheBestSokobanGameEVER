@@ -112,12 +112,6 @@ com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle: {
 		imageOver: Dir
 		imageDisabled: Dir
 	}
-	Dir_Big: {
-		imageUp: Dir_Big
-		imageDown: Dir_Big
-		imageOver: Dir_Big
-		imageDisabled: Dir_Big
-	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 	default: {
