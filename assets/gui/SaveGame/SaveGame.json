@@ -172,6 +172,17 @@ com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
 		checkedOffsetY: 1
 	}
 }
+com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle: {
+	default: {
+		font: Halogen_Middle
+		fontColor: RGBA_255_255_255_255
+		focusedFontColor: RGBA_187_85_153_255
+		disabledFontColor: RGBA_187_85_153_255
+		background: choice_hover_background
+		focusedBackground: choice_idle_background
+		disabledBackground: choice_idle_background
+	}
+}
 com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle: {
 	default: {
 		label: default
