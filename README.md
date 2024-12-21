@@ -1,5 +1,7 @@
 # TheBestSokobanGameEVER
 
+This Project is made for the SUSTech CS109 Introduction to Computer Programming (2024 Fall) course.
+
 A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
 
 This project was generated with a template including simple application launchers and an `ApplicationAdapter` extension that draws libGDX logo.
