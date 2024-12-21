@@ -181,8 +181,11 @@ public class InFlightMap {
     //calculate the score based on the steps, time, and difficult of the map
     //for the steps and the time, the less the better
     //for the difficulty, the more the better
-    //the range is 0-1000
+    //the range is 0-10000
     public int getScore() {
-        return (int) (1000 - steps * 10 - (double) (int) elapsedTime / 1000 - map.getDifficulty() * 10);
+        double difficulty = map.getDifficulty();
+        int timeScore = (int) (10000 - elapsedTime / 1000);
+        int stepsScore = (int) (10000 - steps);
+        return (int) (timeScore * 0.3 + stepsScore * 0.3 + difficulty * 0.4);
     }
 }

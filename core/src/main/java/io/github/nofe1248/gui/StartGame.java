@@ -1,5 +1,6 @@
 package io.github.nofe1248.gui;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -7,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import io.github.nofe1248.map.MapManager;
 import io.github.nofe1248.map.map.InFlightMap;
+import io.github.nofe1248.preferences.GamePreferences;
 import io.github.nofe1248.sound.BackgroundMusicSelection;
 
 public class StartGame extends BaseSaveGUI {
@@ -184,6 +186,7 @@ public class StartGame extends BaseSaveGUI {
         GUIManager manager = GUIManager.getManager();
         if (mapExists) {
             manager.getSoundEffectManager().playClick();
+            GamePreferences.incrementAttemptCount();
             ((InGame) manager.getGUI(GUISelection.IN_GAME)).setActiveMap(new InFlightMap(MapManager.getMap(mapIndex), mapIndex));
             manager.setCurrentGUI(GUISelection.IN_GAME);
         }

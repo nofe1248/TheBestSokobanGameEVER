@@ -4,12 +4,17 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import io.github.alkalimc.User.UserDataManager;
 import io.github.nofe1248.preferences.CharacterSelection;
 import io.github.nofe1248.preferences.GamePreferences;
 import io.github.nofe1248.sound.BackgroundMusicSelection;
 
 public class Settings extends BaseGUI {
     private TextButton continueButton;
+    private Label username;
+    private Label registerTime;
+    private Label attemptCount;
+    private Label highestScore;
 
     public Settings() {
         super("gui/Settings/Settings.json", "gui/Settings/SettingsLayout.json");
@@ -185,10 +190,27 @@ public class Settings extends BaseGUI {
                 GamePreferences.setSoundVolume(soundEffectVolumeSlider.getValue());
             }
         });
+
+        username = this.stage.getRoot().findActor("username");
+        registerTime = this.stage.getRoot().findActor("register_time");
+        attemptCount = this.stage.getRoot().findActor("attempt_times");
+        highestScore = this.stage.getRoot().findActor("highest_score");
+        assert username != null;
+        assert registerTime != null;
+        assert attemptCount != null;
+        assert highestScore != null;
+        username.setText("");
+        registerTime.setText("");
+        attemptCount.setText("");
+        highestScore.setText("");
     }
 
     @Override
     public void onShow() {
+        username.setText("");
+        registerTime.setText("");
+        attemptCount.setText("");
+        highestScore.setText("");
         GUIManager manager = GUIManager.getManager();
         manager
             .getBackgroundMusicManager()
