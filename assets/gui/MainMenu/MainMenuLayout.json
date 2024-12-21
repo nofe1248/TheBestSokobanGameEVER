@@ -549,7 +549,7 @@
 				"child": {
 					"class": "TextButton",
 					"name": "load_game",
-					"text": "Load Game",
+					"text": "Load Game ",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
 						"name": "middle"

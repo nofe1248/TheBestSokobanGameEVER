@@ -3290,7 +3290,7 @@ jsonData: {
 						type: com.badlogic.gdx.graphics.Color
 						name: disabledFontColor
 						optional: true
-						value: null
+						value: RGBA_255_204_238_255
 					}
 					checkedFontColor: {
 						type: com.badlogic.gdx.graphics.Color
@@ -3449,7 +3449,7 @@ jsonData: {
 						type: com.badlogic.gdx.graphics.Color
 						name: disabledFontColor
 						optional: true
-						value: null
+						value: RGBA_255_204_238_255
 					}
 					checkedFontColor: {
 						type: com.badlogic.gdx.graphics.Color
@@ -4014,7 +4014,7 @@ sceneComposer: {
 									type: com.badlogic.gdx.graphics.Color
 									name: disabledFontColor
 									optional: true
-									value: null
+									value: RGBA_255_204_238_255
 								}
 								checkedFontColor: {
 									type: com.badlogic.gdx.graphics.Color
@@ -4214,7 +4214,7 @@ sceneComposer: {
 									type: com.badlogic.gdx.graphics.Color
 									name: disabledFontColor
 									optional: true
-									value: null
+									value: RGBA_255_204_238_255
 								}
 								checkedFontColor: {
 									type: com.badlogic.gdx.graphics.Color
@@ -4414,7 +4414,7 @@ sceneComposer: {
 									type: com.badlogic.gdx.graphics.Color
 									name: disabledFontColor
 									optional: true
-									value: null
+									value: RGBA_255_204_238_255
 								}
 								checkedFontColor: {
 									type: com.badlogic.gdx.graphics.Color
@@ -4814,7 +4814,7 @@ sceneComposer: {
 									type: com.badlogic.gdx.graphics.Color
 									name: disabledFontColor
 									optional: true
-									value: null
+									value: RGBA_255_204_238_255
 								}
 								checkedFontColor: {
 									type: com.badlogic.gdx.graphics.Color
@@ -5014,7 +5014,7 @@ sceneComposer: {
 									type: com.badlogic.gdx.graphics.Color
 									name: disabledFontColor
 									optional: true
-									value: null
+									value: RGBA_255_204_238_255
 								}
 								checkedFontColor: {
 									type: com.badlogic.gdx.graphics.Color
@@ -5214,7 +5214,7 @@ sceneComposer: {
 									type: com.badlogic.gdx.graphics.Color
 									name: disabledFontColor
 									optional: true
-									value: null
+									value: RGBA_255_204_238_255
 								}
 								checkedFontColor: {
 									type: com.badlogic.gdx.graphics.Color
@@ -6617,7 +6617,7 @@ sceneComposer: {
 									type: com.badlogic.gdx.graphics.Color
 									name: disabledFontColor
 									optional: true
-									value: null
+									value: RGBA_255_204_238_255
 								}
 								checkedFontColor: {
 									type: com.badlogic.gdx.graphics.Color

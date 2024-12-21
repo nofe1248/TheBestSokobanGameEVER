@@ -842,6 +842,16 @@ jsonData: {
 			class: com.ray3k.skincomposer.data.ColorData
 			color: {
 				r: 1
+				g: 0.8
+				b: 0.93333334
+				a: 1
+			}
+			name: RGBA_255_204_238_255
+		}
+		{
+			class: com.ray3k.skincomposer.data.ColorData
+			color: {
+				r: 1
 				g: 1
 				b: 1
 				a: 1
@@ -2926,7 +2936,7 @@ jsonData: {
 						type: com.badlogic.gdx.graphics.Color
 						name: disabledFontColor
 						optional: true
-						value: null
+						value: RGBA_255_204_238_255
 					}
 					checkedFontColor: {
 						type: com.badlogic.gdx.graphics.Color
@@ -3085,7 +3095,7 @@ jsonData: {
 						type: com.badlogic.gdx.graphics.Color
 						name: disabledFontColor
 						optional: true
-						value: null
+						value: RGBA_255_204_238_255
 					}
 					checkedFontColor: {
 						type: com.badlogic.gdx.graphics.Color
@@ -3213,6 +3223,10 @@ preferences: {
 	id: {
 		class: java.lang.Integer
 		value: 156089106
+	}
+	last-import-export-path: {
+		class: java.lang.String
+		value: C:/Users/qigao/Documents/GitHub/TheBestSokobanGameEVER/assets/gui/MainMenu/Mainmenu.json
 	}
 	resources-relative: {
 		class: java.lang.Boolean
@@ -4347,7 +4361,7 @@ sceneComposer: {
 									type: com.badlogic.gdx.graphics.Color
 									name: disabledFontColor
 									optional: true
-									value: null
+									value: RGBA_255_204_238_255
 								}
 								checkedFontColor: {
 									type: com.badlogic.gdx.graphics.Color
@@ -4547,7 +4561,7 @@ sceneComposer: {
 									type: com.badlogic.gdx.graphics.Color
 									name: disabledFontColor
 									optional: true
-									value: null
+									value: RGBA_255_204_238_255
 								}
 								checkedFontColor: {
 									type: com.badlogic.gdx.graphics.Color
@@ -4708,7 +4722,7 @@ sceneComposer: {
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextButton
 						name: load_game
-						text: Load Game
+						text: "Load Game "
 						style: {
 							name: middle
 							clazz: com.badlogic.gdx.scenes.scene2d.ui.TextButton
@@ -4747,7 +4761,7 @@ sceneComposer: {
 									type: com.badlogic.gdx.graphics.Color
 									name: disabledFontColor
 									optional: true
-									value: null
+									value: RGBA_255_204_238_255
 								}
 								checkedFontColor: {
 									type: com.badlogic.gdx.graphics.Color
@@ -4947,7 +4961,7 @@ sceneComposer: {
 									type: com.badlogic.gdx.graphics.Color
 									name: disabledFontColor
 									optional: true
-									value: null
+									value: RGBA_255_204_238_255
 								}
 								checkedFontColor: {
 									type: com.badlogic.gdx.graphics.Color
@@ -5147,7 +5161,7 @@ sceneComposer: {
 									type: com.badlogic.gdx.graphics.Color
 									name: disabledFontColor
 									optional: true
-									value: null
+									value: RGBA_255_204_238_255
 								}
 								checkedFontColor: {
 									type: com.badlogic.gdx.graphics.Color
@@ -5347,7 +5361,7 @@ sceneComposer: {
 									type: com.badlogic.gdx.graphics.Color
 									name: disabledFontColor
 									optional: true
-									value: null
+									value: RGBA_255_204_238_255
 								}
 								checkedFontColor: {
 									type: com.badlogic.gdx.graphics.Color
@@ -5547,7 +5561,7 @@ sceneComposer: {
 									type: com.badlogic.gdx.graphics.Color
 									name: disabledFontColor
 									optional: true
-									value: null
+									value: RGBA_255_204_238_255
 								}
 								checkedFontColor: {
 									type: com.badlogic.gdx.graphics.Color
@@ -5747,7 +5761,7 @@ sceneComposer: {
 									type: com.badlogic.gdx.graphics.Color
 									name: disabledFontColor
 									optional: true
-									value: null
+									value: RGBA_255_204_238_255
 								}
 								checkedFontColor: {
 									type: com.badlogic.gdx.graphics.Color
