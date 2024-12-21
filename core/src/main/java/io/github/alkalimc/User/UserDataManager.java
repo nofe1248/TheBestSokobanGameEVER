@@ -64,4 +64,12 @@ public class UserDataManager {
         }
         return null;
     }
+
+    public static void setUser(User user) {
+        UserDataManager.user = user;
+    }
+
+    public static User getUser() {
+        return user;
+    }
 }
