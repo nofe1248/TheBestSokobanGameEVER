@@ -7,18 +7,17 @@ public class Login {
         if (user == null) {
             Log.illegal(4, -1, username, "登入", "用户不存在");
             return false;
-        }
-        else {
+        } else {
             if (user.login(password)) {
                 UserDataManager.saveOrUpdateUser(user);
                 UserDataManager.setUser(user);
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
         }
     }
+
     public static boolean register(String username, String password) {
         User user = UserDataManager.findUserByAccount(username);
         if (user == null) {
@@ -27,14 +26,18 @@ public class Login {
                 UserDataManager.saveOrUpdateUser(user);
                 UserDataManager.setUser(user);
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
-        }
-        else {
+        } else {
             Log.illegal(4, -1, username, "注册", "用户已存在");
             return false;
         }
+    }
+
+    public static void logout() {
+        UserDataManager.getUser().logout();
+        UserDataManager.setUser(UserDataManager.getUser());
+        UserDataManager.setUser(null);
     }
 }

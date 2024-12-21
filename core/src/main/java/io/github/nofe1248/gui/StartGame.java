@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import io.github.alkalimc.User.UserDataManager;
 import io.github.nofe1248.map.MapManager;
 import io.github.nofe1248.map.map.InFlightMap;
 import io.github.nofe1248.preferences.GamePreferences;
@@ -186,7 +187,7 @@ public class StartGame extends BaseSaveGUI {
         GUIManager manager = GUIManager.getManager();
         if (mapExists) {
             manager.getSoundEffectManager().playClick();
-            GamePreferences.incrementAttemptCount();
+            UserDataManager.getUser().newAttempt();
             ((InGame) manager.getGUI(GUISelection.IN_GAME)).setActiveMap(new InFlightMap(MapManager.getMap(mapIndex), mapIndex));
             manager.setCurrentGUI(GUISelection.IN_GAME);
         }

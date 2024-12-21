@@ -49,6 +49,7 @@ public class User implements Serializable {
                 this.firstLoginTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
                 this.online = true;
                 Log.logSuccessful(3, this.id, this.account, "注册");
+                UserDataManager.saveOrUpdateUser(this);
                 return true;
             }
             else {
@@ -69,6 +70,7 @@ public class User implements Serializable {
                 this.lastLoginTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
                 this.online = true;
                 Log.logSuccessful(3, this.id, this.account, "登入");
+                UserDataManager.saveOrUpdateUser(this);
                 return true;
             }
             else {
@@ -83,7 +85,7 @@ public class User implements Serializable {
     }
 
     //登出
-    public void logout(int permissions) {
+    public void logout() {
         if (this.online) {
             this.online = false;
             Log.logSuccessful(4, this.id, this.account, "被登出");
@@ -91,14 +93,20 @@ public class User implements Serializable {
         else {
             Log.illegal(3, this.id, this.account, "登出", "意外的已被登出");
         }
+        UserDataManager.saveOrUpdateUser(this);
+    }
+
+    public void newAttempt() {
+        this.attemptTimes++;
+        UserDataManager.saveOrUpdateUser(this);
     }
 
     //记录挑战数据
-    public void newAttempts(int score) {
-        attemptTimes++;
+    public void newScore(int score) {
         if (this.maxScore < score) {
             this.maxScore = score;
         }
+        UserDataManager.saveOrUpdateUser(this);
     }
 
     //这部分用于输出内容

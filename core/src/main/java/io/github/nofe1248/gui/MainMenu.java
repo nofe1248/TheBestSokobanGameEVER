@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import io.github.alkalimc.User.Login;
 import io.github.nofe1248.sound.BackgroundMusicSelection;
 
 public class MainMenu extends BaseGUI {
@@ -24,6 +25,7 @@ public class MainMenu extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
+                Login.logout();
                 Gdx.app.exit();
             }
         });

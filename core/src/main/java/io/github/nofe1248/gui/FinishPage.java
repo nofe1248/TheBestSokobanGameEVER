@@ -1,12 +1,11 @@
 package io.github.nofe1248.gui;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import io.github.nofe1248.preferences.GamePreferences;
+import io.github.alkalimc.User.UserDataManager;
 import io.github.nofe1248.sound.BackgroundMusicSelection;
 
 public class FinishPage extends BaseGUI {
@@ -129,7 +128,7 @@ public class FinishPage extends BaseGUI {
         time.setText(((InGame) GUIManager.getManager().getGUI(GUISelection.IN_GAME)).getActiveMap().getElapsedTime() / 1000 + "s");
         score.setText(((InGame) GUIManager.getManager().getGUI(GUISelection.IN_GAME)).getActiveMap().getScore());
 
-        GamePreferences.setHighestScore(((InGame) GUIManager.getManager().getGUI(GUISelection.IN_GAME)).getActiveMap().getScore());
+        UserDataManager.getUser().newScore(((InGame) GUIManager.getManager().getGUI(GUISelection.IN_GAME)).getActiveMap().getScore());
 
         GUIManager manager = GUIManager.getManager();
         manager

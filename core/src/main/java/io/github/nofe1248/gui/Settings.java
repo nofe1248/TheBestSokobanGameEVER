@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import io.github.alkalimc.User.Login;
 import io.github.alkalimc.User.UserDataManager;
 import io.github.nofe1248.preferences.CharacterSelection;
 import io.github.nofe1248.preferences.GamePreferences;
@@ -74,6 +75,7 @@ public class Settings extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
+                Login.logout();
                 manager.setCurrentGUI(GUISelection.LOGIN_PANEL);
             }
         });
@@ -207,10 +209,10 @@ public class Settings extends BaseGUI {
 
     @Override
     public void onShow() {
-        username.setText("");
-        registerTime.setText("");
-        attemptCount.setText("");
-        highestScore.setText("");
+        username.setText(UserDataManager.getUser().getAccount());
+        registerTime.setText(UserDataManager.getUser().getFirstLoginTime());
+        attemptCount.setText(UserDataManager.getUser().getAttemptTimes());
+        highestScore.setText(UserDataManager.getUser().getMaxScore());
         GUIManager manager = GUIManager.getManager();
         manager
             .getBackgroundMusicManager()
