@@ -7,7 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import io.github.alkalimc.User.UserDataManager;
 import io.github.nofe1248.sound.BackgroundMusicSelection;
+import io.github.alkalimc.User.*;
 
 public class LoginPanel extends BaseGUI {
     public LoginPanel() {
@@ -41,10 +43,13 @@ public class LoginPanel extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
-                manager.setCurrentGUI(GUISelection.MAIN_MENU);
 
                 String username = usernameField.getText();
                 String password = passwordField.getText();
+
+                if (Login.Login(username, password)) {
+                    manager.setCurrentGUI(GUISelection.MAIN_MENU);
+                }
             }
         });
 
@@ -55,10 +60,13 @@ public class LoginPanel extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
-                manager.setCurrentGUI(GUISelection.MAIN_MENU);
 
                 String username = usernameField.getText();
                 String password = passwordField.getText();
+
+                if (Login.Register(username, password)) {
+                    manager.setCurrentGUI(GUISelection.MAIN_MENU);
+                }
             }
         });
     }

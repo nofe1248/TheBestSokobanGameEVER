@@ -502,7 +502,7 @@
 			{
 				"child": {
 					"class": "Label",
-					"name": null,
+					"name": "map",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.Label",
 						"name": "default"
@@ -890,7 +890,7 @@
 			{
 				"child": {
 					"class": "TextButton",
-					"name": "main_menu",
+					"name": "main_menu_bottom",
 					"text": "Main Menu",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",

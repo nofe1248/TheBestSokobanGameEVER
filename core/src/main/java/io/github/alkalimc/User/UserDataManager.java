@@ -4,9 +4,16 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class UserDataManager {
-
     private static final String FILE_NAME = "user_data.ser";
+    File file = new File(FILE_NAME);
 
+    public static void CreateFile(ArrayList<User> users) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
+            oos.writeObject(users);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     //用于保存或更新用户数据
     public static void saveOrUpdateUser(User user) {
         ArrayList<User> users = loadUserFromFile();

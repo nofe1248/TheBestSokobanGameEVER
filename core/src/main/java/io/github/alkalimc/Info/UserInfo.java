@@ -2,7 +2,6 @@ package io.github.alkalimc.Info;
 
 import io.github.alkalimc.User.User;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class UserInfo {
@@ -11,8 +10,8 @@ public class UserInfo {
     private boolean online;
 
     //信息
-    private LocalDateTime firstLoginTime;
-    private LocalDateTime lastLoginTime;
+    private String firstLoginTime;
+    private String lastLoginTime;
     private int attemptTimes;
     private ArrayList scoreList;
     private ArrayList timeList;
@@ -37,10 +36,10 @@ public class UserInfo {
     public boolean isOnline() {
         return online;
     }
-    public LocalDateTime getFirstLoginTime() {
+    public String getFirstLoginTime() {
         return firstLoginTime;
     }
-    public LocalDateTime getLastLoginTime() {
+    public String getLastLoginTime() {
         return lastLoginTime;
     }
     public int getAttemptTimes() {

@@ -5118,7 +5118,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimLabel
-						name: null
+						name: map
 						style: {
 							name: default
 							clazz: com.badlogic.gdx.scenes.scene2d.ui.Label
@@ -5814,7 +5814,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextButton
-						name: main_menu
+						name: main_menu_bottom
 						text: Main Menu
 						style: {
 							name: default

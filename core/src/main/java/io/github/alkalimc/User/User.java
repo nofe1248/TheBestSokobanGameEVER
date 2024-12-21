@@ -1,15 +1,17 @@
 package io.github.alkalimc.User;
 
+import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 
-public class User {
+public class User implements Serializable {
 
     //玩家计数
     private static int count = 0;
+
+    private static final long serialVersionUID = 1L;
 
     //参数
     private int id;
@@ -18,11 +20,9 @@ public class User {
     private boolean online = false;
 
     //信息
-    private LocalDateTime firstLoginTime;
-    private LocalDateTime lastLoginTime;
+    private String firstLoginTime;
+    private String lastLoginTime;
     private int attemptTimes = 0;
-    private ArrayList scoreList;
-    private ArrayList timeList;
     private int maxScore = 0;
     private String lastConnectedIp = "xxx.xxx.xxx.xxx";
 
@@ -44,8 +44,8 @@ public class User {
             if (UserDataManager.findUserByAccount(account) == null) {
                 this.id = ++count;
                 this.account = account;
-                this.key = getMD5(password);
-                this.firstLoginTime = LocalDateTime.now();
+                this.key = getSHA256(password);
+                this.firstLoginTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
                 this.online = true;
                 Log.logSuccessful(3, this.id, this.account, "注册");
                 return true;
@@ -64,8 +64,8 @@ public class User {
     //用户登入
     public boolean login(String password) {
         if (User.passwordValidityVerification(password)) {
-            if (this.key == getMD5(password)) {
-                this.lastLoginTime = LocalDateTime.now();
+            if (this.key == getSHA256(password)) {
+                this.lastLoginTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
                 this.online = true;
                 Log.logSuccessful(3, this.id, this.account, "登入");
                 return true;
@@ -98,8 +98,6 @@ public class User {
         if (this.maxScore < score) {
             this.maxScore = score;
         }
-        scoreList.add(score);
-        timeList.add(LocalDateTime.now());
     }
 
     //这部分用于输出内容
@@ -112,11 +110,11 @@ public class User {
     public boolean isOnline() {
         return online;
     }
-    public LocalDateTime getFirstLoginTime() {
+    public String getFirstLoginTime() {
         return firstLoginTime;
-        //.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"))
+
     }
-    public LocalDateTime getLastLoginTime() {
+    public String getLastLoginTime() {
         return lastLoginTime;
     }
     public int getAttemptTimes() {
@@ -126,10 +124,10 @@ public class User {
         return maxScore;
     }
 
-    //计算md5，这个没验证能不能用，验证一下？
-    public static String getMD5(String input) {
+    //计算SHA-256，这个没验证能不能用，验证一下？
+    public static String getSHA256(String input) {
         try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] hashBytes = md.digest(input.getBytes());
             StringBuilder hexString = new StringBuilder();
             for (byte b : hashBytes) {
@@ -137,7 +135,7 @@ public class User {
             }
             return hexString.toString();
         } catch (NoSuchAlgorithmException e) {
-            Log.writeLogToFile("No MD5 algorithm available" + e.getMessage());
+            Log.writeLogToFile("No SHA-256 algorithm available" + e.getMessage());
             return null;
         }
     }
