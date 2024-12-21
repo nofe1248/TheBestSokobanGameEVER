@@ -58,6 +58,7 @@ class TimerUpdateThread extends Thread {
 
 public class InGame extends BaseGUI {
     private InFlightMap activeMap;
+    private InFlightMap backupMap;
     private Table mapRenderTable;
     private boolean isPressingW = false;
     private boolean isPressingS = false;
@@ -77,6 +78,13 @@ public class InGame extends BaseGUI {
     public void updateTimer() {
         this.timerLabel.setText(activeMap.getElapsedTime() / 1000 + "s");
         this.scoreLabel.setText(String.valueOf(activeMap.getScore()));
+    }
+
+    private void checkIsFinished() {
+        if (activeMap.getMap().isSolved()) {
+            GUIManager manager = GUIManager.getManager();
+            manager.setCurrentGUI(GUISelection.FINISH_PAGE);
+        }
     }
 
     @Override
@@ -107,6 +115,7 @@ public class InGame extends BaseGUI {
                 if (activeMap.movePlayerUp()) {
                     soundEffectManager.playPlayerMove();
                     stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                    checkIsFinished();
                 } else {
                     soundEffectManager.playPlayerMoveFail();
                 }
@@ -126,6 +135,7 @@ public class InGame extends BaseGUI {
                 }
                 if (activeMap.movePlayerDown()) {
                     soundEffectManager.playPlayerMove();
+                    checkIsFinished();
                     stepLabel.setText(String.valueOf(activeMap.getSteps()));
                 } else {
                     soundEffectManager.playPlayerMoveFail();
@@ -146,6 +156,7 @@ public class InGame extends BaseGUI {
                 }
                 if (activeMap.movePlayerLeft()) {
                     soundEffectManager.playPlayerMove();
+                    checkIsFinished();
                     stepLabel.setText(String.valueOf(activeMap.getSteps()));
                 } else {
                     soundEffectManager.playPlayerMoveFail();
@@ -166,6 +177,7 @@ public class InGame extends BaseGUI {
                 }
                 if (activeMap.movePlayerRight()) {
                     soundEffectManager.playPlayerMove();
+                    checkIsFinished();
                     stepLabel.setText(String.valueOf(activeMap.getSteps()));
                 } else {
                     soundEffectManager.playPlayerMoveFail();
@@ -186,6 +198,7 @@ public class InGame extends BaseGUI {
                 }
                 if (activeMap.revertLastMove()) {
                     soundEffectManager.playPlayerMove();
+                    checkIsFinished();
                     stepLabel.setText(String.valueOf(activeMap.getSteps()));
                 } else {
                     soundEffectManager.playPlayerMoveFail();
@@ -200,6 +213,41 @@ public class InGame extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
+                CompletableFuture.supplyAsync(() -> GreedySolver.greedy(activeMap.getMap()), executor)
+                    .thenAccept(result -> {
+                        isPlayingSolution = true;
+                        if (result != null && !result.isEmpty()) {
+                            switch (result.charAt(0)) {
+                                case 'U':
+                                    upButton.setDisabled(true);
+                                    break;
+                                case 'D':
+                                    downButton.setDisabled(true);
+                                    break;
+                                case 'L':
+                                    leftButton.setDisabled(true);
+                                    break;
+                                case 'R':
+                                    rightButton.setDisabled(true);
+                                    break;
+                            }
+                            try {
+                                Thread.sleep(100);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
+                            upButton.setDisabled(false);
+                            downButton.setDisabled(false);
+                            leftButton.setDisabled(false);
+                            rightButton.setDisabled(false);
+                        }
+                        isPlayingSolution = false;
+                    })
+                    .exceptionally(throwable -> {
+                        throwable.printStackTrace();
+                        return null;
+                    });
             }
         });
 
@@ -213,7 +261,6 @@ public class InGame extends BaseGUI {
                 CompletableFuture.supplyAsync(() -> GreedySolver.greedy(activeMap.getMap()), executor)
                     .thenAccept(result -> {
                         isPlayingSolution = true;
-                        System.out.println(result);
                         if (result != null && !result.isEmpty()) {
                             for (char c : result.toCharArray()) {
                                 switch (c) {
@@ -239,6 +286,7 @@ public class InGame extends BaseGUI {
                                 }
                             }
                         }
+                        checkIsFinished();
                         isPlayingSolution = false;
                     })
                     .exceptionally(throwable -> {
@@ -282,11 +330,16 @@ public class InGame extends BaseGUI {
         });
     }
 
+    public void retry() {
+        this.activeMap = new InFlightMap(this.backupMap.getMap());
+    }
+
     public void setActiveMap(InFlightMap activeMap) {
         if (this.activeMap != null) {
             this.mapRenderTable.remove();
         }
         this.activeMap = activeMap;
+        this.backupMap = new InFlightMap(activeMap.getMap());
         updateTimer();
         stepLabel.setText(String.valueOf(activeMap.getSteps()));
     }
@@ -401,6 +454,7 @@ public class InGame extends BaseGUI {
             mapRenderTable = this.activeMap.getMap().getRenderTable();
             mapRenderTable.padBottom(100);
             this.stage.addActor(mapRenderTable);
+            checkIsFinished();
         }
     }
 }

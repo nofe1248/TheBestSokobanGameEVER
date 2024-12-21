@@ -56,6 +56,7 @@ public class GUIManager extends ApplicationAdapter {
         this.guiSelectionStack = new Stack<>();
 
         this.guiMap = new HashMap<>();
+        this.guiMap.put(GUISelection.FINISH_PAGE, new FinishPage());
         this.guiMap.put(GUISelection.LOAD_GAME, new LoadGame());
         this.guiMap.put(GUISelection.LOGIN_PANEL, new LoginPanel());
         this.guiMap.put(GUISelection.IN_GAME, new InGame());

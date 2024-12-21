@@ -1,6 +1,7 @@
 package io.github.nofe1248.gui;
 
 public enum GUISelection {
+    FINISH_PAGE,
     LOAD_GAME,
     LOGIN_PANEL,
     IN_GAME,
