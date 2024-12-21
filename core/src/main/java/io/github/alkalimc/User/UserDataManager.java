@@ -4,8 +4,10 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class UserDataManager {
+
     private static final String FILE_NAME = "user_data.ser";
     File file = new File(FILE_NAME);
+    private static User user;
 
     public static void CreateFile(ArrayList<User> users) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {

@@ -5,6 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class User implements Serializable {
 
@@ -39,7 +40,7 @@ public class User implements Serializable {
     }
 
     //新用户注册
-    public boolean User(String account, String password) {
+    public boolean register(String account, String password) {
         if (User.passwordValidityVerification(password)) {
             if (UserDataManager.findUserByAccount(account) == null) {
                 this.id = ++count;
@@ -64,7 +65,7 @@ public class User implements Serializable {
     //用户登入
     public boolean login(String password) {
         if (User.passwordValidityVerification(password)) {
-            if (this.key == getSHA256(password)) {
+            if (Objects.equals(this.key, getSHA256(password))) {
                 this.lastLoginTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
                 this.online = true;
                 Log.logSuccessful(3, this.id, this.account, "登入");

@@ -2,12 +2,9 @@ package io.github.nofe1248.gui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import io.github.alkalimc.User.UserDataManager;
 import io.github.nofe1248.sound.BackgroundMusicSelection;
 import io.github.alkalimc.User.*;
 
@@ -47,7 +44,7 @@ public class LoginPanel extends BaseGUI {
                 String username = usernameField.getText();
                 String password = passwordField.getText();
 
-                if (Login.Login(username, password)) {
+                if (Login.login(username, password)) {
                     manager.setCurrentGUI(GUISelection.MAIN_MENU);
                 }
             }
@@ -64,7 +61,7 @@ public class LoginPanel extends BaseGUI {
                 String username = usernameField.getText();
                 String password = passwordField.getText();
 
-                if (Login.Register(username, password)) {
+                if (Login.register(username, password)) {
                     manager.setCurrentGUI(GUISelection.MAIN_MENU);
                 }
             }

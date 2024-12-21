@@ -386,6 +386,52 @@
 			{
 				"child": {
 					"class": "TextButton",
+					"name": null,
+					"text": "Quit            ",
+					"style": {
+						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
+						"name": "middle"
+					},
+					"checked": false,
+					"disabled": true,
+					"color": null,
+					"padLeft": 0,
+					"padRight": 0,
+					"padTop": 0,
+					"padBottom": 0,
+					"touchable": "enabled",
+					"visible": false
+				},
+				"row": 6,
+				"column": 0,
+				"padLeft": 0,
+				"padRight": 768,
+				"padTop": 0,
+				"padBottom": 0,
+				"spaceLeft": 0,
+				"spaceRight": 0,
+				"spaceTop": 0,
+				"spaceBottom": 0,
+				"expandX": false,
+				"expandY": false,
+				"fillX": false,
+				"fillY": false,
+				"growX": false,
+				"growY": false,
+				"alignment": 1,
+				"minWidth": -1,
+				"minHeight": -1,
+				"maxWidth": -1,
+				"maxHeight": -1,
+				"preferredWidth": -1,
+				"preferredHeight": -1,
+				"uniformX": false,
+				"uniformY": false,
+				"colSpan": 1
+			},
+			{
+				"child": {
+					"class": "TextButton",
 					"name": "return",
 					"text": "Return       ",
 					"style": {
@@ -402,7 +448,7 @@
 					"touchable": "enabled",
 					"visible": false
 				},
-				"row": 6,
+				"row": 7,
 				"column": 0,
 				"padLeft": 0,
 				"padRight": 768,
