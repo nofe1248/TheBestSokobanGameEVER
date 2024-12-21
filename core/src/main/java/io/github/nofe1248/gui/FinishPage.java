@@ -124,7 +124,7 @@ public class FinishPage extends BaseGUI {
     public void onShow() {
         mapTitle.setText("Map: " + ((InGame) GUIManager.getManager().getGUI(GUISelection.IN_GAME)).getActiveMap().getMapNumber());
         steps.setText("Steps: " + ((InGame) GUIManager.getManager().getGUI(GUISelection.IN_GAME)).getActiveMap().getSteps());
-        time.setText("Time: " + ((InGame) GUIManager.getManager().getGUI(GUISelection.IN_GAME)).getActiveMap().getElapsedTime());
+        time.setText("Time: " + ((InGame) GUIManager.getManager().getGUI(GUISelection.IN_GAME)).getActiveMap().getElapsedTime() / 1000 + "s");
 
         GUIManager manager = GUIManager.getManager();
         manager
