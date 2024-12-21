@@ -117,6 +117,7 @@ public class MapManager {
             {MapElement.WALL, MapElement.PLAYER, MapElement.EMPTY, MapElement.GOAL, MapElement.BOX, MapElement.WALL, MapElement.WALL},
             {MapElement.WALL, MapElement.EMPTY, MapElement.EMPTY, MapElement.EMPTY, MapElement.BOX, MapElement.EMPTY, MapElement.WALL},
             {MapElement.WALL, MapElement.EMPTY, MapElement.WALL, MapElement.GOAL, MapElement.EMPTY, MapElement.EMPTY, MapElement.WALL},
+            {MapElement.WALL, MapElement.EMPTY, MapElement.EMPTY, MapElement.EMPTY, MapElement.EMPTY, MapElement.EMPTY, MapElement.WALL},
             {MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL, MapElement.WALL}
         });
         map3.setDifficulty(20);

@@ -82,22 +82,18 @@ public class InFlightMap {
         SoundEffectManager soundEffectManager = GUIManager.getManager().getSoundEffectManager();
 
         if (!map.isPositionValid(newPosition)) {
-            soundEffectManager.playPlayerMoveFail();
             return false;
         }
 
         if (map.getMapElement(newPosition).isAnyOf(MapElement.WALL)) {
-            soundEffectManager.playPlayerMoveFail();
             return false;
         }
 
         if (map.getMapElement(newPosition).isAnyOf(MapElement.BOX, MapElement.BOX_ON_GOAL)) {
             if (!map.isPositionValid(boxTargetPosition)) {
-                soundEffectManager.playPlayerMoveFail();
                 return false;
             }
             if (map.getMapElement(boxTargetPosition).isAnyOf(MapElement.WALL, MapElement.BOX, MapElement.BOX_ON_GOAL)) {
-                soundEffectManager.playPlayerMoveFail();
                 return false;
             }
             map.setMapElement(boxTargetPosition, map.getMapElement(boxTargetPosition).isAnyOf(MapElement.GOAL) ? MapElement.BOX_ON_GOAL : MapElement.BOX);
@@ -109,7 +105,6 @@ public class InFlightMap {
             map.setMapElement(playerPosition, map.getMapElement(playerPosition).isAnyOf(MapElement.PLAYER_ON_GOAL) ? MapElement.GOAL : MapElement.EMPTY);
         }
 
-        soundEffectManager.playPlayerMove();
         steps++;
         previousMaps.add(oldMap);
 

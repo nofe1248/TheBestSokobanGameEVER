@@ -9,6 +9,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import io.github.nofe1248.map.map.InFlightMap;
+import io.github.nofe1248.map.solver.GreedySolver;
+import io.github.nofe1248.sound.SoundEffectManager;
+
+import java.util.Objects;
+import java.util.concurrent.*;
 
 class TimerUpdateThread extends Thread {
     private final Object lock = new Object();
@@ -62,6 +67,8 @@ public class InGame extends BaseGUI {
     private ImageButton upButton, downButton, leftButton, rightButton;
     private Label timerLabel, scoreLabel, stepLabel;
     private final TimerUpdateThread timerUpdateThread = new TimerUpdateThread();
+    private boolean isPlayingSolution = false;
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public InGame() {
         super("gui/Playing/Playing.json", "gui/Playing/PlayingLayout.json");
@@ -92,9 +99,16 @@ public class InGame extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
+                SoundEffectManager soundEffectManager = manager.getSoundEffectManager();
                 manager.getSoundEffectManager().playClick();
+                if (isPlayingSolution) {
+                    return;
+                }
                 if (activeMap.movePlayerUp()) {
+                    soundEffectManager.playPlayerMove();
                     stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                } else {
+                    soundEffectManager.playPlayerMoveFail();
                 }
             }
         });
@@ -105,9 +119,16 @@ public class InGame extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
+                SoundEffectManager soundEffectManager = manager.getSoundEffectManager();
                 manager.getSoundEffectManager().playClick();
+                if (isPlayingSolution) {
+                    return;
+                }
                 if (activeMap.movePlayerDown()) {
+                    soundEffectManager.playPlayerMove();
                     stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                } else {
+                    soundEffectManager.playPlayerMoveFail();
                 }
             }
         });
@@ -118,9 +139,16 @@ public class InGame extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
+                SoundEffectManager soundEffectManager = manager.getSoundEffectManager();
                 manager.getSoundEffectManager().playClick();
+                if (isPlayingSolution) {
+                    return;
+                }
                 if (activeMap.movePlayerLeft()) {
+                    soundEffectManager.playPlayerMove();
                     stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                } else {
+                    soundEffectManager.playPlayerMoveFail();
                 }
             }
         });
@@ -131,9 +159,16 @@ public class InGame extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
+                SoundEffectManager soundEffectManager = manager.getSoundEffectManager();
                 manager.getSoundEffectManager().playClick();
+                if (isPlayingSolution) {
+                    return;
+                }
                 if (activeMap.movePlayerRight()) {
+                    soundEffectManager.playPlayerMove();
                     stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                } else {
+                    soundEffectManager.playPlayerMoveFail();
                 }
             }
         });
@@ -144,9 +179,16 @@ public class InGame extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
+                SoundEffectManager soundEffectManager = manager.getSoundEffectManager();
                 manager.getSoundEffectManager().playClick();
+                if (isPlayingSolution) {
+                    return;
+                }
                 if (activeMap.revertLastMove()) {
+                    soundEffectManager.playPlayerMove();
                     stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                } else {
+                    soundEffectManager.playPlayerMoveFail();
                 }
             }
         });
@@ -168,6 +210,41 @@ public class InGame extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
+                CompletableFuture.supplyAsync(() -> GreedySolver.greedy(activeMap.getMap()), executor)
+                    .thenAccept(result -> {
+                        isPlayingSolution = true;
+                        System.out.println(result);
+                        if (result != null && !result.isEmpty()) {
+                            for (char c : result.toCharArray()) {
+                                switch (c) {
+                                    case 'U':
+                                        activeMap.movePlayerUp();
+                                        break;
+                                    case 'D':
+                                        activeMap.movePlayerDown();
+                                        break;
+                                    case 'L':
+                                        activeMap.movePlayerLeft();
+                                        break;
+                                    case 'R':
+                                        activeMap.movePlayerRight();
+                                        break;
+                                }
+                                stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                                try {
+                                    Thread.sleep(100);
+                                } catch (InterruptedException e) {
+                                    Thread.currentThread().interrupt();
+                                    return;
+                                }
+                            }
+                        }
+                        isPlayingSolution = false;
+                    })
+                    .exceptionally(throwable -> {
+                        throwable.printStackTrace();
+                        return null;
+                    });
             }
         });
 
@@ -243,12 +320,18 @@ public class InGame extends BaseGUI {
         super.input();
 
         if (this.activeMap != null) {
+            if (isPlayingSolution) {
+                return;
+            }
             mapRenderTable.remove();
-            //need to be adjusted to prevent very fast moving when holding the key
+            SoundEffectManager soundEffectManager = GUIManager.getManager().getSoundEffectManager();
             if (Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP)) {
                 if (!isPressingW) {
                     if (activeMap.movePlayerUp()) {
+                        soundEffectManager.playPlayerMove();
                         stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                    } else {
+                        soundEffectManager.playPlayerMoveFail();
                     }
                     upButton.setDisabled(true);
                     isPressingW = true;
@@ -260,7 +343,10 @@ public class InGame extends BaseGUI {
             if (Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
                 if (!isPressingS) {
                     if (activeMap.movePlayerDown()) {
+                        soundEffectManager.playPlayerMove();
                         stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                    } else {
+                        soundEffectManager.playPlayerMoveFail();
                     }
                     downButton.setDisabled(true);
                     isPressingS = true;
@@ -272,7 +358,10 @@ public class InGame extends BaseGUI {
             if (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
                 if (!isPressingA) {
                     if (activeMap.movePlayerLeft()) {
+                        soundEffectManager.playPlayerMove();
                         stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                    } else {
+                        soundEffectManager.playPlayerMoveFail();
                     }
                     leftButton.setDisabled(true);
                     isPressingA = true;
@@ -284,7 +373,10 @@ public class InGame extends BaseGUI {
             if (Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
                 if (!isPressingD) {
                     if (activeMap.movePlayerRight()) {
+                        soundEffectManager.playPlayerMove();
                         stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                    } else {
+                        soundEffectManager.playPlayerMoveFail();
                     }
                     rightButton.setDisabled(true);
                     isPressingD = true;
@@ -296,7 +388,10 @@ public class InGame extends BaseGUI {
             if (Gdx.input.isKeyPressed(Input.Keys.CONTROL_LEFT) && Gdx.input.isKeyPressed(Input.Keys.Z)) {
                 if (!isPressingRevert) {
                     if (activeMap.revertLastMove()) {
+                        soundEffectManager.playPlayerMove();
                         stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                    } else {
+                        soundEffectManager.playPlayerMoveFail();
                     }
                     isPressingRevert = true;
                 }
