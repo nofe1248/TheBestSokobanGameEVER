@@ -2,12 +2,11 @@ package io.github.nofe1248.gui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import io.github.nofe1248.sound.BackgroundMusicSelection;
+import io.github.alkalimc.User.*;
 
 public class LoginPanel extends BaseGUI {
     public LoginPanel() {
@@ -41,10 +40,13 @@ public class LoginPanel extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
-                manager.setCurrentGUI(GUISelection.MAIN_MENU);
 
                 String username = usernameField.getText();
                 String password = passwordField.getText();
+
+                if (Login.login(username, password)) {
+                    manager.setCurrentGUI(GUISelection.MAIN_MENU);
+                }
             }
         });
 
@@ -55,10 +57,13 @@ public class LoginPanel extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
-                manager.setCurrentGUI(GUISelection.MAIN_MENU);
 
                 String username = usernameField.getText();
                 String password = passwordField.getText();
+
+                if (Login.register(username, password)) {
+                    manager.setCurrentGUI(GUISelection.MAIN_MENU);
+                }
             }
         });
     }
