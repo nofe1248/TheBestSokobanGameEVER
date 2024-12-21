@@ -2,16 +2,15 @@ package io.github.nofe1248.gui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Cell;
-import com.badlogic.gdx.scenes.scene2d.ui.Slider;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import io.github.nofe1248.preferences.CharacterSelection;
 import io.github.nofe1248.preferences.GamePreferences;
-import io.github.nofe1248.sound.BackgroundMusicManager;
 import io.github.nofe1248.sound.BackgroundMusicSelection;
 
 public class Settings extends BaseGUI {
+    private TextButton continueButton;
+
     public Settings() {
         super("gui/Settings/Settings.json", "gui/Settings/SettingsLayout.json");
     }
@@ -107,6 +106,63 @@ public class Settings extends BaseGUI {
             }
         });
 
+        ImageButton monikaButton = this.stage.getRoot().findActor("monika");
+        assert monikaButton != null;
+        monikaButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                GUIManager manager = GUIManager.getManager();
+                manager.getSoundEffectManager().playClick();
+                GamePreferences.setCharacterSelection(CharacterSelection.MONIKA);
+            }
+        });
+
+        ImageButton natsukiButton = this.stage.getRoot().findActor("natsuki");
+        assert natsukiButton != null;
+        natsukiButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                GUIManager manager = GUIManager.getManager();
+                manager.getSoundEffectManager().playClick();
+                GamePreferences.setCharacterSelection(CharacterSelection.NATSUKI);
+            }
+        });
+
+        ImageButton sayoriButton = this.stage.getRoot().findActor("sayori");
+        assert sayoriButton != null;
+        sayoriButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                GUIManager manager = GUIManager.getManager();
+                manager.getSoundEffectManager().playClick();
+                GamePreferences.setCharacterSelection(CharacterSelection.SAYORI);
+            }
+        });
+
+        ImageButton yuriButton = this.stage.getRoot().findActor("yuri");
+        assert yuriButton != null;
+        yuriButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                GUIManager manager = GUIManager.getManager();
+                manager.getSoundEffectManager().playClick();
+                GamePreferences.setCharacterSelection(CharacterSelection.YURI);
+            }
+        });
+
+        continueButton = this.stage.getRoot().findActor("continue");
+        assert continueButton != null;
+        continueButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                GUIManager manager = GUIManager.getManager();
+                manager.getSoundEffectManager().playClick();
+                if (manager.getGUI(GUISelection.IN_GAME) instanceof InGame inGame && inGame.getActiveMap() != null && !inGame.getActiveMap().getMap().isSolved()) {
+                    manager.setCurrentGUI(GUISelection.IN_GAME);
+                }
+            }
+        });
+
         masterVolumeSlider.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -133,10 +189,15 @@ public class Settings extends BaseGUI {
 
     @Override
     public void onShow() {
-        GUIManager
-            .getManager()
+        GUIManager manager = GUIManager.getManager();
+        manager
             .getBackgroundMusicManager()
-            .playBackgroundMusic(BackgroundMusicSelection.SETTINGS, false);
+            .playBackgroundMusic(BackgroundMusicSelection.MAIN_MENU, false);
+        if (manager.getGUI(GUISelection.IN_GAME) instanceof InGame inGame && inGame.getActiveMap() != null && !inGame.getActiveMap().getMap().isSolved()) {
+            continueButton.setVisible(true);
+        } else {
+            continueButton.setVisible(false);
+        }
     }
 
     @Override

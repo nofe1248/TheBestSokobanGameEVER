@@ -10,9 +10,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import io.github.nofe1248.map.map.InFlightMap;
 import io.github.nofe1248.map.solver.GreedySolver;
+import io.github.nofe1248.preferences.GamePreferences;
+import io.github.nofe1248.sound.BackgroundMusicManager;
+import io.github.nofe1248.sound.BackgroundMusicSelection;
 import io.github.nofe1248.sound.SoundEffectManager;
 
-import java.util.Objects;
 import java.util.concurrent.*;
 
 class TimerUpdateThread extends Thread {
@@ -362,6 +364,13 @@ public class InGame extends BaseGUI {
         } else {
             timerUpdateThread.resumeThread();
         }
+        BackgroundMusicManager backgroundMusicManager = GUIManager.getManager().getBackgroundMusicManager();
+        backgroundMusicManager.playBackgroundMusic(switch (GamePreferences.getCharacterSelection()) {
+            case MONIKA -> BackgroundMusicSelection.SINGLEPLAYER_MONIKA;
+            case NATSUKI -> BackgroundMusicSelection.SINGLEPLAYER_NATSUKI;
+            case SAYORI -> BackgroundMusicSelection.SINGLEPLAYER_SAYORI;
+            case YURI -> BackgroundMusicSelection.SINGLEPLAYER_YURI;
+        }, false);
     }
 
     @Override

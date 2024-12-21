@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import io.github.nofe1248.sound.BackgroundMusicSelection;
 
 public class FinishPage extends BaseGUI {
     Label mapTitle;
@@ -85,6 +86,17 @@ public class FinishPage extends BaseGUI {
             }
         });
 
+        TextButton mainMenuBottomButton = this.stage.getRoot().findActor("main_menu_bottom");
+        assert mainMenuBottomButton != null;
+        mainMenuBottomButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                GUIManager manager = GUIManager.getManager();
+                manager.getSoundEffectManager().playClick();
+                manager.setCurrentGUI(GUISelection.MAIN_MENU);
+            }
+        });
+
         TextButton quitButton = this.stage.getRoot().findActor("quit");
         assert quitButton != null;
         quitButton.addListener(new ChangeListener() {
@@ -110,7 +122,14 @@ public class FinishPage extends BaseGUI {
 
     @Override
     public void onShow() {
+        mapTitle.setText("Map: " + ((InGame) GUIManager.getManager().getGUI(GUISelection.IN_GAME)).getActiveMap().getMapNumber());
+        steps.setText("Steps: " + ((InGame) GUIManager.getManager().getGUI(GUISelection.IN_GAME)).getActiveMap().getSteps());
+        time.setText("Time: " + ((InGame) GUIManager.getManager().getGUI(GUISelection.IN_GAME)).getActiveMap().getElapsedTime());
 
+        GUIManager manager = GUIManager.getManager();
+        manager
+            .getBackgroundMusicManager()
+            .playBackgroundMusic(BackgroundMusicSelection.MAIN_MENU, false);
     }
 
     @Override

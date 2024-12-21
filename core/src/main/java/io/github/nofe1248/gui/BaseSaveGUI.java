@@ -4,9 +4,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-
-import java.util.Set;
 
 public abstract class BaseSaveGUI extends BaseGUI {
     protected int currentPage = 1;
@@ -29,6 +28,7 @@ public abstract class BaseSaveGUI extends BaseGUI {
     protected boolean map3Exists = false;
     protected boolean map4Exists = false;
     protected Texture placeholder = new Texture("images/Menu/frame_Modified.png");
+    protected TextField pageField;
 
     public BaseSaveGUI(String skinAssetPath, String layoutAssetPath) {
         super(skinAssetPath, layoutAssetPath);
@@ -193,6 +193,29 @@ public abstract class BaseSaveGUI extends BaseGUI {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
                 setCurrentPage(MAX_PAGE);
+            }
+        });
+
+        pageField = this.stage.getRoot().findActor("page");
+        assert pageField != null;
+        pageField.setTextFieldListener((textField, c) -> {
+            if (c == '\n') {
+                GUIManager manager = GUIManager.getManager();
+                manager.getSoundEffectManager().playClick();
+                try {
+                    int page = Integer.parseInt(textField.getText());
+                    if (page >= 1 && page <= MAX_PAGE) {
+                        setCurrentPage(page);
+                    }
+                    if (page < 1) {
+                        setCurrentPage(1);
+                    }
+                    if (page > MAX_PAGE) {
+                        setCurrentPage(MAX_PAGE);
+                    }
+                } catch (NumberFormatException e) {
+                    textField.setText(String.valueOf(currentPage));
+                }
             }
         });
     }

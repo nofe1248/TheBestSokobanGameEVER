@@ -1,6 +1,6 @@
 {
 	"masterVolume":1.0,
 	"soundVolume":1.0,
-	"musicVolume":0.0,
-	"characterSelection":"MONIKA"
+	"musicVolume":1.0,
+	"characterSelection":"SAYORI"
 }

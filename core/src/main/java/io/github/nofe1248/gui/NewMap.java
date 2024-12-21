@@ -3,7 +3,6 @@ package io.github.nofe1248.gui;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
@@ -16,7 +15,6 @@ import io.github.nofe1248.map.MapManager;
 import io.github.nofe1248.map.generator.MapGenerator;
 import io.github.nofe1248.map.map.Map;
 import io.github.nofe1248.sound.BackgroundMusicSelection;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -31,6 +29,7 @@ public class NewMap extends BaseGUI {
     private TextField difficulty;
     private TextField row;
     private TextField col;
+    private TextButton continueButton;
 
     private int mapIndex;
 
@@ -118,7 +117,12 @@ public class NewMap extends BaseGUI {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
 
-                int seed = Integer.parseInt(mapSeed.getText());
+                int seed;
+                if (!mapSeed.getText().isEmpty()) {
+                    seed = Integer.parseInt(mapSeed.getText());
+                } else {
+                    seed = (int) (Math.random() * Integer.MAX_VALUE);
+                }
                 double difficulty = Double.parseDouble(NewMap.this.difficulty.getText()) * 2 + 20;
                 int row = Integer.parseInt(NewMap.this.row.getText());
                 int col = Integer.parseInt(NewMap.this.col.getText());
@@ -210,14 +214,32 @@ public class NewMap extends BaseGUI {
                 manager.setCurrentGUI(GUISelection.MAIN_MENU);
             }
         });
+
+        continueButton = this.stage.getRoot().findActor("continue");
+        assert continueButton != null;
+        continueButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                GUIManager manager = GUIManager.getManager();
+                manager.getSoundEffectManager().playClick();
+                if (manager.getGUI(GUISelection.IN_GAME) instanceof InGame inGame && inGame.getActiveMap() != null && !inGame.getActiveMap().getMap().isSolved()) {
+                    manager.setCurrentGUI(GUISelection.IN_GAME);
+                }
+            }
+        });
     }
 
     @Override
     public void onShow() {
-        GUIManager
-            .getManager()
+        GUIManager manager = GUIManager.getManager();
+        manager
             .getBackgroundMusicManager()
             .playBackgroundMusic(BackgroundMusicSelection.MAIN_MENU, false);
+        if (manager.getGUI(GUISelection.IN_GAME) instanceof InGame inGame && inGame.getActiveMap() != null && !inGame.getActiveMap().getMap().isSolved()) {
+            continueButton.setVisible(true);
+        } else {
+            continueButton.setVisible(false);
+        }
     }
 
     @Override

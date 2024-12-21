@@ -1,15 +1,11 @@
 package io.github.nofe1248.gui;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import io.github.nofe1248.map.MapManager;
 import io.github.nofe1248.map.SaveManager;
 import io.github.nofe1248.map.map.InFlightMap;
 import io.github.nofe1248.sound.BackgroundMusicSelection;
@@ -19,6 +15,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class SaveGame extends BaseSaveGUI {
+    private TextButton continueButton;
+
     public SaveGame() {
         super("gui/SaveGame/SaveGame.json", "gui/SaveGame/SaveGameLayout.json");
         this.setPrefix("Save ");
@@ -203,6 +201,19 @@ public class SaveGame extends BaseSaveGUI {
             }
         });
 
+        continueButton = this.stage.getRoot().findActor("continue");
+        assert continueButton != null;
+        continueButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                GUIManager manager = GUIManager.getManager();
+                manager.getSoundEffectManager().playClick();
+                if (manager.getGUI(GUISelection.IN_GAME) instanceof InGame inGame && inGame.getActiveMap() != null && !inGame.getActiveMap().getMap().isSolved()) {
+                    manager.setCurrentGUI(GUISelection.IN_GAME);
+                }
+            }
+        });
+
         updateMapTitleOnPageChange();
     }
 
@@ -304,10 +315,15 @@ public class SaveGame extends BaseSaveGUI {
     @Override
     public void onShow() {
         updateMapTitleOnPageChange();
-        GUIManager
-            .getManager()
+        GUIManager manager = GUIManager.getManager();
+        manager
             .getBackgroundMusicManager()
             .playBackgroundMusic(BackgroundMusicSelection.MAIN_MENU, false);
+        if (manager.getGUI(GUISelection.IN_GAME) instanceof InGame inGame && inGame.getActiveMap() != null && !inGame.getActiveMap().getMap().isSolved()) {
+            continueButton.setVisible(true);
+        } else {
+            continueButton.setVisible(false);
+        }
     }
 
     @Override

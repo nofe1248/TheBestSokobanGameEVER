@@ -20,6 +20,7 @@ public class InFlightMap {
 
     public InFlightMap(Map map, int mapNumber) {
         this.map = new Map(map);
+        this.mapNumber = mapNumber;
     }
 
     public InFlightMap(InFlightMap inFlightMap) {
