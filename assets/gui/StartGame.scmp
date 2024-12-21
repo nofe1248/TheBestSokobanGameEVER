@@ -7181,7 +7181,7 @@ sceneComposer: {
 				{
 					child: {
 						class: com.ray3k.skincomposer.dialog.scenecomposer.DialogSceneComposerModel$SimTextField
-						name: null
+						name: page
 						style: {
 							name: default
 							clazz: com.badlogic.gdx.scenes.scene2d.ui.TextField
