@@ -2,6 +2,9 @@ package io.github.nofe1248.gui;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.kotcrab.vis.ui.VisUI;
 import io.github.nofe1248.map.MapManager;
 import io.github.nofe1248.preferences.GamePreferences;
 import io.github.nofe1248.sound.BackgroundMusicManager;
@@ -53,6 +56,8 @@ public class GUIManager extends ApplicationAdapter {
 
     @Override
     public void create() {
+        VisUI.load();
+
         this.guiSelectionStack = new Stack<>();
 
         this.guiMap = new HashMap<>();
@@ -100,5 +105,9 @@ public class GUIManager extends ApplicationAdapter {
 
     public static GUIManager getManager() {
         return (GUIManager) Gdx.app.getApplicationListener();
+    }
+
+    public Stage getStage() {
+        return this.getCurrentGUI().getStage();
     }
 }

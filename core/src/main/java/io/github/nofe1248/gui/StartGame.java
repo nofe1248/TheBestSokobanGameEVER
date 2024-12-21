@@ -169,10 +169,11 @@ public class StartGame extends BaseSaveGUI {
         GUIManager manager = GUIManager.getManager();
         if (mapExists) {
             manager.getSoundEffectManager().playClick();
-            ((InGame) manager.getGUI(GUISelection.IN_GAME)).setActiveMap(new InFlightMap(MapManager.getMap(mapIndex)));
+            ((InGame) manager.getGUI(GUISelection.IN_GAME)).setActiveMap(new InFlightMap(MapManager.getMap(mapIndex), mapIndex));
             manager.setCurrentGUI(GUISelection.IN_GAME);
         }
         else {
+            ((NewMap) manager.getGUI(GUISelection.NEW_MAP)).setMapIndex(mapIndex);
             manager.setCurrentGUI(GUISelection.NEW_MAP);
         }
     }

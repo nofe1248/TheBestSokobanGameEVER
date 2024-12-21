@@ -69,4 +69,8 @@ public abstract class BaseGUI extends ApplicationAdapter {
     public void input() {
 
     }
+
+    public Stage getStage() {
+        return this.stage;
+    }
 }

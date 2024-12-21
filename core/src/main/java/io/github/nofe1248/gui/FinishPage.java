@@ -2,10 +2,16 @@ package io.github.nofe1248.gui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 public class FinishPage extends BaseGUI {
+    Label mapTitle;
+    Label steps;
+    Label time;
+    Label score;
+
     public FinishPage() {
         super("gui/FinishPage/FinishPage.json", "gui/FinishPage/FinishPageLayout.json");
     }
@@ -13,6 +19,15 @@ public class FinishPage extends BaseGUI {
     @Override
     public void create() {
         super.create();
+
+        this.mapTitle = this.stage.getRoot().findActor("map");
+        this.steps = this.stage.getRoot().findActor("steps");
+        this.time = this.stage.getRoot().findActor("time");
+        this.score = this.stage.getRoot().findActor("score");
+        assert this.mapTitle != null;
+        assert this.steps != null;
+        assert this.time != null;
+        assert this.score != null;
 
         TextButton retryButton = this.stage.getRoot().findActor("retry");
         assert retryButton != null;

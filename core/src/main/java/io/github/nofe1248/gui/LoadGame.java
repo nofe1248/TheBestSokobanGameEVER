@@ -84,7 +84,7 @@ public class LoadGame extends BaseSaveGUI {
     protected void mapButtonCallback(int mapNumber, boolean exists) {
         if (exists) {
             GUIManager manager = GUIManager.getManager();
-            InFlightMap inFlightMap = SaveManager.getSave(mapNumber);
+            InFlightMap inFlightMap = new InFlightMap(SaveManager.getSave(mapNumber));
             ((InGame) manager.getGUI(GUISelection.IN_GAME)).setActiveMap(inFlightMap);
             manager.setCurrentGUI(GUISelection.IN_GAME);
         }

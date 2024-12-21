@@ -16,9 +16,20 @@ public class InFlightMap {
     private int steps = 0;
     private long elapsedTime = 0;
     private long startTime = System.currentTimeMillis();
+    private int mapNumber;
 
-    public InFlightMap(Map map) {
+    public InFlightMap(Map map, int mapNumber) {
         this.map = new Map(map);
+    }
+
+    public InFlightMap(InFlightMap inFlightMap) {
+        this.map = new Map(inFlightMap.map);
+        for (Map previousMap : inFlightMap.previousMaps) {
+            this.previousMaps.add(new Map(previousMap));
+        }
+        this.steps = inFlightMap.steps;
+        this.elapsedTime = inFlightMap.elapsedTime;
+        this.mapNumber = inFlightMap.mapNumber;
     }
 
     public InFlightMap(JSONObject json) {
@@ -27,6 +38,10 @@ public class InFlightMap {
 
     public InFlightMap(String jsonContent) {
         fromJSON(jsonContent);
+    }
+
+    public int getMapNumber() {
+        return mapNumber;
     }
 
     public Map getMap() {
@@ -44,10 +59,6 @@ public class InFlightMap {
     public long getElapsedTime() {
         updateElapsedTime();
         return elapsedTime;
-    }
-
-    public void clearElapsedTime() {
-        elapsedTime = 0;
     }
 
     public void startTimer() {
@@ -134,6 +145,7 @@ public class InFlightMap {
         assert json.containsKey("previousMaps");
         assert json.containsKey("steps");
         assert json.containsKey("elapsedTime");
+        assert json.containsKey("mapNumber");
 
         map = new Map(json.getJSONObject("map"));
         previousMaps.clear();
@@ -154,9 +166,10 @@ public class InFlightMap {
         }
         json.put("previousMaps", previousMapsJson);
         json.put("steps", steps);
-        updateElapsedTime();
+        startTimer();
         this.startTime = System.currentTimeMillis();
         json.put("elapsedTime", elapsedTime);
+        json.put("mapNumber", mapNumber);
         return json;
     }
 
@@ -169,6 +182,6 @@ public class InFlightMap {
     //for the difficulty, the more the better
     //the range is 0-1000
     public int getScore() {
-        return 0;
+        return (int) (1000 - steps * 10 - (double) (int) elapsedTime / 1000 - map.getDifficulty() * 10);
     }
 }
