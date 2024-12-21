@@ -331,7 +331,9 @@ public class InGame extends BaseGUI {
     }
 
     public void retry() {
-        this.activeMap = new InFlightMap(this.backupMap.getMap());
+        this.activeMap = new InFlightMap(this.backupMap.getMap(), this.backupMap.getMapNumber());
+        stepLabel.setText(String.valueOf(activeMap.getSteps()));
+        updateTimer();
     }
 
     public void setActiveMap(InFlightMap activeMap) {
@@ -339,7 +341,7 @@ public class InGame extends BaseGUI {
             this.mapRenderTable.remove();
         }
         this.activeMap = activeMap;
-        this.backupMap = new InFlightMap(activeMap.getMap());
+        this.backupMap = new InFlightMap(activeMap);
         updateTimer();
         stepLabel.setText(String.valueOf(activeMap.getSteps()));
     }
