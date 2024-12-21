@@ -333,7 +333,7 @@ public class Map implements Cloneable {
 
     @Override
     public int hashCode() {
-        return this.dump().hashCode();
+        return this.getStringRepresentation().hashCode();
     }
 
     public String dump() {
@@ -499,5 +499,13 @@ public class Map implements Cloneable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Map) {
+            return this.dump().equals(((Map) obj).dump());
+        }
+        return false;
     }
 }

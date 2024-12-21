@@ -9,6 +9,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import io.github.nofe1248.map.map.InFlightMap;
+import io.github.nofe1248.map.solver.GreedySolver;
+import io.github.nofe1248.sound.SoundEffectManager;
+
+import java.util.Objects;
+import java.util.concurrent.*;
 
 class TimerUpdateThread extends Thread {
     private final Object lock = new Object();
@@ -53,6 +58,7 @@ class TimerUpdateThread extends Thread {
 
 public class InGame extends BaseGUI {
     private InFlightMap activeMap;
+    private InFlightMap backupMap;
     private Table mapRenderTable;
     private boolean isPressingW = false;
     private boolean isPressingS = false;
@@ -62,6 +68,8 @@ public class InGame extends BaseGUI {
     private ImageButton upButton, downButton, leftButton, rightButton;
     private Label timerLabel, scoreLabel, stepLabel;
     private final TimerUpdateThread timerUpdateThread = new TimerUpdateThread();
+    private boolean isPlayingSolution = false;
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public InGame() {
         super("gui/Playing/Playing.json", "gui/Playing/PlayingLayout.json");
@@ -70,6 +78,13 @@ public class InGame extends BaseGUI {
     public void updateTimer() {
         this.timerLabel.setText(activeMap.getElapsedTime() / 1000 + "s");
         this.scoreLabel.setText(String.valueOf(activeMap.getScore()));
+    }
+
+    private void checkIsFinished() {
+        if (activeMap.getMap().isSolved()) {
+            GUIManager manager = GUIManager.getManager();
+            manager.setCurrentGUI(GUISelection.FINISH_PAGE);
+        }
     }
 
     @Override
@@ -92,9 +107,17 @@ public class InGame extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
+                SoundEffectManager soundEffectManager = manager.getSoundEffectManager();
                 manager.getSoundEffectManager().playClick();
+                if (isPlayingSolution) {
+                    return;
+                }
                 if (activeMap.movePlayerUp()) {
+                    soundEffectManager.playPlayerMove();
                     stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                    checkIsFinished();
+                } else {
+                    soundEffectManager.playPlayerMoveFail();
                 }
             }
         });
@@ -105,9 +128,17 @@ public class InGame extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
+                SoundEffectManager soundEffectManager = manager.getSoundEffectManager();
                 manager.getSoundEffectManager().playClick();
+                if (isPlayingSolution) {
+                    return;
+                }
                 if (activeMap.movePlayerDown()) {
+                    soundEffectManager.playPlayerMove();
+                    checkIsFinished();
                     stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                } else {
+                    soundEffectManager.playPlayerMoveFail();
                 }
             }
         });
@@ -118,9 +149,17 @@ public class InGame extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
+                SoundEffectManager soundEffectManager = manager.getSoundEffectManager();
                 manager.getSoundEffectManager().playClick();
+                if (isPlayingSolution) {
+                    return;
+                }
                 if (activeMap.movePlayerLeft()) {
+                    soundEffectManager.playPlayerMove();
+                    checkIsFinished();
                     stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                } else {
+                    soundEffectManager.playPlayerMoveFail();
                 }
             }
         });
@@ -131,9 +170,17 @@ public class InGame extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
+                SoundEffectManager soundEffectManager = manager.getSoundEffectManager();
                 manager.getSoundEffectManager().playClick();
+                if (isPlayingSolution) {
+                    return;
+                }
                 if (activeMap.movePlayerRight()) {
+                    soundEffectManager.playPlayerMove();
+                    checkIsFinished();
                     stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                } else {
+                    soundEffectManager.playPlayerMoveFail();
                 }
             }
         });
@@ -144,9 +191,17 @@ public class InGame extends BaseGUI {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
+                SoundEffectManager soundEffectManager = manager.getSoundEffectManager();
                 manager.getSoundEffectManager().playClick();
+                if (isPlayingSolution) {
+                    return;
+                }
                 if (activeMap.revertLastMove()) {
+                    soundEffectManager.playPlayerMove();
+                    checkIsFinished();
                     stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                } else {
+                    soundEffectManager.playPlayerMoveFail();
                 }
             }
         });
@@ -158,6 +213,41 @@ public class InGame extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
+                CompletableFuture.supplyAsync(() -> GreedySolver.greedy(activeMap.getMap()), executor)
+                    .thenAccept(result -> {
+                        isPlayingSolution = true;
+                        if (result != null && !result.isEmpty()) {
+                            switch (result.charAt(0)) {
+                                case 'U':
+                                    upButton.setDisabled(true);
+                                    break;
+                                case 'D':
+                                    downButton.setDisabled(true);
+                                    break;
+                                case 'L':
+                                    leftButton.setDisabled(true);
+                                    break;
+                                case 'R':
+                                    rightButton.setDisabled(true);
+                                    break;
+                            }
+                            try {
+                                Thread.sleep(100);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
+                            upButton.setDisabled(false);
+                            downButton.setDisabled(false);
+                            leftButton.setDisabled(false);
+                            rightButton.setDisabled(false);
+                        }
+                        isPlayingSolution = false;
+                    })
+                    .exceptionally(throwable -> {
+                        throwable.printStackTrace();
+                        return null;
+                    });
             }
         });
 
@@ -168,6 +258,41 @@ public class InGame extends BaseGUI {
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
+                CompletableFuture.supplyAsync(() -> GreedySolver.greedy(activeMap.getMap()), executor)
+                    .thenAccept(result -> {
+                        isPlayingSolution = true;
+                        if (result != null && !result.isEmpty()) {
+                            for (char c : result.toCharArray()) {
+                                switch (c) {
+                                    case 'U':
+                                        activeMap.movePlayerUp();
+                                        break;
+                                    case 'D':
+                                        activeMap.movePlayerDown();
+                                        break;
+                                    case 'L':
+                                        activeMap.movePlayerLeft();
+                                        break;
+                                    case 'R':
+                                        activeMap.movePlayerRight();
+                                        break;
+                                }
+                                stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                                try {
+                                    Thread.sleep(100);
+                                } catch (InterruptedException e) {
+                                    Thread.currentThread().interrupt();
+                                    return;
+                                }
+                            }
+                        }
+                        checkIsFinished();
+                        isPlayingSolution = false;
+                    })
+                    .exceptionally(throwable -> {
+                        throwable.printStackTrace();
+                        return null;
+                    });
             }
         });
 
@@ -205,11 +330,16 @@ public class InGame extends BaseGUI {
         });
     }
 
+    public void retry() {
+        this.activeMap = new InFlightMap(this.backupMap.getMap());
+    }
+
     public void setActiveMap(InFlightMap activeMap) {
         if (this.activeMap != null) {
             this.mapRenderTable.remove();
         }
         this.activeMap = activeMap;
+        this.backupMap = new InFlightMap(activeMap.getMap());
         updateTimer();
         stepLabel.setText(String.valueOf(activeMap.getSteps()));
     }
@@ -243,12 +373,18 @@ public class InGame extends BaseGUI {
         super.input();
 
         if (this.activeMap != null) {
+            if (isPlayingSolution) {
+                return;
+            }
             mapRenderTable.remove();
-            //need to be adjusted to prevent very fast moving when holding the key
+            SoundEffectManager soundEffectManager = GUIManager.getManager().getSoundEffectManager();
             if (Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP)) {
                 if (!isPressingW) {
                     if (activeMap.movePlayerUp()) {
+                        soundEffectManager.playPlayerMove();
                         stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                    } else {
+                        soundEffectManager.playPlayerMoveFail();
                     }
                     upButton.setDisabled(true);
                     isPressingW = true;
@@ -260,7 +396,10 @@ public class InGame extends BaseGUI {
             if (Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
                 if (!isPressingS) {
                     if (activeMap.movePlayerDown()) {
+                        soundEffectManager.playPlayerMove();
                         stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                    } else {
+                        soundEffectManager.playPlayerMoveFail();
                     }
                     downButton.setDisabled(true);
                     isPressingS = true;
@@ -272,7 +411,10 @@ public class InGame extends BaseGUI {
             if (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
                 if (!isPressingA) {
                     if (activeMap.movePlayerLeft()) {
+                        soundEffectManager.playPlayerMove();
                         stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                    } else {
+                        soundEffectManager.playPlayerMoveFail();
                     }
                     leftButton.setDisabled(true);
                     isPressingA = true;
@@ -284,7 +426,10 @@ public class InGame extends BaseGUI {
             if (Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
                 if (!isPressingD) {
                     if (activeMap.movePlayerRight()) {
+                        soundEffectManager.playPlayerMove();
                         stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                    } else {
+                        soundEffectManager.playPlayerMoveFail();
                     }
                     rightButton.setDisabled(true);
                     isPressingD = true;
@@ -296,7 +441,10 @@ public class InGame extends BaseGUI {
             if (Gdx.input.isKeyPressed(Input.Keys.CONTROL_LEFT) && Gdx.input.isKeyPressed(Input.Keys.Z)) {
                 if (!isPressingRevert) {
                     if (activeMap.revertLastMove()) {
+                        soundEffectManager.playPlayerMove();
                         stepLabel.setText(String.valueOf(activeMap.getSteps()));
+                    } else {
+                        soundEffectManager.playPlayerMoveFail();
                     }
                     isPressingRevert = true;
                 }
@@ -306,6 +454,7 @@ public class InGame extends BaseGUI {
             mapRenderTable = this.activeMap.getMap().getRenderTable();
             mapRenderTable.padBottom(100);
             this.stage.addActor(mapRenderTable);
+            checkIsFinished();
         }
     }
 }
