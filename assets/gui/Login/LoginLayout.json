@@ -258,27 +258,25 @@
 		"cells": [
 			{
 				"child": {
-					"class": "TextButton",
-					"name": "login",
-					"text": "Login     ",
+					"class": "Label",
+					"name": null,
 					"style": {
-						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
+						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.Label",
 						"name": "default"
 					},
-					"checked": false,
-					"disabled": false,
+					"text": "Account    ",
+					"textAlignment": 8,
+					"ellipsis": false,
+					"ellipsisString": "...",
+					"wrap": false,
 					"color": null,
-					"padLeft": 0,
-					"padRight": 0,
-					"padTop": 0,
-					"padBottom": 0,
 					"touchable": "enabled",
 					"visible": true
 				},
 				"row": 0,
 				"column": 0,
 				"padLeft": 0,
-				"padRight": 768,
+				"padRight": 720,
 				"padTop": 0,
 				"padBottom": 0,
 				"spaceLeft": 0,
