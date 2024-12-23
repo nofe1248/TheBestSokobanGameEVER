@@ -4962,7 +4962,7 @@ sceneComposer: {
 							parent: null
 						}
 						checked: false
-						disabled: false
+						disabled: true
 						color: null
 						padLeft: 0
 						padRight: 0
@@ -5162,7 +5162,7 @@ sceneComposer: {
 							parent: null
 						}
 						checked: false
-						disabled: false
+						disabled: true
 						color: null
 						padLeft: 0
 						padRight: 0

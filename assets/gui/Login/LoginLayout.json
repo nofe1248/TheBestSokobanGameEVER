@@ -542,7 +542,7 @@
 						"name": "middle"
 					},
 					"checked": false,
-					"disabled": false,
+					"disabled": true,
 					"color": null,
 					"padLeft": 0,
 					"padRight": 0,
@@ -588,7 +588,7 @@
 						"name": "middle"
 					},
 					"checked": false,
-					"disabled": false,
+					"disabled": true,
 					"color": null,
 					"padLeft": 0,
 					"padRight": 0,
