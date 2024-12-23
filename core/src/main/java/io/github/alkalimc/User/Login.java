@@ -11,6 +11,7 @@ public class Login {
             if (user.login(password)) {
                 UserDataManager.saveOrUpdateUser(user);
                 UserDataManager.setUser(user);
+                UserDataManager.setGuest(false);
                 return true;
             } else {
                 return false;
@@ -25,6 +26,7 @@ public class Login {
             if (user.register(username, password)) {
                 UserDataManager.saveOrUpdateUser(user);
                 UserDataManager.setUser(user);
+                UserDataManager.setGuest(false);
                 return true;
             } else {
                 return false;

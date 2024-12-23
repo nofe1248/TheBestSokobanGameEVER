@@ -8,6 +8,7 @@ public class UserDataManager {
     private static final String FILE_NAME = "user_data.ser";
     File file = new File(FILE_NAME);
     private static User user;
+    private static boolean Guest = true;
 
     public static void CreateFile(ArrayList<User> users) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
@@ -68,8 +69,14 @@ public class UserDataManager {
     public static void setUser(User user) {
         UserDataManager.user = user;
     }
+    public static void setGuest(boolean guest) {
+        Guest = guest;
+    }
 
     public static User getUser() {
         return user;
+    }
+    public static boolean getGuest() {
+        return Guest;
     }
 }
