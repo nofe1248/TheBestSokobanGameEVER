@@ -174,6 +174,7 @@ public class LoadGame extends BaseSaveGUI {
     @Override
     public void onShow() {
         updateMapTitleOnPageChange();
+        SaveManager.updateSaveList();
         GUIManager manager = GUIManager.getManager();
         manager
             .getBackgroundMusicManager()

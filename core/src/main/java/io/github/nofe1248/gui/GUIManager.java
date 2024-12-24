@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.kotcrab.vis.ui.VisUI;
 import io.github.nofe1248.map.MapManager;
+import io.github.nofe1248.map.SaveManager;
 import io.github.nofe1248.preferences.GamePreferences;
 import io.github.nofe1248.sound.BackgroundMusicManager;
 import io.github.nofe1248.sound.SoundEffectManager;
@@ -101,6 +102,7 @@ public class GUIManager extends ApplicationAdapter {
         this.soundEffectManager.dispose();
         GamePreferences.save();
         MapManager.saveAllMaps();
+        SaveManager.saveQuickSave();
     }
 
     public static GUIManager getManager() {

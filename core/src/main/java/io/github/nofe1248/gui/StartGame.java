@@ -14,6 +14,7 @@ import io.github.nofe1248.sound.BackgroundMusicSelection;
 
 public class StartGame extends BaseSaveGUI {
     private TextButton continueButton;
+    private TextButton loadGameButton;
 
     public StartGame() {
         super("gui/StartGame/StartGame.json", "gui/StartGame/StartGameLayout.json");
@@ -45,7 +46,7 @@ public class StartGame extends BaseSaveGUI {
             }
         });
 
-        TextButton loadGameButton = this.stage.getRoot().findActor("load_game");
+        loadGameButton = this.stage.getRoot().findActor("load_game");
         assert loadGameButton != null;
         loadGameButton.addListener(new ChangeListener() {
             @Override
@@ -175,6 +176,11 @@ public class StartGame extends BaseSaveGUI {
         } else {
             continueButton.setVisible(false);
         }
+        if (UserDataManager.getGuest()) {
+            loadGameButton.setDisabled(true);
+        } else {
+            loadGameButton.setDisabled(false);
+        }
     }
 
     @Override
@@ -187,7 +193,9 @@ public class StartGame extends BaseSaveGUI {
         GUIManager manager = GUIManager.getManager();
         if (mapExists) {
             manager.getSoundEffectManager().playClick();
-            UserDataManager.getUser().newAttempt();
+            if (!UserDataManager.getGuest()) {
+                UserDataManager.getUser().newAttempt();
+            }
             ((InGame) manager.getGUI(GUISelection.IN_GAME)).setActiveMap(new InFlightMap(MapManager.getMap(mapIndex), mapIndex));
             manager.setCurrentGUI(GUISelection.IN_GAME);
         }

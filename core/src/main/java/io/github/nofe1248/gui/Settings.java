@@ -17,6 +17,9 @@ public class Settings extends BaseGUI {
     private Label attemptCount;
     private Label highestScore;
 
+    TextButton saveGameButton;
+    TextButton loadGameButton;
+
     public Settings() {
         super("gui/Settings/Settings.json", "gui/Settings/SettingsLayout.json");
     }
@@ -91,7 +94,7 @@ public class Settings extends BaseGUI {
             }
         });
 
-        TextButton loadGameButton = this.stage.getRoot().findActor("load_game");
+        loadGameButton = this.stage.getRoot().findActor("load_game");
         assert loadGameButton != null;
         loadGameButton.addListener(new ChangeListener() {
             @Override
@@ -102,7 +105,7 @@ public class Settings extends BaseGUI {
             }
         });
 
-        TextButton saveGameButton = this.stage.getRoot().findActor("save_game");
+        saveGameButton = this.stage.getRoot().findActor("save_game");
         assert saveGameButton != null;
         saveGameButton.addListener(new ChangeListener() {
             @Override
@@ -209,10 +212,17 @@ public class Settings extends BaseGUI {
 
     @Override
     public void onShow() {
-        username.setText(UserDataManager.getUser().getAccount());
-        registerTime.setText(UserDataManager.getUser().getFirstLoginTime());
-        attemptCount.setText(UserDataManager.getUser().getAttemptTimes());
-        highestScore.setText(UserDataManager.getUser().getMaxScore());
+        if (UserDataManager.getGuest()) {
+            username.setText("Guest");
+            registerTime.setText("N/A");
+            attemptCount.setText("N/A");
+            highestScore.setText("N/A");
+        } else {
+            username.setText(UserDataManager.getUser().getAccount());
+            registerTime.setText(UserDataManager.getUser().getFirstLoginTime());
+            attemptCount.setText(UserDataManager.getUser().getAttemptTimes());
+            highestScore.setText(UserDataManager.getUser().getMaxScore());
+        }
         GUIManager manager = GUIManager.getManager();
         manager
             .getBackgroundMusicManager()
@@ -221,6 +231,14 @@ public class Settings extends BaseGUI {
             continueButton.setVisible(true);
         } else {
             continueButton.setVisible(false);
+        }
+
+        if (UserDataManager.getGuest()) {
+            loadGameButton.setDisabled(true);
+            saveGameButton.setDisabled(true);
+        } else {
+            loadGameButton.setDisabled(false);
+            saveGameButton.setDisabled(false);
         }
     }
 

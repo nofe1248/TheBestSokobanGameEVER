@@ -3,11 +3,9 @@ package io.github.nofe1248.gui;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import io.github.alkalimc.User.UserDataManager;
 import io.github.nofe1248.map.map.InFlightMap;
 import io.github.nofe1248.map.solver.GreedySolver;
 import io.github.nofe1248.preferences.GamePreferences;
@@ -72,6 +70,8 @@ public class InGame extends BaseGUI {
     private final TimerUpdateThread timerUpdateThread = new TimerUpdateThread();
     private boolean isPlayingSolution = false;
     private ExecutorService executor = Executors.newSingleThreadExecutor();
+    TextButton saveGameButton;
+    TextButton loadGameButton;
 
     public InGame() {
         super("gui/Playing/Playing.json", "gui/Playing/PlayingLayout.json");
@@ -298,9 +298,9 @@ public class InGame extends BaseGUI {
             }
         });
 
-        TextButton saveButton = this.stage.getRoot().findActor("save");
-        assert saveButton != null;
-        saveButton.addListener(new ChangeListener() {
+        saveGameButton = this.stage.getRoot().findActor("save");
+        assert saveGameButton != null;
+        saveGameButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
@@ -309,9 +309,9 @@ public class InGame extends BaseGUI {
             }
         });
 
-        TextButton loadButton = this.stage.getRoot().findActor("load");
-        assert loadButton != null;
-        loadButton.addListener(new ChangeListener() {
+        loadGameButton = this.stage.getRoot().findActor("load");
+        assert loadGameButton != null;
+        loadGameButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
@@ -371,6 +371,14 @@ public class InGame extends BaseGUI {
             case SAYORI -> BackgroundMusicSelection.SINGLEPLAYER_SAYORI;
             case YURI -> BackgroundMusicSelection.SINGLEPLAYER_YURI;
         }, false);
+
+        if (UserDataManager.getGuest()) {
+            loadGameButton.setDisabled(true);
+            saveGameButton.setDisabled(true);
+        } else {
+            loadGameButton.setDisabled(false);
+            saveGameButton.setDisabled(false);
+        }
     }
 
     @Override

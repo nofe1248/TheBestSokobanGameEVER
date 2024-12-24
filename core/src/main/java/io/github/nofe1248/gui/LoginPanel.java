@@ -69,13 +69,14 @@ public class LoginPanel extends BaseGUI {
 
         TextButton guestButton = this.stage.getRoot().findActor("guest");
         assert guestButton != null;
-        registerButton.addListener(new ChangeListener() {
+        guestButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 GUIManager manager = GUIManager.getManager();
                 manager.getSoundEffectManager().playClick();
 
                 UserDataManager.setGuest(true);
+                manager.setCurrentGUI(GUISelection.MAIN_MENU);
             }
         });
     }

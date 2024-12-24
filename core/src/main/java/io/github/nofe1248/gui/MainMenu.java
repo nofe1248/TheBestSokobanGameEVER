@@ -5,10 +5,13 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import io.github.alkalimc.User.Login;
+import io.github.alkalimc.User.UserDataManager;
+import io.github.nofe1248.map.SaveManager;
 import io.github.nofe1248.sound.BackgroundMusicSelection;
 
 public class MainMenu extends BaseGUI {
     private TextButton continueButton;
+    private TextButton loadGameButton;
 
     public MainMenu() {
         super("gui/MainMenu/MainMenu.json", "gui/MainMenu/MainMenuLayout.json");
@@ -52,7 +55,7 @@ public class MainMenu extends BaseGUI {
             }
         });
 
-        TextButton loadGameButton = this.stage.getRoot().findActor("load_game");
+        loadGameButton = this.stage.getRoot().findActor("load_game");
         assert loadGameButton != null;
         loadGameButton.addListener(new ChangeListener() {
             @Override
@@ -83,6 +86,10 @@ public class MainMenu extends BaseGUI {
                 manager.getSoundEffectManager().playClick();
                 if (manager.getGUI(GUISelection.IN_GAME) instanceof InGame inGame && inGame.getActiveMap() != null && !inGame.getActiveMap().getMap().isSolved()) {
                     manager.setCurrentGUI(GUISelection.IN_GAME);
+                } else if (SaveManager.getQuickSaveMap() != null) {
+                    InGame gui = (InGame) manager.getGUI(GUISelection.IN_GAME);
+                    gui.setActiveMap(SaveManager.getQuickSaveMap());
+                    manager.setCurrentGUI(GUISelection.IN_GAME);
                 }
             }
         });
@@ -94,10 +101,23 @@ public class MainMenu extends BaseGUI {
         manager
             .getBackgroundMusicManager()
             .playBackgroundMusic(BackgroundMusicSelection.MAIN_MENU, false);
-        if (manager.getGUI(GUISelection.IN_GAME) instanceof InGame inGame && inGame.getActiveMap() != null && !inGame.getActiveMap().getMap().isSolved()) {
+        if (manager.getGUI(GUISelection.IN_GAME) instanceof InGame inGame
+                && inGame.getActiveMap() != null && !inGame.getActiveMap().getMap().isSolved()) {
             continueButton.setVisible(true);
         } else {
             continueButton.setVisible(false);
+        }
+
+        SaveManager.loadQuickSave();
+
+        if (SaveManager.getQuickSaveMap() != null) {
+            continueButton.setVisible(true);
+        }
+
+        if (UserDataManager.getGuest()) {
+            loadGameButton.setDisabled(true);
+        } else {
+            loadGameButton.setDisabled(false);
         }
     }
 

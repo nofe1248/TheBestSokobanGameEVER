@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import io.github.alkalimc.User.UserDataManager;
 import io.github.nofe1248.map.SaveManager;
 import io.github.nofe1248.map.map.InFlightMap;
 import io.github.nofe1248.sound.BackgroundMusicSelection;
@@ -229,11 +230,11 @@ public class SaveGame extends BaseSaveGUI {
             String jsonString = activeMap.toJSONString();
             try {
                 //create the save folder if it does not exist
-                if (!Files.exists(Paths.get("save"))) {
-                    Files.createDirectories(Paths.get("save"));
+                if (!Files.exists(Paths.get("save", UserDataManager.getUser().getAccount()))) {
+                    Files.createDirectories(Paths.get("save", UserDataManager.getUser().getAccount()));
                 }
-                Files.writeString(Paths.get("save", "save" + mapNumber + ".json"), jsonString);
-                activeMap.getMap().saveMapImage(Paths.get("save", "save" + mapNumber + ".png"));
+                Files.writeString(Paths.get("save", UserDataManager.getUser().getAccount(), "save" + mapNumber + ".json"), jsonString);
+                activeMap.getMap().saveMapImage(Paths.get("save", UserDataManager.getUser().getAccount(), "save" + mapNumber + ".png"));
                 SaveManager.updateSaveList();
                 updateMapTitleOnPageChange();
             } catch (IOException e) {
@@ -315,6 +316,7 @@ public class SaveGame extends BaseSaveGUI {
     @Override
     public void onShow() {
         updateMapTitleOnPageChange();
+        SaveManager.updateSaveList();
         GUIManager manager = GUIManager.getManager();
         manager
             .getBackgroundMusicManager()

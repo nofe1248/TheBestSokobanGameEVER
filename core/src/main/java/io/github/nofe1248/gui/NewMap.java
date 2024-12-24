@@ -11,6 +11,8 @@ import com.badlogic.gdx.utils.Array;
 import com.kotcrab.vis.ui.widget.file.FileChooser;
 import com.kotcrab.vis.ui.widget.file.FileChooserAdapter;
 import com.kotcrab.vis.ui.widget.file.FileTypeFilter;
+import io.github.alkalimc.User.User;
+import io.github.alkalimc.User.UserDataManager;
 import io.github.nofe1248.map.MapManager;
 import io.github.nofe1248.map.generator.MapGenerator;
 import io.github.nofe1248.map.map.Map;
@@ -30,6 +32,7 @@ public class NewMap extends BaseGUI {
     private TextField row;
     private TextField col;
     private TextButton continueButton;
+    private TextButton loadGameButton;
 
     private int mapIndex;
 
@@ -182,7 +185,7 @@ public class NewMap extends BaseGUI {
             }
         });
 
-        TextButton loadGameButton = this.stage.getRoot().findActor("load_game");
+        loadGameButton = this.stage.getRoot().findActor("load_game");
         assert loadGameButton != null;
         loadGameButton.addListener(new ChangeListener() {
             @Override
@@ -239,6 +242,12 @@ public class NewMap extends BaseGUI {
             continueButton.setVisible(true);
         } else {
             continueButton.setVisible(false);
+        }
+
+        if (UserDataManager.getGuest()) {
+            loadGameButton.setDisabled(true);
+        } else {
+            loadGameButton.setDisabled(false);
         }
     }
 
